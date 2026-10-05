@@ -6,139 +6,8 @@
 <title>China & Japan 2026 ✿ Clarissa</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <!-- Replace YOUR_GOOGLE_MAPS_API_KEY with your Maps JavaScript API key -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=itinInitMap" async defer>
-/* ── TICKABLE TODOS ── */
-function tickTodo(el){
-  el.classList.toggle('done-tick');
-  const badge = el.querySelector('.todo-badge');
-  if(el.classList.contains('done-tick')){
-    el.dataset.prevText = badge ? badge.textContent : '';
-    el.dataset.prevClass = badge ? badge.className : '';
-    if(badge){ badge.textContent='Done'; badge.className='todo-badge badge-done'; }
-  } else {
-    if(badge){
-      badge.textContent = el.dataset.prevText || badge.textContent;
-      badge.className = el.dataset.prevClass || badge.className;
-    }
-  }
-}
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=itinInitMap" async defer></script>
 
-/* ── AUD CONVERTER ── */
-const AUD_RATES = { CNY: 4.69, JPY: 99.5, HKD: 5.82 };
-const AUD_SYMBOLS = { CNY: '¥', JPY: '¥', HKD: 'HK$' };
-function toggleAud(){
-  const p = document.getElementById('audPanel');
-  if(p){ p.classList.toggle('open'); convertAud(); }
-}
-function convertAud(){
-  const inp = document.getElementById('audInput');
-  const sel = document.getElementById('audCurrency');
-  const res = document.getElementById('audResult');
-  const rate_el = document.getElementById('audRate');
-  if(!inp||!sel||!res) return;
-  const amt = parseFloat(inp.value)||0;
-  const cur = sel.value;
-  const rate = AUD_RATES[cur]||1;
-  const sym = AUD_SYMBOLS[cur]||'';
-  res.textContent = sym+' '+(amt*rate).toLocaleString('en-AU',{maximumFractionDigits:cur==='JPY'?0:2});
-  if(rate_el) rate_el.textContent = '1 AUD ≈ '+rate+' '+cur+' · indicative only';
-}
-
-/* ── STAYS MAP ── */
-const STAY_LOCATIONS = [
-  { name:'Louidon Mega Duplex Apt', city:'Guangzhou', lat:23.1291, lng:113.2644, dates:'16–18 Oct', country:'cn' },
-  { name:'THAT MAY HOTEL', city:'Yangshuo', lat:24.7730, lng:110.4950, dates:'18–21 Oct', country:'cn' },
-  { name:'Fandiao Homestay', city:'Chongqing', lat:29.5580, lng:106.5450, dates:'21–25 Oct', country:'cn' },
-  { name:'Home in Osaka', city:'Osaka', lat:34.6540, lng:135.4970, dates:'25–27 Oct', country:'jp' },
-  { name:'Airbnb Shinjuku', city:'Tokyo', lat:35.6975, lng:139.7194, dates:'27 Oct–1 Nov', country:'jp' },
-];
-let staysMap, staysMapInit = false;
-function initStaysMap(){
-  const el = document.getElementById('stays-map');
-  if(!el || staysMapInit || typeof google === 'undefined') return;
-  staysMapInit = true;
-  staysMap = new google.maps.Map(el,{
-    center:{lat:32,lng:118}, zoom:4,
-    mapTypeControl:false, streetViewControl:false,
-    styles:[
-      {featureType:'water',elementType:'geometry',stylers:[{color:'#F8D0DC'}]},
-      {featureType:'landscape',elementType:'geometry',stylers:[{color:'#FFF4F7'}]},
-      {featureType:'road',elementType:'geometry',stylers:[{color:'#FFFCFE'}]},
-      {elementType:'labels.text.fill',stylers:[{color:'#7A3050'}]},
-    ]
-  });
-  const infoW = new google.maps.InfoWindow();
-  const bounds = new google.maps.LatLngBounds();
-  STAY_LOCATIONS.forEach((s,i)=>{
-    const m = new google.maps.Marker({
-      position:{lat:s.lat,lng:s.lng}, map:staysMap, title:s.name,
-      label:{text:(i+1).toString(),color:'#fff',fontSize:'11px',fontWeight:'bold'},
-      icon:{path:google.maps.SymbolPath.CIRCLE,fillColor:s.country==='cn'?'#E8607A':'#98D4A8',
-            fillOpacity:1,strokeColor:'#fff',strokeWeight:2,scale:14}
-    });
-    m.addListener('click',()=>{
-      infoW.setContent('<div style="font-family:DM Sans,sans-serif;padding:4px 2px;">'+
-        '<div style="font-size:10px;color:#C08898;">'+s.dates+'</div>'+
-        '<div style="font-size:14px;font-weight:500;color:#8B1840;">'+s.name+'</div>'+
-        '<div style="font-size:12px;color:#7A3050;">'+s.city+'</div></div>');
-      infoW.open(staysMap,m);
-    });
-    bounds.extend({lat:s.lat,lng:s.lng});
-  });
-  staysMap.fitBounds(bounds);
-}
-
-/* ── SUGGESTIONS (Places API) ── */
-let currentSugType = 'restaurant';
-function setSugType(type,btn){
-  currentSugType=type;
-  document.querySelectorAll('.sug-type-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  loadSuggestions();
-}
-function loadSuggestions(){
-  const sel=document.getElementById('sugCity');
-  const listEl=document.getElementById('sugList');
-  if(!sel||!listEl) return;
-  const [lat,lng]=sel.value.split(',').map(Number);
-  listEl.innerHTML='<div class="sug-loading">Searching nearby… ✦</div>';
-  if(typeof google==='undefined'||!google.maps.places){
-    listEl.innerHTML='<div class="sug-loading">Add your Google Maps API key to enable live suggestions.</div>';
-    return;
-  }
-  const svc=new google.maps.places.PlacesService(document.createElement('div'));
-  svc.nearbySearch({location:{lat,lng},radius:2000,type:currentSugType},
-    (results,status)=>{
-      if(status!==google.maps.places.PlacesServiceStatus.OK||!results||!results.length){
-        listEl.innerHTML='<div class="sug-loading">No results — try another category.</div>';
-        return;
-      }
-      listEl.innerHTML=results.slice(0,8).map((p,i)=>{
-        const stars=p.rating?'★ '+p.rating.toFixed(1):'';
-        const openNow=p.opening_hours?(p.opening_hours.open_now?
-          '<span class="sug-open open">Open now</span>':
-          '<span class="sug-open closed">Closed</span>'):'';
-        const price=p.price_level?'$'.repeat(p.price_level):'';
-        return '<div class="sug-item">'+
-          '<div class="sug-rank">'+(i+1)+'</div>'+
-          '<div class="sug-info">'+
-            '<div class="sug-name">'+p.name+'</div>'+
-            '<div class="sug-meta">'+(p.vicinity||'')+(price?' · '+price:'')+'</div>'+
-            (stars?'<div class="sug-rating">'+stars+'</div>':'')+
-            openNow+
-          '</div></div>';
-      }).join('');
-    });
-}
-
-/* ── Hook showTab for stays map ── */
-const _baseShowTab = typeof showTab === 'function' ? showTab : null;
-showTab = function(id,btn){
-  if(_baseShowTab) _baseShowTab(id,btn);
-  if(id==='stays') setTimeout(initStaysMap,150);
-};
-
-</script>
 <style>
 /* ── reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -2292,5 +2161,258 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   </div>
 </div>
 
+
+<script>
+/* ── TABS ── */
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'stays') setTimeout(initStaysMap, 150);
+}
+
+/* ── DAY CARDS ── */
+function toggleDay(card) {
+  card.classList.toggle('open');
+  const btn = card.querySelector('.day-header');
+  if (btn) btn.setAttribute('aria-expanded', card.classList.contains('open'));
+}
+
+/* ── ITINERARY MAP ── */
+const locations = [
+  { name:'Sydney Airport', lat:-33.9399, lng:151.1753, day:'15 Oct', country:'cn', label:'Depart SYD' },
+  { name:'Guangzhou', lat:23.1291, lng:113.2644, day:'16–18 Oct', country:'cn', label:'Guangzhou' },
+  { name:'Yangshuo', lat:24.7776, lng:110.4892, day:'18–21 Oct', country:'cn', label:'Yangshuo / Guilin' },
+  { name:'Xianggong Mountain', lat:24.8781, lng:110.5012, day:'19 Oct', country:'cn', label:'Xianggong Sunrise' },
+  { name:'Wulong Karst', lat:29.2377, lng:107.7664, day:'22 Oct', country:'cn', label:'Wulong Karst' },
+  { name:'Chongqing', lat:29.5630, lng:106.5516, day:'21–25 Oct', country:'cn', label:'Chongqing' },
+  { name:'Osaka', lat:34.6937, lng:135.5023, day:'25–27 Oct', country:'jp', label:'Osaka' },
+  { name:'Dotonbori', lat:34.6687, lng:135.5010, day:'25 Oct night', country:'jp', label:'Dotonbori' },
+  { name:'Tokyo', lat:35.6762, lng:139.6503, day:'27 Oct–1 Nov', country:'jp', label:'Tokyo / Shinjuku' },
+  { name:'Shibuya', lat:35.6580, lng:139.7016, day:'28 Oct', country:'jp', label:'Shibuya Sky' },
+  { name:'Senso-ji', lat:35.7148, lng:139.7967, day:'29 Oct', country:'jp', label:'Senso-ji Temple' },
+  { name:'Kamakura Buddha', lat:35.3167, lng:139.5500, day:'30 Oct', country:'jp', label:'Kamakura Buddha' },
+  { name:'Chureito Pagoda', lat:35.4938, lng:138.7759, day:'30 Oct', country:'jp', label:'Chureito Pagoda' },
+  { name:'Ginza', lat:35.6717, lng:139.7650, day:'31 Oct', country:'jp', label:'Ginza' },
+];
+let itinMap, itinMapInit = false;
+function itinInitMap() {
+  const el = document.getElementById('itin-map');
+  if (!el || itinMapInit) return;
+  itinMapInit = true;
+  itinMap = new google.maps.Map(el, {
+    center: { lat: 32, lng: 118 }, zoom: 4,
+    mapTypeControl: false, streetViewControl: false,
+    styles: [
+      {featureType:'water',elementType:'geometry',stylers:[{color:'#F8D0DC'}]},
+      {featureType:'landscape',elementType:'geometry',stylers:[{color:'#FFF4F7'}]},
+      {featureType:'road',elementType:'geometry',stylers:[{color:'#FFFCFE'}]},
+      {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#F0D0DC'}]},
+      {elementType:'labels.text.fill',stylers:[{color:'#7A3050'}]},
+    ]
+  });
+  const infoW = new google.maps.InfoWindow();
+  const bounds = new google.maps.LatLngBounds();
+  locations.forEach(loc => {
+    const m = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng }, map: itinMap, title: loc.label,
+      icon: { path: google.maps.SymbolPath.CIRCLE,
+        fillColor: loc.country === 'cn' ? '#E8607A' : '#98D4A8',
+        fillOpacity: 1, strokeColor: '#fff', strokeWeight: 2, scale: 8 }
+    });
+    m.addListener('click', () => {
+      infoW.setContent('<div style="font-family:DM Sans,sans-serif;padding:4px 2px;">' +
+        '<div style="font-size:10px;color:#C08898;">' + loc.day + '</div>' +
+        '<div style="font-size:14px;font-weight:500;color:#8B1840;">' + loc.label + '</div>' +
+        '</div>');
+      infoW.open(itinMap, m);
+    });
+    bounds.extend({ lat: loc.lat, lng: loc.lng });
+  });
+  itinMap.fitBounds(bounds);
+}
+
+/* ── ITIN VIEW SWITCH ── */
+function itinSwitchView(view, btn) {
+  const daysEl = document.getElementById('itin-days-view');
+  const mapEl = document.getElementById('itin-map-view');
+  if (daysEl) daysEl.style.display = view === 'days' ? '' : 'none';
+  if (mapEl) mapEl.classList.toggle('active', view === 'map');
+  document.getElementById('itin-btn-days').classList.toggle('active', view === 'days');
+  document.getElementById('itin-btn-map').classList.toggle('active', view === 'map');
+  if (view === 'map' && itinMap) google.maps.event.trigger(itinMap, 'resize');
+}
+
+/* ── SEARCH & FILTER ── */
+function itinHandleSearch(val) {
+  val = val.toLowerCase().trim();
+  document.querySelectorAll('#itin-days-view .day-card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = (!val || text.includes(val)) ? '' : 'none';
+  });
+  document.querySelectorAll('#itin-days-view .city-sec').forEach(sec => {
+    const anyVisible = [...sec.querySelectorAll('.day-card')].some(d => d.style.display !== 'none');
+    sec.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+function itinFilterByTag(tag, btn) {
+  document.querySelectorAll('.side-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#itin-days-view .act').forEach(act => {
+    act.style.display = (tag === 'all' || act.querySelector('.tag-' + tag)) ? '' : 'none';
+  });
+  document.querySelectorAll('#itin-days-view .day-card').forEach(card => {
+    const anyVisible = [...card.querySelectorAll('.act')].some(a => a.style.display !== 'none');
+    card.style.display = anyVisible ? '' : 'none';
+  });
+  document.querySelectorAll('#itin-days-view .city-sec').forEach(sec => {
+    const anyVisible = [...sec.querySelectorAll('.day-card')].some(d => d.style.display !== 'none');
+    sec.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+function itinScrollToCity(id, el) {
+  document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const target = document.getElementById(id);
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── TICKABLE TODOS ── */
+function tickTodo(el) {
+  el.classList.toggle('done-tick');
+  const badge = el.querySelector('.todo-badge');
+  if (el.classList.contains('done-tick')) {
+    el.dataset.prevText = badge ? badge.textContent : '';
+    el.dataset.prevClass = badge ? badge.className : '';
+    if (badge) { badge.textContent = 'Done'; badge.className = 'todo-badge badge-done'; }
+  } else {
+    if (badge) {
+      badge.textContent = el.dataset.prevText || badge.textContent;
+      badge.className = el.dataset.prevClass || badge.className;
+    }
+  }
+}
+
+/* ── AUD CONVERTER ── */
+const AUD_RATES = { CNY: 4.69, JPY: 99.5, HKD: 5.82 };
+const AUD_SYMBOLS = { CNY: '¥', JPY: '¥', HKD: 'HK$' };
+function toggleAud() {
+  const p = document.getElementById('audPanel');
+  if (p) { p.classList.toggle('open'); convertAud(); }
+}
+function convertAud() {
+  const inp = document.getElementById('audInput');
+  const sel = document.getElementById('audCurrency');
+  const res = document.getElementById('audResult');
+  const rateEl = document.getElementById('audRate');
+  if (!inp || !sel || !res) return;
+  const amt = parseFloat(inp.value) || 0;
+  const cur = sel.value;
+  const rate = AUD_RATES[cur] || 1;
+  const sym = AUD_SYMBOLS[cur] || '';
+  res.textContent = sym + ' ' + (amt * rate).toLocaleString('en-AU', { maximumFractionDigits: cur === 'JPY' ? 0 : 2 });
+  if (rateEl) rateEl.textContent = '1 AUD ≈ ' + rate + ' ' + cur + ' · indicative only';
+}
+
+/* ── STAYS MAP ── */
+const STAY_LOCATIONS = [
+  { name:'Louidon Mega Duplex Apt', city:'Guangzhou', lat:23.1291, lng:113.2644, dates:'16–18 Oct', country:'cn' },
+  { name:'THAT MAY HOTEL', city:'Yangshuo', lat:24.7730, lng:110.4950, dates:'18–21 Oct', country:'cn' },
+  { name:'Fandiao Homestay', city:'Chongqing', lat:29.5580, lng:106.5450, dates:'21–25 Oct', country:'cn' },
+  { name:'Home in Osaka', city:'Osaka', lat:34.6540, lng:135.4970, dates:'25–27 Oct', country:'jp' },
+  { name:'Airbnb Shinjuku', city:'Tokyo', lat:35.6975, lng:139.7194, dates:'27 Oct–1 Nov', country:'jp' },
+];
+let staysMap, staysMapInit = false;
+function initStaysMap() {
+  const el = document.getElementById('stays-map');
+  if (!el || staysMapInit || typeof google === 'undefined') return;
+  staysMapInit = true;
+  staysMap = new google.maps.Map(el, {
+    center: { lat: 32, lng: 118 }, zoom: 4,
+    mapTypeControl: false, streetViewControl: false,
+    styles: [
+      {featureType:'water',elementType:'geometry',stylers:[{color:'#F8D0DC'}]},
+      {featureType:'landscape',elementType:'geometry',stylers:[{color:'#FFF4F7'}]},
+      {elementType:'labels.text.fill',stylers:[{color:'#7A3050'}]},
+    ]
+  });
+  const infoW = new google.maps.InfoWindow();
+  const bounds = new google.maps.LatLngBounds();
+  STAY_LOCATIONS.forEach((s, i) => {
+    const m = new google.maps.Marker({
+      position: { lat: s.lat, lng: s.lng }, map: staysMap, title: s.name,
+      label: { text: (i + 1).toString(), color: '#fff', fontSize: '11px', fontWeight: 'bold' },
+      icon: { path: google.maps.SymbolPath.CIRCLE,
+        fillColor: s.country === 'cn' ? '#E8607A' : '#98D4A8',
+        fillOpacity: 1, strokeColor: '#fff', strokeWeight: 2, scale: 14 }
+    });
+    m.addListener('click', () => {
+      infoW.setContent('<div style="font-family:DM Sans,sans-serif;padding:4px 2px;">' +
+        '<div style="font-size:10px;color:#C08898;">' + s.dates + '</div>' +
+        '<div style="font-size:14px;font-weight:500;color:#8B1840;">' + s.name + '</div>' +
+        '<div style="font-size:12px;color:#7A3050;">' + s.city + '</div></div>');
+      infoW.open(staysMap, m);
+    });
+    bounds.extend({ lat: s.lat, lng: s.lng });
+  });
+  staysMap.fitBounds(bounds);
+}
+
+/* ── SUGGESTIONS (Places API) ── */
+let currentSugType = 'restaurant';
+function setSugType(type, btn) {
+  currentSugType = type;
+  document.querySelectorAll('.sug-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadSuggestions();
+}
+function loadSuggestions() {
+  const sel = document.getElementById('sugCity');
+  const listEl = document.getElementById('sugList');
+  if (!sel || !listEl) return;
+  const [lat, lng] = sel.value.split(',').map(Number);
+  listEl.innerHTML = '<div class="sug-loading">Searching nearby… ✦</div>';
+  if (typeof google === 'undefined' || !google.maps.places) {
+    listEl.innerHTML = '<div class="sug-loading">Add your Google Maps API key to enable live suggestions.</div>';
+    return;
+  }
+  const svc = new google.maps.places.PlacesService(document.createElement('div'));
+  svc.nearbySearch({ location: { lat, lng }, radius: 2000, type: currentSugType },
+    (results, status) => {
+      if (status !== google.maps.places.PlacesServiceStatus.OK || !results || !results.length) {
+        listEl.innerHTML = '<div class="sug-loading">No results — try another category.</div>';
+        return;
+      }
+      listEl.innerHTML = results.slice(0, 8).map((p, i) => {
+        const stars = p.rating ? '★ ' + p.rating.toFixed(1) : '';
+        const openNow = p.opening_hours ? (p.opening_hours.open_now ?
+          '<span class="sug-open open">Open now</span>' :
+          '<span class="sug-open closed">Closed</span>') : '';
+        const price = p.price_level ? '$'.repeat(p.price_level) : '';
+        return '<div class="sug-item">' +
+          '<div class="sug-rank">' + (i + 1) + '</div>' +
+          '<div class="sug-info">' +
+            '<div class="sug-name">' + p.name + '</div>' +
+            '<div class="sug-meta">' + (p.vicinity || '') + (price ? ' · ' + price : '') + '</div>' +
+            (stars ? '<div class="sug-rating">' + stars + '</div>' : '') +
+            openNow +
+          '</div></div>';
+      }).join('');
+    });
+}
+
+/* ── SIDEBAR SCROLL SPY ── */
+window.addEventListener('scroll', () => {
+  const secs = document.querySelectorAll('#itin-days-view .city-sec');
+  const links = document.querySelectorAll('.itin-side .side-link');
+  let current = '';
+  secs.forEach(s => { if (s.getBoundingClientRect().top < 120) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+}, { passive: true });
+
+</script>
 </body>
 </html>
