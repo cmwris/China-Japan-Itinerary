@@ -11,40 +11,41 @@
 <style>
 /* ── reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 img{display:block;max-width:100%;}
 button{font:inherit;cursor:pointer;border:none;background:none;}
 
 /* ── tokens ── */
 :root{
-  /* PINK — dominant */
-  --pk:#E8607A;   --pk-deep:#C03858; --pk-dark:#8B1840;
-  --pk-pale:#FFF0F4; --pk-mid:#FBCCD8; --pk-faint:#FFF7F9;
-  /* PURPLE — soft secondary */
-  --pu:#B090D0; --pu-deep:#8060A8; --pu-dark:#4A2880;
-  --pu-pale:#F5F0FD; --pu-mid:#DDD0F5; --pu-faint:#FAF8FF;
+  /* PINK — primary accent (Japan + UI) */
+  --pk:#F0A3DB;   --pk-deep:#D060B0; --pk-dark:#8B1870;
+  --pk-pale:#FEF0FA; --pk-mid:#F8CCED; --pk-faint:#FFF5FD;
+  /* PURPLE — China accent */
+  --pu:#E08CED; --pu-deep:#B050C8; --pu-dark:#6A1880;
+  --pu-pale:#F8EFFE; --pu-mid:#EDD0F5; --pu-faint:#FCF5FF;
+  /* GREEN — Japan accent */
+  --sage:#A9F0A3; --sage-pale:#EEFDED; --sage-mid:#C8F5C4; --sage-deep:#1E6030;
   /* ROSE — warm fills */
-  --rose:#F4A0B8; --rose-pale:#FFF3F7; --rose-mid:#FAD0DF; --rose-deep:#A02848;
-  /* ALIASES — keep existing code working */
-  --plum:var(--pk); --plum-deep:var(--pk-deep); --plum-dark:var(--pk-dark);
-  --plum-pale:var(--pk-pale); --plum-mid:var(--pk-mid); --plum-faint:var(--pk-faint);
-  --pink:var(--pk); --pink-deep:var(--pk-deep); --pink-dark:var(--pk-dark);
-  --pink-pale:var(--pk-pale); --pink-mid:var(--pk-mid); --pink-faint:var(--pk-faint);
+  --rose:#F0A3DB; --rose-pale:#FEF0FA; --rose-mid:#F8CCED; --rose-deep:#8B1870;
+  /* ALIASES */
+  --plum:var(--pu); --plum-deep:var(--pu-deep); --plum-dark:var(--pu-dark);
+  --plum-pale:var(--pu-pale); --plum-mid:var(--pu-mid); --plum-faint:var(--pu-faint);
   --purple:var(--pu); --purple-deep:var(--pu-deep); --purple-dark:var(--pu-dark);
   --purple-pale:var(--pu-pale); --purple-mid:var(--pu-mid); --purple-faint:var(--pu-faint);
-  --lavender:#DCC8F0; --lav-pale:#F4F0FE;
-  --sage:#98D4A8; --sage-pale:#EEF8F1; --sage-mid:#C0E8CC; --sage-deep:#1A5C38;
-  --cream:#FFF4F7; --warm:#FFFCFE;
-  --text:#380A20; --text-mid:#7A3050; --text-soft:#C08898; --text-faint:#E0B8C8;
-  --border:#F8D0DC; --border-strong:#F0A8B8;
+  --pink:var(--pk); --pink-deep:var(--pk-deep); --pink-dark:var(--pk-dark);
+  --pink-pale:var(--pk-pale); --pink-mid:var(--pk-mid); --pink-faint:var(--pk-faint);
+  --lavender:#E0C8F0; --lav-pale:#F5EEFE;
+  --cream:#FFF5FC; --warm:#FFFCFE;
+  --text:#2A1040; --text-mid:#6A3080; --text-soft:#B080C0; --text-faint:#DCC0E8;
+  --border:#F0D8F0; --border-strong:#E0A8E0;
   --r:14px; --r-sm:8px; --r-pill:999px;
-  --shadow-sm:0 1px 4px rgba(200,30,80,.07);
-  --shadow-md:0 4px 16px rgba(200,30,80,.12);
-  --shadow-lg:0 8px 32px rgba(200,30,80,.16);
+  --shadow-sm:0 1px 4px rgba(160,40,180,.07);
+  --shadow-md:0 4px 16px rgba(160,40,180,.11);
+  --shadow-lg:0 8px 32px rgba(160,40,180,.16);
 }
 
 /* ── typography ── */
-body{font-family:'DM Sans',system-ui,sans-serif;background:#FFF4F7;color:var(--text);font-size:15px;line-height:1.6;}
+body{font-family:'DM Sans',system-ui,'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;background:#FFF4F7;color:var(--text);font-size:15px;line-height:1.6;}
 h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 
 /* ═══════════════════════════════════════════════
@@ -54,7 +55,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   position:sticky;top:0;z-index:100;
   display:flex;align-items:center;gap:12px;
   padding:0 1.5rem;height:56px;
-  background:rgba(255,248,250,.96);
+  background:rgba(254,248,254,.97);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
 }
@@ -80,7 +81,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 ═══════════════════════════════════════════════ */
 .hero{
   padding:2.5rem 1.5rem 2rem;text-align:center;
-  background:linear-gradient(150deg,#FFEAF0 0%,#FFD8E8 45%,#F8E0F0 100%);
+  background:linear-gradient(150deg,#FEF0FA 0%,#F8DAFE 40%,#F0EEFF 100%);
   border-bottom:1px solid var(--border);
 }
 .hero-eyebrow{
@@ -186,8 +187,15 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   padding-bottom:.75rem;
   border-bottom:1.5px solid var(--border);
 }
-.city-flag{font-size:22px;}
+.city-flag{
+  font-size:10px;font-weight:600;letter-spacing:.06em;
+  padding:3px 8px;border-radius:4px;
+  display:inline-flex;align-items:center;
+}
+.city-flag.cn-flag{background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);}
+.city-flag.jp-flag{background:#EEFDED;color:#1E6030;border:1px solid #C8F5C4;}
 .city-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;color:var(--pk-dark);}
+.city-flag.cn-flag ~ .city-name{color:var(--pu-dark);}
 .city-dates{
   margin-left:auto;font-size:11px;color:var(--text-soft);
   background:var(--plum-pale);border:1px solid var(--plum-mid);
@@ -208,7 +216,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 .day-header{
   display:flex;align-items:center;gap:12px;
   width:100%;padding:14px 16px;text-align:left;
-  transition:background .12s;
+  transition:background .12s;min-height:44px;
 }
 .day-header:hover{background:var(--plum-faint);}
 .day-card.open .day-header{background:var(--plum-faint);}
@@ -216,7 +224,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 .day-accent{width:4px;height:44px;border-radius:4px;flex-shrink:0;}
 .accent-cn{background:linear-gradient(to bottom,var(--pink),var(--pink-deep));}
 .accent-jp{background:linear-gradient(to bottom,var(--sage),#3D8C60);}
-.accent-transit{background:linear-gradient(to bottom,var(--rose),var(--rose-deep));}
+.accent-transit{background:linear-gradient(to bottom,var(--pk),var(--pk-deep));}
 
 .day-date{min-width:52px;text-align:center;}
 .day-dow{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);}
@@ -243,8 +251,9 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 ═══════════════════════════════════════════════ */
 .act{
   display:grid;
-  grid-template-columns:80px 1fr;
+  grid-template-columns:72px 1fr;
   border-bottom:1px solid var(--border);
+  min-width:0;
 }
 .act:last-of-type{border-bottom:none;}
 
@@ -268,12 +277,14 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   gap:14px;
   align-items:flex-start;
 }
-.act-body-text{flex:1;min-width:0;}
+.act-body-text{flex:1;min-width:0;overflow:hidden;}
+.act-body-text{min-width:0;}
 .act-photo{
-  width:100%;height:200px;object-fit:cover;
-  border-radius:var(--r-sm);margin-bottom:12px;
-  background:var(--plum-pale);
+  width:110px;height:82px;object-fit:cover;
+  border-radius:var(--r-sm);flex-shrink:0;
+  background:var(--pk-pale);order:2;
 }
+@media(max-width:520px){.act-photo{width:80px;height:60px;}}
 .act-name{
   font-family:'Playfair Display',serif;
   font-size:15px;font-weight:500;color:var(--text);
@@ -288,7 +299,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 .act-tags{display:flex;flex-wrap:wrap;gap:5px;}
 .tag{font-size:11px;padding:3px 10px;border-radius:var(--r-pill);font-weight:500;}
 .tag-food{background:#FEF3E2;color:#A0520A;border:1px solid #F5D7A0;}
-.tag-sight{background:var(--lav-pale);color:#5040A0;border:1px solid var(--lavender);}
+.tag-sight{background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);}
 .tag-transport{background:var(--rose-pale);color:var(--rose-deep);border:1px solid var(--rose-mid);}
 .tag-nature{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
 .tag-night{background:#1A0E2A;color:#D4C5E8;border:1px solid #3D2860;}
@@ -331,7 +342,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   margin-bottom:-.25rem;
 }
 .tab-heading-emoji{font-size:24px;}
-.tab-inner{padding:1.5rem;max-width:760px;}
+.tab-inner{padding:1.5rem 2rem;max-width:900px;}
 
 .section-label{
   font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
@@ -342,13 +353,13 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 .flight-card,.train-card,.accom-card,.todo-group{
   background:var(--warm);border:1px solid var(--border);
   border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:.75rem;
-  box-shadow:var(--shadow-sm);
+  box-shadow:var(--shadow-sm);overflow:hidden;word-break:break-word;
 }
 .flight-route{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .iata{font-family:'Playfair Display',serif;font-size:24px;color:var(--plum-dark);}
 .flight-line{flex:1;height:1px;background:var(--border-strong);position:relative;}
 .flight-line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--plum);}
-.flight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:8px;}
+.flight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:8px;overflow:hidden;}
 .flight-item{font-size:12px;color:var(--text-soft);}
 .flight-item strong{display:block;font-size:13px;color:var(--text);font-weight:500;}
 .layover-note{background:var(--lav-pale);border:1px solid var(--lavender);border-radius:var(--r-sm);padding:7px 12px;font-size:12px;color:#5040A0;margin-top:8px;}
@@ -452,7 +463,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 
 
 /* ── TICKABLE TODOS ── */
-.todo-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;}
+.todo-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;min-height:44px;-webkit-tap-highlight-color:transparent;}
 .todo-item:last-child{border-bottom:none;}
 .todo-item:hover{background:var(--pk-faint);}
 .todo-item.done-tick .todo-label{text-decoration:line-through;color:var(--text-soft);}
@@ -495,6 +506,175 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 .sug-open.open{color:var(--sage-deep);}
 .sug-open.closed{color:var(--pk-deep);}
 
+
+
+.mini-hero{
+  padding:2rem 1.5rem 1.75rem;
+  text-align:center;
+  background:linear-gradient(150deg,#FEF0FA 0%,#F8DAFE 40%,#F0EEFF 100%);
+  border-bottom:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.mini-hero-eyebrow{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-soft);display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.mini-hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:38px;font-weight:500;color:var(--pk-dark);
+  line-height:1.1;display:flex;align-items:center;gap:12px;
+}
+.mini-hero-emoji{font-size:26px;font-style:normal;}
+
+
+.places-photo {
+  background: linear-gradient(90deg, var(--pk-pale) 25%, var(--pk-mid) 50%, var(--pk-pale) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.places-photo[src=""] { background: var(--pk-pale); }
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE  (≤ 680px)
+═══════════════════════════════════════════════ */
+@media(max-width:680px){
+
+  /* ── Nav ── */
+  .topnav{
+    padding:0 .75rem;
+    height:auto;
+    flex-wrap:nowrap;
+    gap:6px;
+  }
+  .nav-brand{font-size:13px;gap:5px;flex-shrink:0;}
+  .nav-brand svg{width:22px;height:16px;}
+  .nav-tabs{
+    gap:1px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:8px 0;
+  }
+  .nav-tab{
+    font-size:11px;
+    padding:5px 10px;
+    white-space:nowrap;
+  }
+
+  /* ── Hero ── */
+  .hero{padding:1.5rem 1rem 1.25rem;}
+  .hero-title{font-size:clamp(26px,8vw,36px);}
+  .hero-sub{font-size:12px;}
+  .hero-chips{gap:6px;}
+  .hero-chip{font-size:11px;padding:4px 10px;}
+
+  /* ── Mini hero ── */
+  .mini-hero{padding:1.25rem 1rem 1rem;}
+  .mini-hero-title{font-size:26px;}
+
+  /* ── Itinerary layout ── */
+  .itin-shell{flex-direction:column;}
+  .itin-side{display:none;}
+  .itin-main{padding:.75rem .75rem 3rem;}
+  .itin-toolbar{gap:6px;margin-bottom:1rem;}
+  .search-box input{font-size:13px;padding:8px 12px 8px 34px;}
+  .view-toggle{gap:3px;}
+  .view-btn{font-size:12px;padding:6px 12px;}
+
+  /* ── City headers ── */
+  .city-hdr{gap:6px;padding-bottom:.5rem;}
+  .city-name{font-size:18px;}
+  .city-dates{font-size:10px;padding:2px 8px;}
+
+  /* ── Day cards ── */
+  .day-card{border-radius:var(--r-sm);margin-bottom:.5rem;}
+  .day-header{padding:10px 12px;gap:8px;}
+  .day-accent{width:3px;height:36px;}
+  .day-date{min-width:40px;}
+  .day-num{font-size:20px;}
+  .day-title{font-size:13px;}
+  .day-sub{font-size:11px;}
+  .day-previews{gap:3px;margin-top:4px;}
+  .prev-chip{font-size:9px;padding:2px 6px;}
+  .day-chevron svg{width:13px;height:13px;}
+
+  /* ── Activities ── */
+  .act{grid-template-columns:58px 1fr;}
+  .act-time{padding:12px 6px;padding-top:14px;}
+  .time-pill{font-size:10px;padding:2px 5px;}
+  .act-body{padding:10px 10px;gap:8px;}
+  .act-name{font-size:14px;}
+  .act-loc{font-size:11px;}
+  .act-notes{font-size:12px;line-height:1.55;}
+  .act-photo{width:72px;height:56px;border-radius:6px;}
+  .act-info{grid-template-columns:1fr;gap:4px;}
+  .act-tip{font-size:11px;}
+  .day-accom{font-size:11px;padding:8px 10px;}
+
+  /* ── Tab inner ── */
+  .tab-inner{padding:1rem .75rem;}
+
+  /* ── Flight cards ── */
+  .flight-card,.train-card,.accom-card{padding:.75rem 1rem;}
+  .iata{font-size:18px;}
+  .flight-grid{grid-template-columns:1fr 1fr;gap:6px;}
+  .flight-item{font-size:11px;}
+  .flight-item strong{font-size:12px;}
+  .layover-note{font-size:11px;padding:5px 8px;}
+
+  /* ── Train cards ── */
+  .train-route{font-size:13px;}
+  .train-meta-grid{grid-template-columns:1fr 1fr;gap:4px;}
+  .train-meta-item{font-size:11px;}
+  .train-meta-item strong{font-size:11px;}
+
+  /* ── Stays ── */
+  .stays-map-wrap{height:220px;}
+  .accom-card{gap:8px;}
+  .accom-name{font-size:13px;}
+  .accom-meta,.accom-dates{font-size:11px;}
+
+  /* ── Todo ── */
+  .todo-item{padding:8px 10px;gap:8px;}
+  .todo-label{font-size:12px;}
+  .todo-badge{font-size:9px;padding:2px 6px;}
+  .todo-group-header{font-size:10px;padding:6px 10px;}
+
+  /* ── Weather ── */
+  .weather-grid{grid-template-columns:1fr!important;}
+  .wx-card{padding:1rem;}
+  .wx-hi{font-size:22px;}
+  .wx-city{font-size:14px;}
+
+  /* ── Suggestions ── */
+  .suggestions-panel{margin-top:1rem;}
+  .suggestions-type-row{gap:4px;padding:8px 10px;}
+  .sug-type-btn{font-size:11px;padding:3px 8px;}
+  .suggestions-header{padding:10px 12px;}
+  .suggestions-header h3{font-size:14px;}
+  .suggestions-city-select{font-size:12px;padding:4px 8px;}
+  .sug-item{gap:8px;padding:8px 0;}
+  .sug-name{font-size:13px;}
+  .sug-meta{font-size:11px;}
+
+  /* ── AUD fab ── */
+  .aud-fab{bottom:16px;right:16px;padding:8px 14px;font-size:12px;}
+  .aud-panel{right:16px;bottom:60px;width:calc(100vw - 32px);max-width:300px;}
+
+  /* ── Section labels ── */
+  .section-label{font-size:10px;margin:1rem 0 .4rem;}
+}
+
+/* ── Very small phones (≤ 380px) ── */
+@media(max-width:380px){
+  .nav-tab{font-size:10px;padding:4px 8px;}
+  .hero-title{font-size:24px;}
+  .day-num{font-size:18px;}
+  .act{grid-template-columns:50px 1fr;}
+  .act-photo{width:60px;height:48px;}
+}
+
 </style>
 </head>
 <body>
@@ -520,24 +700,17 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
     <button class="nav-tab" onclick="showTab('weather',this)">Weather</button>
   </div>
 </nav>
-
-
-
-<!-- ═══ ITINERARY TAB ═══ -->
 <div id="itinerary" class="tab-panel active">
 <div class="hero">
-  <div class="hero-eyebrow">15 October – 1 November 2026</div>
-  <h1 class="hero-title">China &amp; <em>Japan</em> 2026</h1>
-  <div class="hero-sub">Guangzhou · Yangshuo · Chongqing · Osaka · Tokyo</div>
+  <div class="hero-eyebrow">15 October &#8211; 2 November 2026</div>
+  <h1 class="hero-title">China &amp; <em>Japan</em></h1>
+  <div class="hero-sub">Guangzhou &middot; Yangshuo &middot; Chongqing &middot; Osaka &middot; Tokyo</div>
   <div class="hero-chips">
     <span class="hero-chip">17 nights</span>
-    <span class="hero-chip">🇨🇳 China → 🇯🇵 Japan</span>
+    <span class="hero-chip"><span style="font-size:10px;font-weight:600;background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);padding:2px 6px;border-radius:4px;">CN</span> China &rarr; <span style="font-size:10px;font-weight:600;background:#EEFDED;color:#1E6030;border:1px solid #C8F5C4;padding:2px 6px;border-radius:4px;">JP</span> Japan</span>
   </div>
 </div>
-
   <div class="itin-shell">
-
-    <!-- sidebar -->
     <aside class="itin-side">
       <div class="side-section">China</div>
       <a class="side-link active" onclick="itinScrollToCity('guangzhou',this)" href="#guangzhou"><span class="side-dot cn"></span>Guangzhou</a>
@@ -558,26 +731,22 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
         <button class="side-chip" onclick="itinFilterByTag('night',this)">Nightlife</button>
       </div>
     </aside>
-
-    <!-- main -->
     <div class="itin-main">
       <div class="itin-toolbar">
         <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="itinSearch" placeholder="Search activities, cities, places…" oninput="itinHandleSearch(this.value)">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="itinSearch" placeholder="Search activities, cities, places&#8230;" oninput="itinHandleSearch(this.value)">
         </div>
         <div class="view-toggle">
           <button class="view-btn active" id="itin-btn-days" onclick="itinSwitchView('days',this)">Days</button>
           <button class="view-btn" id="itin-btn-map" onclick="itinSwitchView('map',this)">Map</button>
         </div>
       </div>
-
       <div id="itin-map-view"><div id="itin-map"></div></div>
-
       <div id="itin-days-view">
 <section class="city-sec" id="guangzhou">
       <div class="city-hdr">
-        <span class="city-flag">🇨🇳</span>
+        <span class="city-flag cn-flag">CN</span>
         <h2 class="city-name">Guangzhou</h2>
         <span class="city-dates">15–18 Oct · 3 nights</span>
       </div>
@@ -604,8 +773,11 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Depart Sydney — CZ302</div>
             <div class="act-loc">Sydney Kingsford Smith Airport, T1</div>
             <div class="act-notes">Direct to Guangzhou · ~9h 25m · arrives 5:35am 16 Oct · 7kg carry-on + 23kg checked</div>
-            <div class="act-tags"><span class="tag tag-transport">✈ Flight</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=75&auto=format&fit=crop" alt="Airport terminal" loading="lazy"></div>
-        <div class="day-accom">⌂ In-flight overnight</div>
+            <div class="act-tags"><span class="tag tag-transport">Flight</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Sydney Airport Kingsford Smith" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70&auto=format&fit=crop" alt="Depart Sydney — CZ302" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; In-flight overnight</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -631,23 +803,34 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Land at Guangzhou Baiyun</div>
             <div class="act-loc">Guangzhou Baiyun International Airport (CAN)</div>
             <div class="act-notes">Clear customs · collect bags · drop luggage at hotel · rest up</div>
-            <div class="act-tags"><span class="tag tag-transport">✈ Arrival</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Arrival</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Guangzhou Baiyun Airport" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70&auto=format&fit=crop" alt="Land at Guangzhou Baiyun" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">09:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Yum cha breakfast</div>
             <div class="act-loc">Yuexiu District, Guangzhou</div>
             <div class="act-notes">Classic Cantonese dim sum — har gow, siu mai, egg tarts. GZ is the home of yum cha</div>
-            <div class="act-tags"><span class="tag tag-food">🍜 Food</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=75&auto=format&fit=crop" alt="Dim sum breakfast" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-food">Food</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Dim sum" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&q=70&auto=format&fit=crop" alt="Yum cha breakfast" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">11:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Beijing Road pedestrian strip</div>
             <div class="act-loc">Beijing Road, Yuexiu</div>
             <div class="act-notes">GZ's famous shopping street · ancient city road ruins visible through glass floor</div>
-            <div class="act-tags"><span class="tag tag-sight">🏙 Sightseeing</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800&q=75&auto=format&fit=crop" alt="Guangzhou street" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Beijing Road Guangzhou" src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=400&q=70&auto=format&fit=crop" alt="Beijing Road pedestrian strip" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">14:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Check in</div>
             <div class="act-loc">Louidon Mega Duplex Apartment · 1F Hengrun Plaza, No.238 Beijing Rd</div>
             <div class="act-notes">Check-in 2pm · AUD $722.83 group</div>
-            <div class="act-tags"><span class="tag tag-accom">🏠 Accommodation</span></div></div>
-        <div class="day-accom">⌂ Louidon Mega Duplex Apt · Beijing Rd</div>
+            <div class="act-tags"><span class="tag tag-accom">Accommodation</span></div>
+          </div></div>
+        </div>
+        <div class="day-accom">&#8962; Louidon Mega Duplex Apt · Beijing Rd</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -673,36 +856,33 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Chen Clan Ancestral Hall</div>
             <div class="act-loc">陈家祠 · 7 Zhongshan 7th Rd, Liwan</div>
             <div class="act-notes">One of China's best-preserved folk architecture masterpieces · intricate carvings and ceramics</div>
-            <div class="act-tags"><span class="tag tag-sight">🏛 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">8:30am – 5:30pm daily</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥10 <span class="price-aud">~AUD ~$2</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.tripadvisor.com.au/Attraction_Review-g294211-d317785" target="_blank">https://www.tripadvisor.com.au/Attraction_Rev…</a></div></div>
-              <div class="act-tip">Arrive before 10am for fewer crowds. The best carvings are on the roof ridges — look up!</div><img class="act-photo" src="https://images.unsplash.com/photo-1567533009021-7e1e6e55d0cb?w=800&q=75&auto=format&fit=crop" alt="Chinese ancestral hall" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Chen Clan Ancestral Hall" src="https://images.unsplash.com/photo-1567533009021-7e1e6e55d0cb?w=400&q=70&auto=format&fit=crop" alt="Chen Clan Ancestral Hall" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">Afternoon</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Shamian Island</div>
             <div class="act-loc">沙面岛, Liwan District</div>
             <div class="act-notes">Peaceful European-colonial island · great for photos · lined with cafes and banyan trees</div>
-            <div class="act-tags"><span class="tag tag-sight">🏙 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Always open (outdoor)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">Free <span class="price-aud">~AUD Free</span></div></div>
-              
-              <div class="act-tip">Stroll to the southern riverside for the best banyan tree photos. Great cafes on the main avenue.</div><img class="act-photo" src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=800&q=75&auto=format&fit=crop" alt="Shamian Island Guangzhou" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shamian Island Guangzhou" src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=400&q=70&auto=format&fit=crop" alt="Shamian Island" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">Evening</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Cantonese dinner + spa</div>
             <div class="act-loc">Guangzhou city</div>
             <div class="act-notes">Roast goose, wonton noodles, clay pot rice. Foot massage after — big travel day tomorrow</div>
-            <div class="act-tags"><span class="tag tag-food">🍽 Food</span><span class="tag tag-sight">💆 Leisure</span></div></div>
-        <div class="day-accom">⌂ Louidon Mega Duplex Apt · Beijing Rd</div>
+            <div class="act-tags"><span class="tag tag-food">Food</span><span class="tag tag-sight">Leisure</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Cantonese cuisine Guangzhou" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&q=70&auto=format&fit=crop" alt="Cantonese dinner + spa" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Louidon Mega Duplex Apt · Beijing Rd</div>
       </div>
     </div>
     </section>
 <section class="city-sec" id="yangshuo">
       <div class="city-hdr">
-        <span class="city-flag">🇨🇳</span>
+        <span class="city-flag cn-flag">CN</span>
         <h2 class="city-name">Yangshuo / Guilin</h2>
         <span class="city-dates">18–21 Oct · 3 nights</span>
       </div>
@@ -729,35 +909,34 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">HSR — Guangzhounan → Yangshuo</div>
             <div class="act-loc">Guangzhou South Station 广州南</div>
             <div class="act-notes">Train G3714 · arrives 10:23am · ~2h · AUD $483.90 group ($32pp) · Leo booked</div>
-            <div class="act-tags"><span class="tag tag-transport">🚄 Train</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Train</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Guangzhou South Station" src="https://images.unsplash.com/photo-1538470814938-ffe968c2b0c4?w=400&q=70&auto=format&fit=crop" alt="HSR — Guangzhounan → Yangshuo" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">10:23</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Arrive + check in</div>
             <div class="act-loc">THAT MAY HOTEL · No.2 Bldg 46, Mushan Village</div>
             <div class="act-notes">Private bus via Nikki's driver · whole building booked (8 rooms) · AUD $1,213.72</div>
-            <div class="act-tags"><span class="tag tag-accom">🏠 Accommodation</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1537531383403-c91df9cf3ea8?w=800&q=75&auto=format&fit=crop" alt="Yangshuo karst mountains" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-accom">Accommodation</span></div>
+          </div></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Li River Cruise</div>
             <div class="act-loc">Li River 漓江, Yangshuo</div>
             <div class="act-notes">Iconic karst peaks reflected in the river · one of China's most photographed landscapes</div>
-            <div class="act-tags"><span class="tag tag-nature">🌿 Nature</span><span class="tag tag-sight">🏞 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Departs ~9am, returns ~3pm</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥210–520pp <span class="price-aud">~AUD ~$45–$110</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://au.trip.com/travel-guide/attraction/guilin/li-river-93148/" target="_blank">https://au.trip.com/travel-guide/attraction/g…</a></div></div>
-              <div class="act-tip">Book the full Guilin→Yangshuo route (4-5hrs) for the most scenery. Take the cheaper bamboo raft option if short on time.</div><img class="act-photo" src="https://images.unsplash.com/photo-1502780402662-acc01917949e?w=800&q=75&auto=format&fit=crop" alt="Li River karst Guilin" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-nature">Nature</span><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Li River Guilin" src="https://images.unsplash.com/photo-1502780402662-acc01917949e?w=400&q=70&auto=format&fit=crop" alt="Li River Cruise" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">19:30</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Impression Sanjie Liu Show</div>
             <div class="act-loc">印象刘三姐, Yangshuo</div>
             <div class="act-notes">Zhang Yimou's outdoor light show using the Li River and karst mountains as stage · ~1h · book in advance</div>
-            <div class="act-tags"><span class="tag tag-night">🌙 Evening</span><span class="tag tag-sight">🎭 Show</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Shows at 8pm & 9:30pm (seasonal)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥190–298pp <span class="price-aud">~AUD ~$40–$65</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://au.trip.com/travel-guide/attraction/yangshuo/impression-sanjie-liu-93152/" target="_blank">https://au.trip.com/travel-guide/attraction/y…</a></div></div>
-              <div class="act-tip">Book VIP seats in rows 1–8 for the best view. Bring a light jacket — it gets cool by the river at night.</div><img class="act-photo" src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?w=800&q=75&auto=format&fit=crop" alt="Yangshuo light show" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-night">Evening</span><span class="tag tag-sight">Show</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Impression Liu Sanjie" src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?w=400&q=70&auto=format&fit=crop" alt="Impression Sanjie Liu Show" loading="lazy"></div>
         </div>
-        <div class="day-accom">⌂ THAT MAY HOTEL · Mushan Village</div>
+        <div class="day-accom">&#8962; THAT MAY HOTEL · Mushan Village</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -783,29 +962,35 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Sunrise — Xianggong Mountain</div>
             <div class="act-loc">相公山, Xingping, Guilin</div>
             <div class="act-notes">Early wakeup — sunrise over the karst peaks and Li River is one of the best views in China. Worth every alarm</div>
-            <div class="act-tags"><span class="tag tag-nature">🌅 Nature</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Open 24hrs · best 5–7am</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥68pp <span class="price-aud">~AUD ~$15</span></div></div>
-              
-              <div class="act-tip">The sunrise view only appears when it's misty — late October is perfect. Take a torch and wear grippy shoes for the path up.</div><img class="act-photo" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=75&auto=format&fit=crop" alt="Mountain sunrise mist" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-nature">Nature</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Xianggong Hill Guilin" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=70&auto=format&fit=crop" alt="Sunrise — Xianggong Mountain" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">10:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Yulong River bamboo-rafting</div>
             <div class="act-loc">遇龙河, Yangshuo</div>
             <div class="act-notes">Quieter than Li River · float past rice paddies and karst mountains on a bamboo raft · ~1.5h</div>
-            <div class="act-tags"><span class="tag tag-nature">🌿 Nature</span><span class="tag tag-sight">🛶 Activity</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&auto=format&fit=crop" alt="Bamboo rafting" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-nature">Nature</span><span class="tag tag-sight">Activity</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Yulong River bamboo raft" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&auto=format&fit=crop" alt="Yulong River bamboo-rafting" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">14:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Ten-Mile Gallery cycling</div>
             <div class="act-loc">十里画廊, Yangshuo</div>
             <div class="act-notes">Flat cycling path through rice fields and karst peaks · hire bikes at the start</div>
-            <div class="act-tags"><span class="tag tag-nature">🚵 Activity</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=800&q=75&auto=format&fit=crop" alt="Cycling rice fields" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-nature">Activity</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Yangshuo cycling countryside" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=70&auto=format&fit=crop" alt="Ten-Mile Gallery cycling" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">17:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">West Street evening</div>
             <div class="act-loc">西街, Yangshuo</div>
             <div class="act-notes">Yangshuo's famous street · buzzy at night · great street food, bars, souvenir shopping</div>
-            <div class="act-tags"><span class="tag tag-night">🌙 Evening</span><span class="tag tag-food">🍢 Food</span></div></div>
-        <div class="day-accom">⌂ THAT MAY HOTEL · Mushan Village</div>
+            <div class="act-tags"><span class="tag tag-night">Evening</span><span class="tag tag-food">Food</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="West Street Yangshuo" src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?w=400&q=70&auto=format&fit=crop" alt="West Street evening" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; THAT MAY HOTEL · Mushan Village</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -831,30 +1016,33 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Ruyi Peak</div>
             <div class="act-loc">如意峰, Yangshuo</div>
             <div class="act-notes">Glass walkway over karst peaks · stunning views · not for the faint-hearted · arrive early</div>
-            <div class="act-tags"><span class="tag tag-nature">🌄 Nature</span><span class="tag tag-sight">🏞 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">8am – 5:30pm</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥128pp <span class="price-aud">~AUD ~$27</span></div></div>
-              
-              <div class="act-tip">The glass walkway is 100m above the valley — thrilling! Go first thing before tour buses arrive around 10am.</div><img class="act-photo" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=75&auto=format&fit=crop" alt="Karst peaks glass bridge" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-nature">Nature</span><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Ruyi Peak Yangshuo" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70&auto=format&fit=crop" alt="Ruyi Peak" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">11:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Shi-Wai-Tao-Yuan + Qianli Jiangshan</div>
             <div class="act-loc">世外桃源 · 千里江山, Yangshuo</div>
             <div class="act-notes">Utopian village · boat rides · ethnic minority performances · sweeping panoramic viewpoint</div>
-            <div class="act-tags"><span class="tag tag-sight">🏞 Sightseeing</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Yangshuo scenery karst" src="https://images.unsplash.com/photo-1502780402662-acc01917949e?w=400&q=70&auto=format&fit=crop" alt="Shi-Wai-Tao-Yuan + Qianli Jiangshan" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">16:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Sunset BBQ — huang yuming</div>
             <div class="act-loc">黄玉明BBQ, Yangshuo</div>
-            <div class="act-notes">⚠️ Reserve for 4pm · famous sunset riverside BBQ · must book ahead · whole group dinner</div>
-            <div class="act-tags"><span class="tag tag-food">🍖 Food</span><span class="tag tag-night">🌇 Evening</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800&q=75&auto=format&fit=crop" alt="BBQ riverside sunset" loading="lazy"></div>
-        <div class="day-accom">⌂ THAT MAY HOTEL · Mushan Village</div>
+            <div class="act-notes">&#9888;&#65039; Reserve for 4pm · famous sunset riverside BBQ · must book ahead · whole group dinner</div>
+            <div class="act-tags"><span class="tag tag-food">Food</span><span class="tag tag-night">Evening</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Yangshuo riverside" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=70&auto=format&fit=crop" alt="Sunset BBQ — huang yuming" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; THAT MAY HOTEL · Mushan Village</div>
       </div>
     </div>
     </section>
 <section class="city-sec" id="chongqing">
       <div class="city-hdr">
-        <span class="city-flag">🇨🇳</span>
+        <span class="city-flag cn-flag">CN</span>
         <h2 class="city-name">Chongqing</h2>
         <span class="city-dates">21–25 Oct · 4 nights</span>
       </div>
@@ -881,24 +1069,26 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">HSR — Guilin West → Chongqing West</div>
             <div class="act-loc">Guilinxi Station 桂林西</div>
             <div class="act-notes">G3722 · arrives 13:44 · ~4h · AUD $1,127.55 group ($75pp) · Leo reserving</div>
-            <div class="act-tags"><span class="tag tag-transport">🚄 Train</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Train</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Guilin West railway station" src="https://images.unsplash.com/photo-1538470814938-ffe968c2b0c4?w=400&q=70&auto=format&fit=crop" alt="HSR — Guilin West → Chongqing West" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">13:44</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Check in — Fandiao Homestay</div>
             <div class="act-loc">No.19-8 Nanguo Lijing, 46 Cangbai Rd, Yuzhong</div>
             <div class="act-notes">Secret Garden Bathtub River View 4-bed suite · AUD $1,104.04 · ¥500 deposit WeChat/Alipay</div>
-            <div class="act-tags"><span class="tag tag-accom">🏠 Accommodation</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-accom">Accommodation</span></div>
+          </div></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">17:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Hongyadong</div>
             <div class="act-loc">洪崖洞, Jialing River waterfront, Yuzhong</div>
             <div class="act-notes">CQ's iconic stilt house complex — best after dark · 11 storeys built into the cliff · the 'Spirited Away' scene</div>
-            <div class="act-tags"><span class="tag tag-sight">🏮 Sightseeing</span><span class="tag tag-night">🌙 Evening</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">10am – 11pm (later on weekends)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">Free entry <span class="price-aud">~AUD Free</span></div></div>
-              
-              <div class="act-tip">Come at sunset (6pm) to watch it light up. The top floor has the best views over the Jialing River. Skip the overpriced restaurants inside — eat nearby.</div><img class="act-photo" src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=75&auto=format&fit=crop" alt="Hongyadong Chongqing night" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span><span class="tag tag-night">Evening</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Hongyadong Chongqing" src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&q=70&auto=format&fit=crop" alt="Hongyadong" loading="lazy"></div>
         </div>
-        <div class="day-accom">⌂ Fandiao Homestay · 46 Cangbai Rd, Yuzhong</div>
+        <div class="day-accom">&#8962; Fandiao Homestay · 46 Cangbai Rd, Yuzhong</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -924,29 +1114,35 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Train — CQ East → Wulong South</div>
             <div class="act-loc">Chongqing East Station 重庆东</div>
             <div class="act-notes">~45 min · Nikki booked · return train 6:33pm</div>
-            <div class="act-tags"><span class="tag tag-transport">🚄 Train</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Train</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Chongqing East station" src="https://images.unsplash.com/photo-1538470814938-ffe968c2b0c4?w=400&q=70&auto=format&fit=crop" alt="Train — CQ East → Wulong South" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">08:30</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Wulong Karst — Three Natural Bridges</div>
             <div class="act-loc">武隆喀斯特, Wulong District</div>
             <div class="act-notes">UNESCO World Heritage site · three massive natural limestone arches · shuttle bus between sites · ~AUD $74pp</div>
-            <div class="act-tags"><span class="tag tag-nature">⛰ Nature</span><span class="tag tag-sight">🏞 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">8am – 6pm daily</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥135pp all-inclusive <span class="price-aud">~AUD ~$29</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://au.trip.com/travel-guide/attraction/chongqing/wulong-karst-tourism-area-92173/" target="_blank">https://au.trip.com/travel-guide/attraction/c…</a></div></div>
-              <div class="act-tip">Buy the combo ticket — it covers the bridges, cable car and shuttle bus. Wear trainers — lots of steps. Allow 5–6hrs for the full area.</div><img class="act-photo" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=75&auto=format&fit=crop" alt="Wulong karst" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-nature">Nature</span><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Wulong Karst" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=70&auto=format&fit=crop" alt="Wulong Karst — Three Natural Bridges" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">11:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Furong Cave</div>
             <div class="act-loc">芙蓉洞, Wulong</div>
             <div class="act-notes">Spectacular stalactites and stalagmites · Longshuixia canyon gorge walk also available</div>
-            <div class="act-tags"><span class="tag tag-nature">🪨 Nature</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-nature">Nature</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Furong Cave Wulong" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=70&auto=format&fit=crop" alt="Furong Cave" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">20:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Chongqing hot pot dinner</div>
             <div class="act-loc">Chongqing city</div>
             <div class="act-notes">CQ is the home of Sichuan hot pot — spicier and more numbing than anywhere. Mala broth, tripe, beef slices</div>
-            <div class="act-tags"><span class="tag tag-food">🍲 Food</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=75&auto=format&fit=crop" alt="Chongqing hot pot" loading="lazy"></div>
-        <div class="day-accom">⌂ Fandiao Homestay · 46 Cangbai Rd</div>
+            <div class="act-tags"><span class="tag tag-food">Food</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Chongqing hot pot" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=70&auto=format&fit=crop" alt="Chongqing hot pot dinner" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Fandiao Homestay · 46 Cangbai Rd</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -972,18 +1168,27 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Guanyinqiao</div>
             <div class="act-loc">观音桥, Jiangbei District</div>
             <div class="act-notes">CQ's most commercial district · great for shopping, xiaochi snacks, people watching</div>
-            <div class="act-tags"><span class="tag tag-sight">🏙 Sightseeing</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Guanyinqiao Chongqing" src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=400&q=70&auto=format&fit=crop" alt="Guanyinqiao" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Xiahaoli Old Town + xiaochi</div>
             <div class="act-loc">下浩老街, Nan'an District</div>
             <div class="act-notes">Chongqing's hidden gem — crumbling alleyways, street food, local art. Spicy noodles (小面), mochi (汤圆)</div>
-            <div class="act-tags"><span class="tag tag-sight">🏘 Sightseeing</span><span class="tag tag-food">🍜 Food</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?w=800&q=75&auto=format&fit=crop" alt="Chinese old town alley" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span><span class="tag tag-food">Food</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Xiahaoli Old Street Chongqing" src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?w=400&q=70&auto=format&fit=crop" alt="Xiahaoli Old Town + xiaochi" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">21:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Clubbing — ESMI / Y2K Club</div>
             <div class="act-loc">Chongqing nightlife district</div>
             <div class="act-notes">CQ nightlife is seriously underrated. Dress up, arrive after 10pm when it gets going</div>
-            <div class="act-tags"><span class="tag tag-night">🎉 Nightlife</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=75&auto=format&fit=crop" alt="Club nightlife" loading="lazy"></div>
-        <div class="day-accom">⌂ Fandiao Homestay · 46 Cangbai Rd</div>
+            <div class="act-tags"><span class="tag tag-night">Nightlife</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Chongqing nightlife" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=70&auto=format&fit=crop" alt="Clubbing — ESMI / Y2K Club" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Fandiao Homestay · 46 Cangbai Rd</div>
       </div>
     </div>
 <div class="day-card" data-country="cn">
@@ -1009,14 +1214,16 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Rest + local explore</div>
             <div class="act-loc">Chongqing</div>
             <div class="act-notes">Lazy morning · final CQ street food before the big travel day tomorrow</div>
-            <div class="act-tags"><span class="tag tag-sight">💆 Leisure</span></div></div>
-        <div class="day-accom">⌂ Fandiao Homestay · 46 Cangbai Rd</div>
+            <div class="act-tags"><span class="tag tag-sight">Leisure</span></div>
+          </div></div>
+        </div>
+        <div class="day-accom">&#8962; Fandiao Homestay · 46 Cangbai Rd</div>
       </div>
     </div>
     </section>
 <section class="city-sec" id="osaka">
       <div class="city-hdr">
-        <span class="city-flag">🇯🇵</span>
+        <span class="city-flag jp-flag">JP</span>
         <h2 class="city-name">Osaka</h2>
         <span class="city-dates">25–27 Oct · 2 nights</span>
       </div>
@@ -1043,28 +1250,43 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Fly CKG → SHA — MU5430</div>
             <div class="act-loc">Chongqing Jiangbei Airport (CKG)</div>
             <div class="act-notes">Departs 1:15pm · arrives Shanghai 3:45pm · 7kg carry-on + 23kg checked</div>
-            <div class="act-tags"><span class="tag tag-transport">✈ Flight</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Flight</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Chongqing Jiangbei Airport" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70&auto=format&fit=crop" alt="Fly CKG → SHA — MU5430" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">15:45</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Layover — Shanghai (SHA)</div>
             <div class="act-loc">Shanghai Airport</div>
             <div class="act-notes">2h 10m layover · stay airside · MU5430 continues · departs SHA 5:55pm</div>
-            <div class="act-tags"><span class="tag tag-transport">⏳ Layover</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Layover</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shanghai Pudong Airport" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70&auto=format&fit=crop" alt="Layover — Shanghai (SHA)" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">17:55</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Fly SHA → KIX — MU5430 cont.</div>
             <div class="act-loc">Shanghai Airport</div>
             <div class="act-notes">Arrives Osaka KIX 9:00pm · Haruka Express or limousine bus to Tengachaya (~1hr)</div>
-            <div class="act-tags"><span class="tag tag-transport">✈ Flight</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Flight</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Osaka Kansai Airport" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70&auto=format&fit=crop" alt="Fly SHA → KIX — MU5430 cont." loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">22:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Check in — Home in Osaka</div>
             <div class="act-loc">1-13-8 Tengachaya, Osaka (arriving late — message host)</div>
             <div class="act-notes">Drop bags · Tengachaya is close to Namba</div>
-            <div class="act-tags"><span class="tag tag-accom">🏠 Accommodation</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-accom">Accommodation</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Tengachaya Osaka" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=400&q=70&auto=format&fit=crop" alt="Check in — Home in Osaka" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">22:30</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Dotonbori night stroll</div>
             <div class="act-loc">道頓堀, Namba, Osaka</div>
             <div class="act-notes">Dotonbori is alive at midnight — Glico running man, neon lights, canal. Great for a first-night wander</div>
-            <div class="act-tags"><span class="tag tag-night">🌙 Evening</span><span class="tag tag-sight">🏮 Sightseeing</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&q=75&auto=format&fit=crop" alt="Dotonbori Osaka night" loading="lazy"></div>
-        <div class="day-accom">⌂ Home in Osaka · 1-13-8 Tengachaya</div>
+            <div class="act-tags"><span class="tag tag-night">Evening</span><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Dotonbori Osaka night" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=400&q=70&auto=format&fit=crop" alt="Dotonbori night stroll" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Home in Osaka · 1-13-8 Tengachaya</div>
       </div>
     </div>
 <div class="day-card" data-country="jp">
@@ -1090,41 +1312,35 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Osaka Castle</div>
             <div class="act-loc">大阪城, Chuo Ward</div>
             <div class="act-notes">Go early to beat queues · beautiful moat and stone walls · castle museum inside worth it · ¥600 entry</div>
-            <div class="act-tags"><span class="tag tag-sight">🏯 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">9am – 5pm (last entry 4:30pm)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥600pp <span class="price-aud">~AUD ~$6</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.osakacastle.net/english/" target="_blank">https://www.osakacastle.net/english/…</a></div></div>
-              <div class="act-tip">The castle keep has 8 floors of history exhibits — go to the top for panoramic views. Arrive before 10am on weekends.</div><img class="act-photo" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&q=75&auto=format&fit=crop" alt="Osaka Castle Japan" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Osaka Castle" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=400&q=70&auto=format&fit=crop" alt="Osaka Castle" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">11:30</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Oosaka Tonkatsu — lunch</div>
             <div class="act-loc">Dotonbori area, Namba</div>
             <div class="act-notes">Arrive before opening or queue early — this place draws lines. Thick, crispy, deeply satisfying tonkatsu</div>
-            <div class="act-tags"><span class="tag tag-food">🍱 Food</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Usually 11am – 9pm (queues from opening)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥1,500–2,500pp <span class="price-aud">~AUD ~$15–$25</span></div></div>
-              
-              <div class="act-tip">Arrive 10 mins before opening and join the queue. Order the hire-katsu set. Ask for extra dipping sauce — you'll want it.</div><img class="act-photo" src="https://images.unsplash.com/photo-1615361200141-f45040f367be?w=800&q=75&auto=format&fit=crop" alt="Tonkatsu pork cutlet" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-food">Food</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Tonkatsu Japan" src="https://images.unsplash.com/photo-1615361200141-f45040f367be?w=400&q=70&auto=format&fit=crop" alt="Oosaka Tonkatsu — lunch" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Kuromon Ichiba Market</div>
             <div class="act-loc">黒門市場, Namba</div>
             <div class="act-notes">Osaka's famous kitchen market · fresh seafood, wagyu skewers, tamagoyaki · great for grazing</div>
-            <div class="act-tags"><span class="tag tag-food">🦞 Market</span><span class="tag tag-sight">🏪 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">9am – 6pm (most stalls)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">Free entry · food from ¥300 <span class="price-aud">~AUD Free entry</span></div></div>
-              
-              <div class="act-tip">Go hungry. The wagyu skewers (¥800) and fresh oysters (¥300) are unmissable. Avoid peak lunch 12–1pm — it gets very crowded.</div><img class="act-photo" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=75&auto=format&fit=crop" alt="Japanese food market" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-food">Market</span><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Kuromon Ichiba Market Osaka" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=70&auto=format&fit=crop" alt="Kuromon Ichiba Market" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">Evening</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Dotonbori + Shinsaibashi</div>
             <div class="act-loc">道頓堀 + 心斎橋, Osaka</div>
             <div class="act-notes">Neon lights, canal selfies, Glico man · Shinsaibashi for shopping and desserts</div>
-            <div class="act-tags"><span class="tag tag-night">🌟 Evening</span><span class="tag tag-sight">🏙 Sightseeing</span></div></div>
-        <div class="day-accom">⌂ Home in Osaka · 1-13-8 Tengachaya</div>
+            <div class="act-tags"><span class="tag tag-night">Evening</span><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Dotonbori Osaka night" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=400&q=70&auto=format&fit=crop" alt="Dotonbori + Shinsaibashi" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Home in Osaka · 1-13-8 Tengachaya</div>
       </div>
     </div>
 <div class="day-card" data-country="jp">
@@ -1150,40 +1366,48 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Osaka Aquarium Kaiyukan</div>
             <div class="act-loc">海遊館, Tempozan, Minato Ward</div>
             <div class="act-notes">One of the world's largest aquariums · the whale shark tank is unreal · book tickets online · allow 2–3hrs</div>
-            <div class="act-tags"><span class="tag tag-sight">🐋 Sightseeing</span><span class="tag tag-nature">🌊 Nature</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">10am – 8pm (last entry 7pm)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥2,700pp adults <span class="price-aud">~AUD ~$27</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.kaiyukan.com/language/eng/" target="_blank">https://www.kaiyukan.com/language/eng/…</a></div></div>
-              <div class="act-tip">Book online to skip the ticket queue. The whale shark feeding is at 3pm. Allow at least 2.5hrs. The Ferris wheel next door is worth it at night.</div><img class="act-photo" src="https://images.unsplash.com/photo-1586081421782-b1a95dbe62e3?w=800&q=75&auto=format&fit=crop" alt="Aquarium whale shark" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">🐋 Sightseeing</span><span class="tag tag-nature">Nature</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Kaiyukan Aquarium Osaka" src="https://images.unsplash.com/photo-1586081421782-b1a95dbe62e3?w=400&q=70&auto=format&fit=crop" alt="Osaka Aquarium Kaiyukan" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Namba Yasaka Shrine + Shinsekai</div>
             <div class="act-loc">難波八阪神社 + 新世界, Osaka</div>
             <div class="act-notes">Giant lion head stage — very photogenic · Shinsekai retro district · kushikatsu and Tsutenkaku tower</div>
-            <div class="act-tags"><span class="tag tag-sight">⛩ Sightseeing</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Namba Yasaka Shrine Osaka" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=400&q=70&auto=format&fit=crop" alt="Namba Yasaka Shrine + Shinsekai" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">17:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Head to Osaka Itami Airport</div>
             <div class="act-loc">Osaka Itami Airport (ITM)</div>
             <div class="act-notes">Allow 45min to the airport · check in · grab dinner airside</div>
-            <div class="act-tags"><span class="tag tag-transport">🚌 Transit</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Transit</span></div>
+          </div></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">20:40</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Fly ITM → TYO — MM315 (Peach Air)</div>
             <div class="act-loc">Osaka Itami Airport (ITM)</div>
             <div class="act-notes">Arrives Tokyo 22:05 · 8kg carry-on + 2 × 23kg checked · allow 90min from airport to Shinjuku</div>
-            <div class="act-tags"><span class="tag tag-transport">✈ Flight</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">Flight</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Osaka Itami Airport" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70&auto=format&fit=crop" alt="Fly ITM → TYO — MM315 (Peach Air)" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">23:30</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Check in — Shinjuku Airbnb</div>
             <div class="act-loc">37-22 Wakamatsucho, Shinjuku City — 夏目坂の間 ROOM 2</div>
             <div class="act-notes">Conf: HMYTFXJM2A · check-out Sun 1 Nov 10am · message host about late arrival</div>
-            <div class="act-tags"><span class="tag tag-accom">🏠 Accommodation</span></div></div>
-        <div class="day-accom">⌂ Airbnb · 37-22 Wakamatsucho, Shinjuku</div>
+            <div class="act-tags"><span class="tag tag-accom">Accommodation</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shinjuku Tokyo night" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&auto=format&fit=crop" alt="Check in — Shinjuku Airbnb" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Airbnb · 37-22 Wakamatsucho, Shinjuku</div>
       </div>
     </div>
     </section>
 <section class="city-sec" id="tokyo">
       <div class="city-hdr">
-        <span class="city-flag">🇯🇵</span>
+        <span class="city-flag jp-flag">JP</span>
         <h2 class="city-name">Tokyo</h2>
         <span class="city-dates">27 Oct–1 Nov · 5 nights</span>
       </div>
@@ -1210,29 +1434,35 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Shibuya Sky</div>
             <div class="act-loc">渋谷スカイ · Shibuya Scramble Square 47F</div>
             <div class="act-notes">Book timed entry online — sells out fast. Views of Fuji on clear days. Outdoor rooftop deck</div>
-            <div class="act-tags"><span class="tag tag-sight">🏙 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">10am – 10:30pm (last entry 9:30pm)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥2,000pp <span class="price-aud">~AUD ~$20</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.shibuya-scramble-square.com/sky/en/" target="_blank">https://www.shibuya-scramble-square.com/sky/e…</a></div></div>
-              <div class="act-tip">Book the 4–5pm slot for day + golden hour + night views. The open-air rooftop has no glass so it's windy — bring a layer.</div><img class="act-photo" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=75&auto=format&fit=crop" alt="Shibuya Tokyo aerial" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shibuya Sky observation deck" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&auto=format&fit=crop" alt="Shibuya Sky" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">12:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Shibuya Scramble Crossing</div>
             <div class="act-loc">渋谷スクランブル交差点</div>
             <div class="act-notes">World's busiest pedestrian crossing · watch from Starbucks above for the full overhead view</div>
-            <div class="act-tags"><span class="tag tag-sight">🌆 Sightseeing</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shibuya crossing Tokyo" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&auto=format&fit=crop" alt="Shibuya Scramble Crossing" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Harajuku — Takeshita St + Omotesando</div>
             <div class="act-loc">原宿, Harajuku, Shibuya</div>
             <div class="act-notes">Takeshita St for wild youth fashion and crepes · Omotesando for high-end boutiques · Cat Street for vintage</div>
-            <div class="act-tags"><span class="tag tag-sight">🛍 Sightseeing</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=75&auto=format&fit=crop" alt="Harajuku Tokyo" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Harajuku Takeshita Street" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=400&q=70&auto=format&fit=crop" alt="Harajuku — Takeshita St + Omotesando" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">16:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Lumine Shinjuku shopping</div>
             <div class="act-loc">ルミネ, Shinjuku Station</div>
             <div class="act-notes">8 floors of Japanese fashion, beauty and food · great for local brands not in Australia</div>
-            <div class="act-tags"><span class="tag tag-sight">🛒 Shopping</span></div></div>
-        <div class="day-accom">⌂ Airbnb · Shinjuku, Wakamatsucho</div>
+            <div class="act-tags"><span class="tag tag-sight">Shopping</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shinjuku shopping Tokyo" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=400&q=70&auto=format&fit=crop" alt="Lumine Shinjuku shopping" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Airbnb · Shinjuku, Wakamatsucho</div>
       </div>
     </div>
 <div class="day-card" data-country="jp">
@@ -1258,29 +1488,35 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Senso-ji Temple — early morning</div>
             <div class="act-loc">浅草寺, Asakusa, Taito</div>
             <div class="act-notes">Go before 9am to avoid crowds · Tokyo's oldest temple · iconic Kaminarimon gate · Nakamise shopping street</div>
-            <div class="act-tags"><span class="tag tag-sight">⛩ Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Always open · main hall 6am–5pm</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">Free <span class="price-aud">~AUD Free</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.senso-ji.jp/english/" target="_blank">https://www.senso-ji.jp/english/…</a></div></div>
-              <div class="act-tip">The temple grounds are free and open 24hrs — go at dawn for misty, crowd-free photos. The Nakamise stalls open at 9am for shopping.</div><img class="act-photo" src="https://images.unsplash.com/photo-1583400174253-64e706a8b15b?w=800&q=75&auto=format&fit=crop" alt="Senso-ji Asakusa Tokyo" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Senso-ji Asakusa Tokyo" src="https://images.unsplash.com/photo-1583400174253-64e706a8b15b?w=400&q=70&auto=format&fit=crop" alt="Senso-ji Temple — early morning" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">10:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Kimono rental — Asakusa</div>
             <div class="act-loc">Asakusa, near Senso-ji</div>
             <div class="act-notes">Multiple shops on Nakamise-dori · ~¥3,000–5,000 for the day · stroll in kimono for photos</div>
-            <div class="act-tags"><span class="tag tag-sight">👘 Activity</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Activity</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Kimono Asakusa Tokyo" src="https://images.unsplash.com/photo-1583400174253-64e706a8b15b?w=400&q=70&auto=format&fit=crop" alt="Kimono rental — Asakusa" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">12:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Kappabashi Kitchen Street</div>
             <div class="act-loc">合羽橋道具街, Taito</div>
             <div class="act-notes">Japan's wholesale kitchenware district · plastic food replicas, Japanese knives, ceramics</div>
-            <div class="act-tags"><span class="tag tag-sight">🔪 Shopping</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Shopping</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Kappabashi Street Tokyo" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=400&q=70&auto=format&fit=crop" alt="Kappabashi Kitchen Street" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">14:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Ueno Park + Tokyo National Museum</div>
             <div class="act-loc">上野公園, Taito</div>
             <div class="act-notes">Lovely in late October · world's largest collection of Japanese art · zoo also in the park</div>
-            <div class="act-tags"><span class="tag tag-sight">🏛 Sightseeing</span><span class="tag tag-nature">🌳 Park</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1578469550946-fc8dca7b3e59?w=800&q=75&auto=format&fit=crop" alt="Ueno Park Tokyo" loading="lazy"></div>
-        <div class="day-accom">⌂ Airbnb · Shinjuku, Wakamatsucho</div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span><span class="tag tag-nature">Park</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Ueno Park Tokyo" src="https://images.unsplash.com/photo-1578469550946-fc8dca7b3e59?w=400&q=70&auto=format&fit=crop" alt="Ueno Park + Tokyo National Museum" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Airbnb · Shinjuku, Wakamatsucho</div>
       </div>
     </div>
 <div class="day-card" data-country="jp">
@@ -1306,34 +1542,35 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Early train to Kamakura</div>
             <div class="act-loc">JR Shonan-Shinjuku Line from Shinjuku</div>
             <div class="act-notes">~1hr direct · leave early for golden morning light at the Buddha and beat tour groups</div>
-            <div class="act-tags"><span class="tag tag-transport">🚆 Train</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-transport">🚆 Train</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Kamakura Japan" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70&auto=format&fit=crop" alt="Early train to Kamakura" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">07:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Kotoku-in — Great Buddha</div>
             <div class="act-loc">高徳院, Kamakura</div>
             <div class="act-notes">13.35m tall outdoor bronze Buddha · go inside for ¥20 extra · serene morning vibes</div>
-            <div class="act-tags"><span class="tag tag-sight">🗿 Sightseeing</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">8am – 5:30pm (last entry 5:15pm)</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">¥300pp (¥20 extra to go inside) <span class="price-aud">~AUD ~$3</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.kotoku-in.jp/en/" target="_blank">https://www.kotoku-in.jp/en/…</a></div></div>
-              <div class="act-tip">The Buddha has been sitting outdoors since 1252 — the inner chamber costs ¥20 and is tiny but fascinating. Arrive before 9am to beat tour groups.</div><img class="act-photo" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=75&auto=format&fit=crop" alt="Kamakura Great Buddha" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Kotoku-in Great Buddha Kamakura" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70&auto=format&fit=crop" alt="Kotoku-in — Great Buddha" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">10:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Yuigahama Beach</div>
             <div class="act-loc">由比ヶ浜, Kamakura</div>
             <div class="act-notes">Late October beach walk with Enoshima views · usually quiet · great brunch spots nearby</div>
-            <div class="act-tags"><span class="tag tag-nature">🌊 Nature</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1564351908-ebd2c0b7b97e?w=800&q=75&auto=format&fit=crop" alt="Japanese beach coastline" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-nature">Nature</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Yuigahama Beach Kamakura" src="https://images.unsplash.com/photo-1564351908-ebd2c0b7b97e?w=400&q=70&auto=format&fit=crop" alt="Yuigahama Beach" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Chureito Pagoda + Mt Fuji</div>
             <div class="act-loc">忠霊塔, Fujiyoshida</div>
             <div class="act-notes">The iconic 5-storey pagoda with Fuji behind it · 398 steps up · late October has great Fuji visibility</div>
-            <div class="act-tags"><span class="tag tag-sight">⛩ Sightseeing</span><span class="tag tag-nature">🗻 Nature</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">Always open</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">Free <span class="price-aud">~AUD Free</span></div></div>
-              <div class="act-tip">398 steps up from Fujisan Hongu Sengen-taisha shrine. Go on a clear morning — Fuji disappears in clouds by midday. Late October visibility is excellent.</div><img class="act-photo" src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=75&auto=format&fit=crop" alt="Chureito Pagoda Mt Fuji" loading="lazy"></div>
+            <div class="act-tags"><span class="tag tag-sight">Sightseeing</span><span class="tag tag-nature">Nature</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Chureito Pagoda Mount Fuji" src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=400&q=70&auto=format&fit=crop" alt="Chureito Pagoda + Mt Fuji" loading="lazy"></div>
         </div>
-        <div class="day-accom">⌂ Airbnb · Shinjuku, Wakamatsucho</div>
+        <div class="day-accom">&#8962; Airbnb · Shinjuku, Wakamatsucho</div>
       </div>
     </div>
 <div class="day-card" data-country="jp">
@@ -1360,28 +1597,34 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
             <div class="act-loc">伊勢丹新宿店, Shinjuku</div>
             <div class="act-notes">Japan's most prestigious department store · basement food hall is iconic · perfect for last-minute gifts</div>
             <div class="act-tags"><span class="tag tag-sight">🛍 Shopping</span></div>
-            <div class="act-info">
-              <div class="act-info-item"><div class="info-label">Hours</div><div class="info-val">10am – 8pm daily</div></div>
-              <div class="act-info-item"><div class="info-label">Entry</div><div class="info-val">Free entry <span class="price-aud">~AUD Free</span></div></div>
-              <div class="act-info-item" style="grid-column:1/-1"><div class="info-label">Book</div><div class="info-val"><a href="https://www.isetan.mistore.jp/shinjuku_en.html" target="_blank">https://www.isetan.mistore.jp/shinjuku_en.htm…</a></div></div>
-              <div class="act-tip">The basement food hall (B1-B2) is the best in Tokyo — budget time here. Tax-free shopping available with your passport at the service counter.</div></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Isetan Shinjuku Tokyo" src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=400&q=70&auto=format&fit=crop" alt="Isetan Shinjuku" loading="lazy"></div>
         </div><div class="act">
           <div class="act-time"><span class="time-pill">13:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Ginza</div>
             <div class="act-loc">銀座, Chuo Ward</div>
             <div class="act-notes">Tokyo's upscale district · Uniqlo flagship, Itoya stationery, luxury boutiques · Ginza Six worth a wander</div>
-            <div class="act-tags"><span class="tag tag-sight">🛒 Shopping</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=800&q=75&auto=format&fit=crop" alt="Ginza Tokyo night" loading="lazy"></div><div class="act">
+            <div class="act-tags"><span class="tag tag-sight">Shopping</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Ginza Tokyo night" src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=400&q=70&auto=format&fit=crop" alt="Ginza" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">17:00</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Shinjuku Golden Gai</div>
             <div class="act-loc">新宿ゴールデン街, Shinjuku</div>
             <div class="act-notes">200+ tiny bars in a few narrow alleys · each fits 6–10 people · pick one and stay all night</div>
-            <div class="act-tags"><span class="tag tag-night">🍻 Nightlife</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-night">🍻 Nightlife</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shinjuku Golden Gai" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=70&auto=format&fit=crop" alt="Shinjuku Golden Gai" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">19:30</span></div>
           <div class="act-body"><div class="act-body-text"><div class="act-name">Final dinner in Tokyo 🍣</div>
             <div class="act-loc">Tokyo — book in advance</div>
             <div class="act-notes">Omakase sushi or wagyu — treat yourself. Ichiran ramen also a classic. Reserve the night before</div>
-            <div class="act-tags"><span class="tag tag-food">🍣 Food</span><span class="tag tag-night">🌟 Evening</span></div></div>
-        <div class="day-accom">⌂ Airbnb · Shinjuku, Wakamatsucho (last night)</div>
+            <div class="act-tags"><span class="tag tag-food">Food</span><span class="tag tag-night">Evening</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Tokyo sushi omakase" src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=400&q=70&auto=format&fit=crop" alt="Final dinner in Tokyo 🍣" loading="lazy"></div>
+        </div>
+        <div class="day-accom">&#8962; Airbnb · Shinjuku, Wakamatsucho (last night)</div>
       </div>
     </div>
 <div class="day-card" data-country="jp">
@@ -1394,8 +1637,8 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
         </div>
         <div class="day-meta">
           <div class="day-title">Fly home — Tokyo → Guangzhou → Sydney</div>
-          <div class="day-sub">CZ286 + CZ325 · HND 3:05pm → CAN → SYD 9:25am (2 Nov)</div>
-          <div class="day-previews"><span class="prev-chip">CZ286+CZ325</span><span class="prev-chip">Home</span></div>
+          <div class="day-sub">CZ325 · check out 10am · see you on the other side ✈</div>
+          <div class="day-previews"><span class="prev-chip">CZ325</span><span class="prev-chip">Home</span></div>
         </div>
         <div class="day-chevron" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1407,61 +1650,58 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
           <div class="act-body"><div class="act-body-text"><div class="act-name">Check out — Shinjuku Airbnb</div>
             <div class="act-loc">37-22 Wakamatsucho, Shinjuku City</div>
             <div class="act-notes">Check out strictly by 10am · store bags at station if heading to airport later</div>
-            <div class="act-tags"><span class="tag tag-accom">🔑 Check out</span></div></div><div class="act">
+            <div class="act-tags"><span class="tag tag-accom">Check out</span></div>
+          
+          </div><img class="act-photo places-photo" data-wiki="Shinjuku Tokyo night" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&auto=format&fit=crop" alt="Check out — Shinjuku Airbnb" loading="lazy"></div>
+        </div><div class="act">
           <div class="act-time"><span class="time-pill">TBC</span></div>
-          <div class="act-body"><div class="act-body-text"><div class="act-name">Fly HND → CAN → SYD (CZ286 + CZ325)</div>
+          <div class="act-body"><div class="act-body-text"><div class="act-name">Fly TYO → CAN → SYD (CZ325)</div>
             <div class="act-loc">Tokyo Narita / Haneda Airport</div>
-            <div class="act-notes">CZ286 departs Haneda 3:05pm → Guangzhou 7:20pm · 1h 40m layover · CZ325 departs 9:00pm → Sydney 9:25am (2 Nov) · Warren also on this flight · 7kg carry-on + 23kg checked</div>
-            <div class="act-tags"><span class="tag tag-transport">✈ Flight home</span></div><img class="act-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=75&auto=format&fit=crop" alt="Airport departure" loading="lazy"></div>
-        <div class="day-accom">⌂ Check out · journey home</div>
+            <div class="act-notes">CZ325 routes via Guangzhou → Sydney · Warren also on this flight · 7kg carry-on + 23kg checked</div>
+            <div class="act-tags"><span class="tag tag-transport">Flight home</span></div>
+          </div></div>
+        </div>
+        <div class="day-accom">&#8962; Check out · journey home</div>
       </div>
     </div>
     </section>
-        <div id="itin-no-results" class="no-results" style="display:none;">
-          No activities match — try a different keyword or clear the filter.
+        <div id="itin-no-results" class="no-results" style="display:none;">No activities match &#8212; try a different keyword or clear the filter.</div>
+      </div>
+      <div class="suggestions-panel" id="sugPanel">
+        <div class="suggestions-header">
+          <h3>Discover nearby</h3>
+          <select class="suggestions-city-select" id="sugCity" onchange="loadSuggestions()">
+            <option value="23.1291,113.2644">&#128205; Guangzhou</option>
+            <option value="24.7776,110.4892">&#128205; Yangshuo</option>
+            <option value="29.5630,106.5516">&#128205; Chongqing</option>
+            <option value="34.6937,135.5023">&#128205; Osaka</option>
+            <option value="35.6762,139.6503">&#128205; Tokyo</option>
+          </select>
         </div>
-      
-        <div class="suggestions-panel" id="sugPanel">
-          <div class="suggestions-header">
-            <h3>Discover nearby</h3>
-            <select class="suggestions-city-select" id="sugCity" onchange="loadSuggestions()">
-              <option value="23.1291,113.2644">📍 Guangzhou</option>
-              <option value="24.7776,110.4892">📍 Yangshuo</option>
-              <option value="29.5630,106.5516">📍 Chongqing</option>
-              <option value="34.6937,135.5023">📍 Osaka</option>
-              <option value="35.6762,139.6503">📍 Tokyo</option>
-            </select>
-          </div>
-          <div class="suggestions-type-row">
-            <button class="sug-type-btn active" onclick="setSugType('restaurant',this)">🍜 Food</button>
-            <button class="sug-type-btn" onclick="setSugType('cafe',this)">☕ Cafe</button>
-            <button class="sug-type-btn" onclick="setSugType('tourist_attraction',this)">🏛 Sights</button>
-            <button class="sug-type-btn" onclick="setSugType('night_club',this)">🎉 Nightlife</button>
-            <button class="sug-type-btn" onclick="setSugType('spa',this)">💆 Spa</button>
-            <button class="sug-type-btn" onclick="setSugType('shopping_mall',this)">🛍 Shopping</button>
-          </div>
-          <div class="suggestions-list" id="sugList">
-            <div class="sug-loading">Select a city and type above to discover top spots ✦</div>
-          </div>
+        <div class="suggestions-type-row">
+          <button class="sug-type-btn active" onclick="setSugType('restaurant',this)">Food</button>
+          <button class="sug-type-btn" onclick="setSugType('cafe',this)">Cafe</button>
+          <button class="sug-type-btn" onclick="setSugType('tourist_attraction',this)">Sights</button>
+          <button class="sug-type-btn" onclick="setSugType('night_club',this)">Nightlife</button>
+          <button class="sug-type-btn" onclick="setSugType('spa',this)">Spa</button>
+          <button class="sug-type-btn" onclick="setSugType('shopping_mall',this)">Shopping</button>
         </div>
-</div>
+        <div class="suggestions-list" id="sugList">
+          <div class="sug-loading">Select a city and type above to discover top spots &#10022;</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
+
 <!-- ═══ OTHER TABS ═══ -->
 <div id="flights" class="tab-panel">
-<div class="tab-inner">
-<div class="tab-heading-wrap">
-  <div class="tab-heading-eyebrow"><svg width="16" height="12" viewBox="0 0 28 20" fill="none" aria-hidden="true">
-      <path d="M14 10 C10 6,2 2,2 7 C2 11,8 12,14 10Z" fill="#E8607A" opacity=".8"/>
-      <path d="M14 10 C18 6,26 2,26 7 C26 11,20 12,14 10Z" fill="#E8607A" opacity=".8"/>
-      <path d="M14 10 C10 14,2 18,2 13 C2 9,8 8,14 10Z" fill="#F4A0B8" opacity=".75"/>
-      <path d="M14 10 C18 14,26 18,26 13 C26 9,20 8,14 10Z" fill="#F4A0B8" opacity=".75"/>
-      <ellipse cx="14" cy="10" rx="2.2" ry="1.8" fill="#8B1840"/>
-    </svg> Clarissa's Trip</div>
-  <div class="tab-heading-main">Flights</div>
+<div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" aria-hidden="true" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">✈</span>Flights</div>
 </div>
+<div class="tab-inner">
 
     <div class="section-label">Flight 1 — SYD to Guangzhou</div>
     <div class="flight-card">
@@ -1542,11 +1782,11 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 
   </div></div>
 <div id="transport" class="tab-panel">
-<div class="tab-inner">
-<div class="tab-heading-wrap">
-  <div class="tab-heading-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none" aria-hidden="true"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> Clarissa's Trip</div>
-  <div class="tab-heading-main">Transport</div>
+<div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#128132;</span>Transport</div>
 </div>
+<div class="tab-inner">
 
     <div class="section-label">China trains</div>
 
@@ -1620,11 +1860,11 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 </div>
 
 <div id="stays" class="tab-panel">
-<div class="tab-inner">
-<div class="tab-heading-wrap">
-  <div class="tab-heading-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none" aria-hidden="true"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> Clarissa's Trip</div>
-  <div class="tab-heading-main">Stays</div>
+<div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#127968;</span>Stays</div>
 </div>
+<div class="tab-inner">
 
     <div class="section-label">Your accommodations on the map</div>
     <div class="stays-map-wrap"><div id="stays-map"></div></div>
@@ -1687,16 +1927,16 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 </div>
 
 <div id="todo" class="tab-panel">
-<div class="tab-inner">
-<div class="tab-heading-wrap">
-  <div class="tab-heading-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none" aria-hidden="true"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> Clarissa's Trip</div>
-  <div class="tab-heading-main">To-do</div>
+<div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#9989;</span>To-do</div>
 </div>
+<div class="tab-inner">
 
   <div class="alert" style="margin-bottom:1rem;"><span>Tap any item to mark it done ✓  Progress saves while the page is open.</span></div>
 
   <div class="todo-group" style="margin-bottom:1rem;">
-    <div class="todo-group-header">🚨 Urgent — do now</div>
+    <div class="todo-group-header">&#9888;&#65039; Urgent — do now</div>
     <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China visa — confirm valid for entry<div class="todo-sub">Check expiry and number of entries on your passport</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
     <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan visa / eTA — verify entry requirements<div class="todo-sub">Australian passports — check current rules before departure</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
     <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Travel insurance — both China + Japan (15 Oct – 2 Nov)<div class="todo-sub">Medical + cancellation cover</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
@@ -1705,7 +1945,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   </div>
 
   <div class="todo-group" style="margin-bottom:1rem;">
-    <div class="todo-group-header">📱 Before you fly</div>
+    <div class="todo-group-header">&#128241; Before you fly</div>
     <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China SIM + VPN app<div class="todo-sub">Essential — WeChat, Maps, Alipay blocked without VPN</div></div><span class="todo-badge badge-high">High</span></div>
     <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan SIM card<div class="todo-sub">Buy at Osaka KIX airport or pre-order IIJmio / Mobal</div></div><span class="todo-badge badge-high">High</span></div>
     <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Wise card — load CNY + JPY<div class="todo-sub">Avoid ATM fees · set up before leaving Sydney</div></div><span class="todo-badge badge-high">High</span></div>
@@ -1720,7 +1960,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
   </div>
 
   <div class="todo-group" style="margin-bottom:1rem;">
-    <div class="todo-group-header">✓ Already done</div>
+    <div class="todo-group-header">&#10003; Already done</div>
     <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">SYD → Guangzhou · CZ302 (15 Oct 10:10pm)</div><span class="todo-badge badge-done">Done</span></div>
     <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Chongqing → Osaka · MU5430 (25 Oct)</div><span class="todo-badge badge-done">Done</span></div>
     <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Osaka → Tokyo · MM315 Peach Air (27 Oct 8:40pm)</div><span class="todo-badge badge-done">Done</span></div>
@@ -1733,22 +1973,10 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 </div>
 
 <div id="book" class="tab-panel">
-  <div class="tab-heading-wrap">
-  <div class="tab-heading-eyebrow"><svg width="16" height="12" viewBox="0 0 28 20" fill="none" aria-hidden="true">
-      <path d="M14 10 C10 6,2 2,2 7 C2 11,8 12,14 10Z" fill="#E8607A" opacity=".8"/>
-      <path d="M14 10 C18 6,26 2,26 7 C26 11,20 12,14 10Z" fill="#E8607A" opacity=".8"/>
-      <path d="M14 10 C10 14,2 18,2 13 C2 9,8 8,14 10Z" fill="#F4A0B8" opacity=".75"/>
-      <path d="M14 10 C18 14,26 18,26 13 C26 9,20 8,14 10Z" fill="#F4A0B8" opacity=".75"/>
-      <ellipse cx="14" cy="10" rx="2.2" ry="1.8" fill="#8B1840"/>
-    </svg> Clarissa's Trip</div>
-  <div class="tab-heading-main">Activities to Book</div>
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#128203;</span>Book</div>
 </div>
-  <div class="tab-inner">
-
-    <div class="alert">
-      <span class="alert-icon">⚠️</span>
-      <span>These all require advance booking — many sell out weeks or months ahead. Get these done before you fly!</span>
-    </div>
 
     <div class="section-label">Urgent — book immediately</div>
 
@@ -1796,24 +2024,8 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
         <span class="todo-who">Hellen</span>
         <span class="urgency-badge urg-high">High</span>
       </div>
-      <div class="todo-row">
-        <span class="todo-check open">○</span>
-        <div class="todo-text">
-          Terracotta Warriors entry — Xi'an
-          <div class="todo-sub">Book online to avoid queues · Nikki + Dlin handling for the group</div>
-        </div>
-        <span class="todo-who">Nikki, Dlin</span>
-        <span class="urgency-badge urg-high">High</span>
-      </div>
-      <div class="todo-row">
-        <span class="todo-check open">○</span>
-        <div class="todo-text">
-          Giant Panda Base — Chengdu (group only, not Clarissa)
-          <div class="todo-sub">Book online at cdpanda.com · go before 10am for active pandas · AUD ~$30pp</div>
-        </div>
-        <span class="todo-who">Carl, Jeff</span>
-        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-dark);border:1px solid var(--plum-mid);">Medium</span>
-      </div>
+      
+      
       <div class="todo-row">
         <span class="todo-check open">○</span>
         <div class="todo-text">
@@ -1880,49 +2092,37 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 </div>
 
 
-<div id="weather" class="tab-panel">
-  <div class="tab-heading-wrap">
-  <div class="tab-heading-eyebrow"><svg width="16" height="12" viewBox="0 0 28 20" fill="none" aria-hidden="true">
-      <path d="M14 10 C10 6,2 2,2 7 C2 11,8 12,14 10Z" fill="#E8607A" opacity=".8"/>
-      <path d="M14 10 C18 6,26 2,26 7 C26 11,20 12,14 10Z" fill="#E8607A" opacity=".8"/>
-      <path d="M14 10 C10 14,2 18,2 13 C2 9,8 8,14 10Z" fill="#F4A0B8" opacity=".75"/>
-      <path d="M14 10 C18 14,26 18,26 13 C26 9,20 8,14 10Z" fill="#F4A0B8" opacity=".75"/>
-      <ellipse cx="14" cy="10" rx="2.2" ry="1.8" fill="#8B1840"/>
-    </svg> Clarissa's Trip</div>
-  <div class="tab-heading-main">Weather</div>
+
+
 </div>
+
+<div <div id="weather" class="tab-panel">
+  <div class="mini-hero">
+    <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+    <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#127780;</span>Weather</div>
+  </div>
   <div class="tab-inner">
-    <p style="font-size:13px;color:var(--text-soft);margin-bottom:1.5rem;">Late October averages for each city on your trip — pack accordingly!</p>
+    <p style="font-size:13px;color:var(--text-soft);margin-bottom:1.5rem;">Late October averages for each city — pack accordingly!</p>
     <div class="weather-grid">
-
-      
-</div>
-
-
-<button class="aud-fab" onclick="toggleAud()">💱 Convert</button>
-<div class="aud-panel" id="audPanel">
-  <button class="aud-close" onclick="toggleAud()">×</button>
-  <h3>Currency</h3>
-  <div class="aud-row">
-    <label>AUD</label>
-    <input type="number" id="audInput" value="100" oninput="convertAud()">
-  </div>
-  <div class="aud-row">
-    <label>To</label>
-    <select id="audCurrency" onchange="convertAud()">
-      <option value="CNY">🇨🇳 CNY — Chinese Yuan</option>
-      <option value="JPY">🇯🇵 JPY — Japanese Yen</option>
-      <option value="HKD">🇭🇰 HKD — Hong Kong Dollar</option>
-    </select>
-  </div>
-  <div class="aud-result">
-    <div class="aud-num" id="audResult">¥ 469</div>
-    <div class="aud-rate" id="audRate">1 AUD ≈ 4.69 CNY · indicative only</div>
+      <div class="wx-card"><div class="wx-icon">&#9728;</div><div class="wx-city">Guangzhou</div><div class="wx-dates">15&#8211;18 Oct</div><div class="wx-temps"><span class="wx-hi">28&#176;</span><span class="wx-lo">/ 22&#176;C</span></div><div class="wx-desc">Warm and humid · mostly sunny · occasional light rain</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light cotton, breathable fabrics. A layer for AC. Umbrella handy.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#9925;</div><div class="wx-city">Yangshuo / Guilin</div><div class="wx-dates">18&#8211;21 Oct</div><div class="wx-temps"><span class="wx-hi">24&#176;</span><span class="wx-lo">/ 16&#176;C</span></div><div class="wx-desc">Mild and pleasant · morning mist over karst peaks · ideal sightseeing weather</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light layers. Trainers for cycling and hiking. Rain jacket for the Li River cruise.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#127787;</div><div class="wx-city">Chongqing</div><div class="wx-dates">21&#8211;25 Oct</div><div class="wx-temps"><span class="wx-hi">21&#176;</span><span class="wx-lo">/ 14&#176;C</span></div><div class="wx-desc">Overcast and misty · Chongqing is "Fog City" · mild · rarely sunny</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light jacket, long sleeves for evenings. CQ is very hilly — avoid heels.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#127800;</div><div class="wx-city">Osaka</div><div class="wx-dates">25&#8211;27 Oct</div><div class="wx-temps"><span class="wx-hi">20&#176;</span><span class="wx-lo">/ 13&#176;C</span></div><div class="wx-desc">Crisp autumn air · blue skies · some early foliage · perfect weather</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light jacket and layers. Comfortable shoes — 20,000+ steps a day.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#127810;</div><div class="wx-city">Tokyo</div><div class="wx-dates">27 Oct&#8211;1 Nov</div><div class="wx-temps"><span class="wx-hi">18&#176;</span><span class="wx-lo">/ 11&#176;C</span></div><div class="wx-desc">Beautiful autumn · clear skies · breezy · koyo (autumn leaves) starting</div><div class="wx-what-to-wear"><strong>What to wear</strong>Mid-weight jacket, scarf, layers. Evenings get cool (~11°C). Ueno Park and Kamakura will be stunning.</div></div>
+    </div>
+    <div class="section-label">Packing essentials</div>
+    <div style="background:var(--warm);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:13px;">
+        <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--pk-dark);margin-bottom:.5rem;">China</div><ul style="list-style:none;color:var(--text-mid);line-height:2.2;"><li>Light cotton tops (GZ is hot)</li><li>Light jacket (CQ evenings)</li><li>Comfortable walking shoes</li><li>Foldable umbrella</li><li>Type A plug adapter</li><li>Travel sickness meds (CQ roads!)</li></ul></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--pk-dark);margin-bottom:.5rem;">Japan</div><ul style="list-style:none;color:var(--text-mid);line-height:2.2;"><li>Mid-weight jacket (Tokyo cool)</li><li>Scarf for evenings</li><li>Slip-on shoes (temples!)</li><li>Outfit for kimono rental day</li><li>Suica/Pasmo IC card</li><li>Some JPY cash (small vendors)</li></ul></div>
+      </div>
+    </div>
   </div>
 </div>
-
 
 <script>
+
+
 /* ── TABS ── */
 function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(s => s.classList.remove('active'));
@@ -2172,6 +2372,46 @@ window.addEventListener('scroll', () => {
   secs.forEach(s => { if (s.getBoundingClientRect().top < 120) current = s.id; });
   links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
 }, { passive: true });
+
+
+
+
+/* ── WIKIMEDIA PHOTO UPGRADER ── */
+const _wikiCache = {};
+function upgradeToWikimedia(container) {
+  const imgs = container.querySelectorAll('img.places-photo[data-wiki]');
+  imgs.forEach(img => {
+    const q = img.getAttribute('data-wiki');
+    if (!q || img.dataset.upgraded) return;
+    img.dataset.upgraded = '1';
+    if (_wikiCache[q]) { img.src = _wikiCache[q]; return; }
+    fetch('https://en.wikipedia.org/w/api.php?action=query&titles=' +
+      encodeURIComponent(q) +
+      '&prop=pageimages&format=json&pithumbsize=400&origin=*')
+      .then(r => r.json())
+      .then(data => {
+        const pages = data.query && data.query.pages;
+        if (!pages) return;
+        const page = Object.values(pages)[0];
+        if (page && page.thumbnail && page.thumbnail.source) {
+          _wikiCache[q] = page.thumbnail.source;
+          img.src = page.thumbnail.source;
+        }
+      })
+      .catch(() => {/* keep Unsplash fallback */});
+  });
+}
+/* Hook toggleDay to upgrade photos when card opens */
+const _origToggleDay = typeof toggleDay === 'function' ? toggleDay : function(){};
+toggleDay = function(card) {
+  _origToggleDay(card);
+  if (card.classList.contains('open')) {
+    setTimeout(() => upgradeToWikimedia(card), 200);
+  }
+};
+
+
+
 
 </script>
 </body>
