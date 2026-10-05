@@ -1,0 +1,3068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China & Japan Trip 2026 ✿</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Replace YOUR_GOOGLE_MAPS_API_KEY below with your Maps JavaScript API key -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAveWHjjUSlH02MngWdlNNBCHRgaglN04&callback=itinInitMap" async defer></script>
+<style>
+  :root {
+    --plum:      #C4A0C0;
+    --plum-deep: #8B5F8B;
+    --plum-dark: #5C3D5C;
+    --plum-pale: #F5EEF8;
+    --plum-mid:  #E8D5EA;
+    --lavender:  #D4C5E8;
+    --lav-pale:  #F0EBF8;
+    --rose:      #E8B4C0;
+    --rose-pale: #FDF0F3;
+    --rose-mid:  #F5D5DC;
+    --sage:      #B8D4C0;
+    --sage-pale: #EFF7F1;
+    --sage-mid:  #D0E8D4;
+    --cream:     #FBF7F2;
+    --warm-white:#FFFCF8;
+    --text-dark: #3D2B3D;
+    --text-mid:  #6B4F6B;
+    --text-soft: #9B7A9B;
+    --border-soft: #E8D5EA;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .page-wrap { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* ── header ── */
+  .hero {
+    text-align: center;
+    padding: 2.5rem 1rem 2rem;
+    background: var(--warm-white);
+    border-radius: 20px;
+    border: 1px solid var(--plum-mid);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bow {
+    display: block;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--plum);
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--plum-dark);
+    margin-bottom: 0.25rem;
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero-dates {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--plum-pale);
+    color: var(--plum-deep);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--plum-mid);
+  }
+  .ribbon {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rose) 0%, var(--plum) 40%, var(--lavender) 70%, var(--sage) 100%);
+    border-radius: 2px;
+    margin-top: 1.5rem;
+  }
+
+  /* ── tabs ── */
+  .tab-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 30px;
+    border: 1px solid var(--border-soft);
+    background: var(--warm-white);
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .tab-btn:hover { background: var(--plum-pale); border-color: var(--plum); color: var(--plum-dark); }
+  .tab-btn.active { background: var(--plum); border-color: var(--plum-deep); color: #fff; }
+
+  .tab-section { display: none; }
+  .tab-section.active { display: block; }
+
+  /* ── section label ── */
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 1.5rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-soft); }
+
+  /* ── country banner ── */
+  .country-banner {
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .country-banner.china { background: var(--rose-mid); color: #7A3040; border: 1px solid var(--rose); }
+  .country-banner.japan { background: var(--sage-mid); color: #2D5C3A; border: 1px solid var(--sage); }
+  .country-banner .flag { font-size: 20px; }
+  .country-banner .nights { font-size: 11px; font-weight: 400; font-family: 'DM Sans', sans-serif; opacity: 0.8; margin-left: auto; letter-spacing: 0.04em; }
+
+  /* ── day card ── */
+  .day-card {
+    background: var(--warm-white);
+    border-radius: 14px;
+    border: 1px solid var(--border-soft);
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+    display: flex;
+  }
+  .day-accent { width: 5px; flex-shrink: 0; }
+  .day-accent.china { background: var(--rose); }
+  .day-accent.japan { background: var(--sage); }
+  .day-accent.flight { background: var(--lavender); }
+  .day-accent.transit { background: var(--plum-mid); }
+
+  .day-inner { padding: 12px 14px; flex: 1; }
+  .day-top { display: flex; align-items: flex-start; gap: 10px; }
+  .day-date-block { min-width: 56px; text-align: center; }
+  .day-date-block .dow {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+  .day-date-block .date {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--plum-dark);
+    line-height: 1.1;
+  }
+  .day-date-block .month { font-size: 10px; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .day-body { flex: 1; }
+  .day-city {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+  }
+  .day-details { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .day-accom {
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .day-accom::before { content: '⌂'; font-size: 12px; }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.03em;
+  }
+  .pill-flight { background: var(--lav-pale); color: #5040A0; border: 1px solid var(--lavender); }
+  .pill-train  { background: var(--rose-pale); color: #8B3050; border: 1px solid var(--rose-mid); }
+  .pill-book   { background: #FEF9EC; color: #8B6A10; border: 1px solid #F0D890; }
+  .pill-done   { background: var(--sage-pale); color: #2D6040; border: 1px solid var(--sage-mid); }
+
+  /* ── flight card ── */
+  .flight-card {
+    background: var(--lav-pale);
+    border: 1px solid var(--lavender);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 0.75rem;
+  }
+  .flight-route {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .iata { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--plum-dark); }
+  .flight-line { flex: 1; height: 1px; background: var(--lavender); position: relative; }
+  .flight-line::after { content: '✈'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: 14px; color: var(--plum); }
+  .flight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+  .flight-item { font-size: 12px; color: var(--text-mid); }
+  .flight-item strong { display: block; font-size: 13px; color: var(--text-dark); font-weight: 500; }
+  .layover-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #5040A0;
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    border: 1px solid var(--lavender);
+  }
+
+  /* ── accom card ── */
+  .accom-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .accom-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .accom-dot.china { background: var(--rose); }
+  .accom-dot.japan { background: var(--sage); }
+  .accom-city { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); margin-bottom: 2px; }
+  .accom-name { font-weight: 500; font-size: 14px; color: var(--text-dark); margin-bottom: 2px; }
+  .accom-meta { font-size: 12px; color: var(--text-mid); }
+  .accom-dates { font-size: 11px; color: var(--text-soft); margin-top: 4px; }
+
+  /* ── train card ── */
+  .train-card {
+    background: var(--rose-pale);
+    border: 1px solid var(--rose-mid);
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin-bottom: 0.6rem;
+  }
+  .train-route { font-weight: 500; font-size: 14px; color: var(--text-dark); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .train-route-arrow { color: var(--rose); font-size: 16px; }
+  .train-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 6px; }
+  .train-meta-item { font-size: 12px; color: var(--text-mid); }
+  .train-meta-item strong { display: block; font-size: 12px; color: var(--text-dark); }
+
+  /* ── todo ── */
+  .todo-group {
+    background: var(--warm-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .todo-group-header {
+    background: var(--plum-pale);
+    padding: 8px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--plum-dark);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .todo-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+  }
+  .todo-row:last-child { border-bottom: none; }
+  .todo-check { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .todo-check.done { color: #2D6040; }
+  .todo-check.open { color: var(--plum); }
+  .todo-check.urgent { color: #C0392B; }
+  .todo-text { flex: 1; color: var(--text-dark); }
+  .todo-text.done { color: var(--text-soft); text-decoration: line-through; }
+  .todo-sub { font-size: 11px; color: var(--text-soft); margin-top: 2px; }
+  .todo-who { font-size: 11px; color: var(--text-soft); white-space: nowrap; }
+  .urgency-badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .urg-urgent { background: #FDECEA; color: #C0392B; border: 1px solid #F5B7B1; }
+  .urg-high   { background: var(--rose-pale); color: #8B3050; border: 1px solid var(--rose-mid); }
+  .urg-done   { background: var(--sage-pale); color: #2D6040; border: 1px solid var(--sage-mid); }
+
+  /* ── alert box ── */
+  .alert {
+    background: #FEF9EC;
+    border: 1px solid #F0D890;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #6B500A;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* ── summary pills row ── */
+  .summary-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .summary-chip {
+    background: var(--warm-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .summary-chip strong { color: var(--text-dark); font-weight: 500; }
+
+:root {
+  --plum:       #C4A0C0;
+  --plum-deep:  #8B5F8B;
+  --plum-dark:  #5C3D5C;
+  --plum-pale:  #F5EEF8;
+  --plum-mid:   #E8D5EA;
+  --lavender:   #D4C5E8;
+  --lav-pale:   #F0EBF8;
+  --rose:       #E8B4C0;
+  --rose-pale:  #FDF0F3;
+  --rose-mid:   #F5D5DC;
+  --sage:       #B8D4C0;
+  --sage-pale:  #EFF7F1;
+  --sage-mid:   #D0E8D4;
+  --cream:      #FBF7F2;
+  --warm-white: #FFFCF8;
+  --text-dark:  #3D2B3D;
+  --text-mid:   #6B4F6B;
+  --text-soft:  #9B7A9B;
+  --border:     #EAD8EC;
+  --cn:         #E8B4C0;
+  --jp:         #B8D4C0;
+  --transit:    #D4C5E8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.header-title {
+  flex-shrink: 0;
+}
+.header-title h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--plum-dark);
+  line-height: 1.2;
+}
+.header-title p {
+  font-size: 11px;
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+}
+
+.search-wrap {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 8px 14px 8px 36px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  outline: none;
+}
+.search-wrap input:focus { border-color: var(--plum); background: var(--warm-white); }
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-soft);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.view-btns {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.view-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.view-btn.active, .view-btn:hover { background: var(--plum); border-color: var(--plum-deep); color: #fff; }
+
+/* ── LAYOUT ── */
+.app-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: calc(100vh - 57px);
+}
+
+@media (max-width: 720px) {
+  .app-body { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--warm-white);
+  border-right: 1px solid var(--border);
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 57px;
+  height: calc(100vh - 57px);
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  padding: 0 1rem 0.5rem;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+.city-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 1rem;
+  font-size: 13px;
+  color: var(--text-mid);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.1s;
+  text-decoration: none;
+}
+.city-link:hover { background: var(--plum-pale); color: var(--plum-dark); }
+.city-link.active { border-left-color: var(--plum); color: var(--plum-dark); background: var(--plum-pale); font-weight: 500; }
+.city-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.city-dot.cn { background: var(--rose); }
+.city-dot.jp { background: var(--sage); }
+
+.sidebar-divider { height: 1px; background: var(--border); margin: 0.75rem 1rem; }
+
+.filter-chips {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.filter-chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.1s;
+}
+.filter-chip:hover { background: var(--plum-pale); border-color: var(--plum); color: var(--plum-dark); }
+.filter-chip.active { background: var(--plum); border-color: var(--plum-deep); color: #fff; }
+
+/* ── MAIN ── */
+.main {
+  padding: 1.5rem;
+  max-width: 780px;
+}
+
+/* ── MAP VIEW ── */
+#map-view { display: none; width: 100%; }
+#map-view.active { display: block; }
+#map { height: calc(100vh - 130px); min-height: 400px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+
+/* ── DAYS VIEW ── */
+#days-view {}
+#days-view.hidden { display: none; }
+
+.city-section { margin-bottom: 2rem; }
+
+.city-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.city-flag { font-size: 18px; }
+.city-header-bar h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--plum-dark);
+}
+.city-dates-badge {
+  font-size: 11px;
+  color: var(--text-soft);
+  background: var(--plum-pale);
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--plum-mid);
+  margin-left: auto;
+}
+
+/* ── DAY CARD ── */
+.day-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.day-card:hover { box-shadow: 0 2px 12px rgba(140,80,140,0.08); }
+.day-card.highlighted { border-color: var(--plum); }
+
+.day-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.day-card-header:hover { background: var(--plum-pale); }
+
+.day-accent-bar { width: 4px; height: 40px; border-radius: 4px; flex-shrink: 0; }
+.day-accent-bar.cn { background: var(--rose); }
+.day-accent-bar.jp { background: var(--sage); }
+.day-accent-bar.transit { background: var(--lavender); }
+
+.day-date-col { min-width: 60px; }
+.day-date-col .dow { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); }
+.day-date-col .date {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--plum-dark);
+  line-height: 1;
+}
+.day-date-col .month { font-size: 10px; color: var(--text-soft); }
+
+.day-summary { flex: 1; }
+.day-summary .title { font-weight: 500; font-size: 14px; color: var(--text-dark); }
+.day-summary .subtitle { font-size: 12px; color: var(--text-soft); margin-top: 2px; }
+
+.day-preview-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+.preview-pill {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--plum-pale);
+  color: var(--plum-deep);
+  border: 1px solid var(--plum-mid);
+}
+.preview-pill.jp { background: var(--sage-pale); color: #2D5C3A; border-color: var(--sage-mid); }
+
+.day-chevron {
+  color: var(--text-soft);
+  font-size: 16px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.day-card.open .day-chevron { transform: rotate(180deg); }
+
+/* ── DAY BODY ── */
+.day-body {
+  display: none;
+  border-top: 1px solid var(--border);
+}
+.day-card.open .day-body { display: block; }
+
+/* ── ACTIVITY ── */
+.activity {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.activity:last-child { border-bottom: none; }
+
+.activity-time {
+  padding: 14px 12px 14px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-soft);
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+  display: flex;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+.activity-content { padding: 14px 16px; }
+
+.activity-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+.activity-location {
+  font-size: 12px;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.activity-location::before { content: '⌖'; font-size: 11px; color: var(--plum); }
+
+.activity-notes {
+  font-size: 12px;
+  color: var(--text-mid);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.activity-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+.activity-tag {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.tag-food { background: #FEF3E2; color: #A0520A; border: 1px solid #F5D7A0; }
+.tag-sight { background: var(--lav-pale); color: #5040A0; border: 1px solid var(--lavender); }
+.tag-transport { background: var(--rose-pale); color: #8B3050; border: 1px solid var(--rose-mid); }
+.tag-nature { background: var(--sage-pale); color: #2D6040; border: 1px solid var(--sage-mid); }
+.tag-night { background: #2D1B3D; color: #E8D5EA; border: 1px solid #4D2B5D; }
+.tag-accom { background: var(--plum-pale); color: var(--plum-dark); border: 1px solid var(--plum-mid); }
+
+/* ── PHOTO ── */
+.activity-photo {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 8px;
+  background: var(--plum-pale);
+  display: block;
+}
+.photo-credit {
+  font-size: 10px;
+  color: var(--text-soft);
+  margin-top: 3px;
+}
+
+/* ── ACCOM STRIP ── */
+.accom-strip {
+  background: var(--plum-pale);
+  border-top: 1px solid var(--plum-mid);
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--plum-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.accom-strip::before { content: '⌂'; font-size: 14px; }
+
+/* ── NO RESULTS ── */
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+/* ── LEAFLET CUSTOM ── */
+
+
+/* ── SEARCH HIGHLIGHT ── */
+.highlight-match { background: #FFF3A3; border-radius: 2px; }
+
+/* ── SCROLLBAR ── */
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--plum-mid); border-radius: 4px; }
+
+/* itinerary tab layout */
+.itin-wrap{display:flex;min-height:70vh;}
+.itin-sidebar{width:200px;flex-shrink:0;border-right:1px solid var(--border-soft);padding:1rem 0;position:sticky;top:0;max-height:80vh;overflow-y:auto;}
+.itin-main{flex:1;padding:0 0 0 1.5rem;min-width:0;}
+@media(max-width:700px){.itin-wrap{flex-direction:column;}.itin-sidebar{width:100%;max-height:none;border-right:none;border-bottom:1px solid var(--border-soft);}.itin-main{padding:1rem 0 0;}}
+.itin-search-bar{display:flex;gap:8px;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;}
+.itin-search-wrap{flex:1;min-width:160px;position:relative;}
+.itin-search-wrap input{width:100%;padding:7px 12px 7px 32px;border:1px solid var(--border-soft);border-radius:30px;background:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-dark);outline:none;}
+.itin-search-wrap input:focus{border-color:var(--plum);}
+.itin-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-soft);font-size:13px;pointer-events:none;}
+.map-view-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;border-radius:30px;border:1px solid var(--border-soft);background:transparent;color:var(--text-mid);cursor:pointer;white-space:nowrap;}
+.map-view-btn.active,.map-view-btn:hover{background:var(--plum);border-color:var(--plum-deep);color:#fff;}
+#itin-map-view{display:none;}
+#itin-map-view.active{display:block;}
+#itin-map{height:480px;border-radius:14px;overflow:hidden;border:1px solid var(--border-soft);margin-bottom:1rem;}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="hero">
+    <span class="hero-bow">✦ ✿ ✦</span>
+    <h1>China &amp; Japan 2026</h1>
+    <div class="hero-sub">Clarissa's travel itinerary</div>
+    <div class="hero-dates">15 October — 1 November 2026</div>
+    <div class="ribbon"></div>
+  </div>
+
+  <div class="summary-row">
+    <div class="summary-chip"><strong>17</strong> nights total</div>
+    <div class="summary-chip"><strong>7</strong> cities</div>
+    <div class="summary-chip"><strong>5</strong> train legs</div>
+    <div class="summary-chip"><strong>3</strong> flights</div>
+    <div class="summary-chip">✈ CZ302 outbound · CZ325 home</div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('itinerary',this)">Itinerary</button>
+    <button class="tab-btn" onclick="showTab('flights',this)">Flights</button>
+    <button class="tab-btn" onclick="showTab('transport',this)">Transport</button>
+    <button class="tab-btn" onclick="showTab('stays',this)">Stays</button>
+    <button class="tab-btn" onclick="showTab('todo',this)">To-do</button>
+  </div>
+
+  <!-- ══════════ ITINERARY ══════════ -->
+  <div id="itinerary" class="tab-section active">
+    <div class="itin-search-bar">
+      <div class="itin-search-wrap">
+        <span class="itin-search-icon">&#128269;</span>
+        <input type="text" id="itinSearch" placeholder="Search activities, cities, places&#8230;" oninput="itinHandleSearch(this.value)">
+      </div>
+      <button class="map-view-btn active" id="itin-btn-days" onclick="itinSwitchView('days',this)">Days</button>
+      <button class="map-view-btn" id="itin-btn-map" onclick="itinSwitchView('map',this)">Map</button>
+    </div>
+    <div class="itin-wrap">
+      <aside class="itin-sidebar">
+    <div class="sidebar-section">China</div>
+    <a class="city-link active" onclick="itinScrollToCity('guangzhou')" href="#guangzhou">
+      <span class="city-dot cn"></span> Guangzhou
+    </a>
+    <a class="city-link" onclick="itinScrollToCity('yangshuo')" href="#yangshuo">
+      <span class="city-dot cn"></span> Yangshuo
+    </a>
+    <a class="city-link" onclick="itinScrollToCity('chongqing')" href="#chongqing">
+      <span class="city-dot cn"></span> Chongqing
+    </a>
+    <a class="city-link" onclick="itinScrollToCity('chengdu')" href="#chengdu">
+      <span class="city-dot cn"></span> Chengdu
+    </a>
+    <a class="city-link" onclick="itinScrollToCity('xian')" href="#xian">
+      <span class="city-dot cn"></span> Xi'an
+    </a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Japan</div>
+    <a class="city-link" onclick="itinScrollToCity('osaka')" href="#osaka">
+      <span class="city-dot jp"></span> Osaka
+    </a>
+    <a class="city-link" onclick="itinScrollToCity('tokyo')" href="#tokyo">
+      <span class="city-dot jp"></span> Tokyo
+    </a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Filter by type</div>
+    <div class="filter-chips">
+      <button class="filter-chip active" onclick="itinFilterByTag('all', this)">All activities</button>
+      <button class="filter-chip" onclick="itinFilterByTag('food', this)">Food &amp; drink</button>
+      <button class="filter-chip" onclick="itinFilterByTag('sight', this)">Sights</button>
+      <button class="filter-chip" onclick="itinFilterByTag('nature', this)">Nature</button>
+      <button class="filter-chip" onclick="itinFilterByTag('transport', this)">Transport</button>
+      <button class="filter-chip" onclick="itinFilterByTag('night', this)">Nightlife</button>
+    </div>
+  </aside>
+      <div class="itin-main">
+        <div id="itin-map-view"><div id="itin-map"></div></div>
+        <div id="itin-days-view">
+
+      <!-- ═══ GUANGZHOU ═══ -->
+      <section class="city-section" id="guangzhou">
+        <div class="city-header-bar">
+          <span class="city-flag">🇨🇳</span>
+          <h2>Guangzhou</h2>
+          <span class="city-dates-badge">Oct 15–18 · 3 nights</span>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="day-card" data-city="guangzhou" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Thu</div><div class="date">15</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">SYD → Guangzhou</div>
+              <div class="subtitle">Departure day — fly overnight</div>
+              <div class="day-preview-pills"><span class="preview-pill">CZ302</span><span class="preview-pill">10:10pm</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">22:10</div>
+              <div class="activity-content">
+                <div class="activity-name">Depart Sydney — CZ302</div>
+                <div class="activity-location">Sydney Kingsford Smith Airport (SYD), T1</div>
+                <div class="activity-notes">Direct flight to Guangzhou · ~9h 25m · arrive 5:35am on 16 Oct · 7kg carry-on + 23kg checked</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Flight</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=70&auto=format" alt="Airport departure" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">In-flight overnight — landing GZ 5:35am</div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card" data-city="guangzhou" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Fri</div><div class="date">16</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Arrival day — Guangzhou</div>
+              <div class="subtitle">Land at 5:35am · yum cha · explore</div>
+              <div class="day-preview-pills"><span class="preview-pill">Yum cha</span><span class="preview-pill">Mall roam</span><span class="preview-pill">Rest</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">05:35</div>
+              <div class="activity-content">
+                <div class="activity-name">Land at Guangzhou Baiyun Airport</div>
+                <div class="activity-location">Guangzhou Baiyun International Airport (CAN)</div>
+                <div class="activity-notes">Clear customs · collect bags · head to hotel to drop luggage</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Arrival</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">09:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Yum cha breakfast</div>
+                <div class="activity-location">Guangzhou, Yuexiu District</div>
+                <div class="activity-notes">Classic Cantonese dim sum — har gow, siu mai, egg tarts. GZ is the spiritual home of yum cha</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=700&q=70&auto=format" alt="Dim sum yum cha" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">11:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Roam the malls + Beijing Road</div>
+                <div class="activity-location">Beijing Road Pedestrian Street, Yuexiu</div>
+                <div class="activity-notes">GZ's famous shopping strip · great for picking up snacks and cheap finds · underground ruins of ancient city road visible through glass floor</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=700&q=70&auto=format" alt="Guangzhou street" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">14:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Check into accommodation</div>
+                <div class="activity-location">Louidon Mega Duplex Apartment, 1F Hengrun Plaza, No.238 Beijing Rd</div>
+                <div class="activity-notes">Check-in 2pm · Booked by Samson · AUD $722.83 group</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">Arvo</div>
+              <div class="activity-content">
+                <div class="activity-name">Rest + spa option</div>
+                <div class="activity-location">Guangzhou</div>
+                <div class="activity-notes">It's been a big travel day — take it easy. GZ has great foot massage and spa spots around Beijing Rd area</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Leisure</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Louidon Mega Duplex Apartment · Beijing Rd, Yuexiu</div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card" data-city="guangzhou" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Sat</div><div class="date">17</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Guangzhou tourist day</div>
+              <div class="subtitle">Explore the city as a group</div>
+              <div class="day-preview-pills"><span class="preview-pill">Sightseeing</span><span class="preview-pill">Spa option</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">Morning</div>
+              <div class="activity-content">
+                <div class="activity-name">Chen Clan Ancestral Hall</div>
+                <div class="activity-location">陈家祠 — 7 Zhongshan 7th Rd, Liwan District</div>
+                <div class="activity-notes">One of China's best-preserved folk architecture masterpieces · intricate carvings, sculpture, ceramics · free entry with some tickets</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1567533009021-7e1e6e55d0cb?w=700&q=70&auto=format" alt="Chinese temple architecture" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">Afternoon</div>
+              <div class="activity-content">
+                <div class="activity-name">Shamian Island</div>
+                <div class="activity-location">沙面岛, Liwan District</div>
+                <div class="activity-notes">Peaceful European-colonial architecture island · perfect for photos · lined with cafes and banyan trees</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=700&q=70&auto=format" alt="Shamian Island Guangzhou" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">Evening</div>
+              <div class="activity-content">
+                <div class="activity-name">Cantonese dinner + spa</div>
+                <div class="activity-location">Guangzhou city</div>
+                <div class="activity-notes">Roast goose, wonton noodles, clay pot rice — Guangzhou is a food city. Spa/foot massage after dinner recommended before big train day tomorrow</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span><span class="activity-tag tag-sight">Leisure</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Louidon Mega Duplex Apartment · Beijing Rd, Yuexiu</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ YANGSHUO ═══ -->
+      <section class="city-section" id="yangshuo">
+        <div class="city-header-bar">
+          <span class="city-flag">🇨🇳</span>
+          <h2>Yangshuo / Guilin</h2>
+          <span class="city-dates-badge">Oct 18–21 · 3 nights</span>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card" data-city="yangshuo" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sun</div><div class="date">18</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">GZ → Yangshuo + Li River</div>
+              <div class="subtitle">HSR 8:46am · Li River Cruise · Impression Sanjie Liu</div>
+              <div class="day-preview-pills"><span class="preview-pill">G3714</span><span class="preview-pill">Li River</span><span class="preview-pill">Show</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">08:20</div>
+              <div class="activity-content">
+                <div class="activity-name">HSR depart — Guangzhounan → Yangshuo</div>
+                <div class="activity-location">Guangzhou South Station (广州南)</div>
+                <div class="activity-notes">Train G3714 · Gate 21 or A21 · arrives Yangshuo 10:23am · ~2h · AUD $483.90 group ($32pp) · Booked by Leo</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">10:23</div>
+              <div class="activity-content">
+                <div class="activity-name">Arrive Yangshuo + check in</div>
+                <div class="activity-location">THAT MAY HOTEL, No.2 Bldg 46, Mushan Village</div>
+                <div class="activity-notes">Private bus from station via Nikki's driver · check in, drop bags · whole building booked (8 rooms) · AUD $1,213.72</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1537531383403-c91df9cf3ea8?w=700&q=70&auto=format" alt="Yangshuo karst mountains" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Li River Cruise</div>
+                <div class="activity-location">Li River (漓江), Yangshuo</div>
+                <div class="activity-notes">Iconic karst peaks reflected in the river · one of China's most photographed landscapes · bamboo raft optional</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1502780402662-acc01917949e?w=700&q=70&auto=format" alt="Li River Guilin karst" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">19:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Impression Sanjie Liu Show</div>
+                <div class="activity-location">印象刘三姐, Yangshuo</div>
+                <div class="activity-notes">Zhang Yimou's world-famous outdoor light show using the actual Li River and karst mountains as a stage · book tickets in advance · ~1h performance</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Show</span><span class="activity-tag tag-night">Evening</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?w=700&q=70&auto=format" alt="Yangshuo light show" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">THAT MAY HOTEL · Mushan Village, Yangshuo</div>
+          </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card" data-city="yangshuo" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Mon</div><div class="date">19</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Guilin area full day</div>
+              <div class="subtitle">Xianggong sunrise · bamboo rafting · cycling</div>
+              <div class="day-preview-pills"><span class="preview-pill">Sunrise hike</span><span class="preview-pill">Rafting</span><span class="preview-pill">Cycling</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">05:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Sunrise at Xianggong Mountain</div>
+                <div class="activity-location">相公山, Xingping, Guilin</div>
+                <div class="activity-notes">Early wakeup — the sunrise view over the karst peaks and Li River is considered one of the best in all of China. Worth every early alarm</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700&q=70&auto=format" alt="Sunrise mountains mist" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Yulong River bamboo-rafting</div>
+                <div class="activity-location">遇龙河, Yangshuo</div>
+                <div class="activity-notes">Quieter than Li River · float past rice paddies and karst mountains on a traditional bamboo raft · usually ~1.5h float</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span><span class="activity-tag tag-sight">Activity</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=70&auto=format" alt="Bamboo rafting river" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">14:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Ten-Mile Gallery cycling</div>
+                <div class="activity-location">十里画廊, Yangshuo</div>
+                <div class="activity-notes">Flat cycling path through rice fields and karst peaks — hire bikes at the start · nicknamed China's most beautiful cycling route</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span><span class="activity-tag tag-sight">Activity</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=700&q=70&auto=format" alt="Cycling through rice fields" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">17:00</div>
+              <div class="activity-content">
+                <div class="activity-name">West Street evening</div>
+                <div class="activity-location">西街 West Street, Yangshuo</div>
+                <div class="activity-notes">Yangshuo's famous foreigner street · buzzy at night · great street food, bars, souvenir shopping</div>
+                <div class="activity-tags"><span class="activity-tag tag-night">Evening</span><span class="activity-tag tag-food">Food</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">THAT MAY HOTEL · Mushan Village, Yangshuo</div>
+          </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card" data-city="yangshuo" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Tue</div><div class="date">20</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Yangshuo sights + sunset BBQ</div>
+              <div class="subtitle">Ruyi Peak · Shi-Wai-Tao-Yuan · BBQ at 4pm</div>
+              <div class="day-preview-pills"><span class="preview-pill">Ruyi Peak</span><span class="preview-pill">Sunset BBQ</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">09:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Ruyi Peak</div>
+                <div class="activity-location">如意峰, Yangshuo</div>
+                <div class="activity-notes">Glass walkway over karst peaks · stunning views · not for the faint-hearted · arrive early to beat crowds</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=70&auto=format" alt="Karst mountain peaks" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">11:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Shi-Wai-Tao-Yuan</div>
+                <div class="activity-location">世外桃源, Yangshuo</div>
+                <div class="activity-notes">Utopian village cultural attraction set in karst landscape · boat rides, ethnic minority performances, farmland scenery</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Qianli Jiangshan</div>
+                <div class="activity-location">千里江山, Yangshuo area</div>
+                <div class="activity-notes">Sweeping panoramic view point</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">16:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Sunset BBQ — huang yuming</div>
+                <div class="activity-location">黄玉明BBQ, Yangshuo</div>
+                <div class="activity-notes">⚠️ Reserve for 4pm · famous sunset riverside BBQ spot · must book ahead · whole group dinner</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span><span class="activity-tag tag-night">Evening</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=700&q=70&auto=format" alt="BBQ riverside sunset" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">THAT MAY HOTEL · Mushan Village, Yangshuo</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CHONGQING ═══ -->
+      <section class="city-section" id="chongqing">
+        <div class="city-header-bar">
+          <span class="city-flag">🇨🇳</span>
+          <h2>Chongqing</h2>
+          <span class="city-dates-badge">Oct 21–25 · 4 nights</span>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card" data-city="chongqing" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Wed</div><div class="date">21</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Yangshuo → Chongqing + Hongyadong</div>
+              <div class="subtitle">HSR 9:42am · check in · night out</div>
+              <div class="day-preview-pills"><span class="preview-pill">G3722</span><span class="preview-pill">Hongyadong</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">09:42</div>
+              <div class="activity-content">
+                <div class="activity-name">HSR — Guilin West → Chongqing West</div>
+                <div class="activity-location">Guilinxi Station (桂林西)</div>
+                <div class="activity-notes">G3722 · arrives 13:44 · ~4h · AUD $1,127.55 group ($75pp) · Leo reserving</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:44</div>
+              <div class="activity-content">
+                <div class="activity-name">Check in — Fandiao Homestay</div>
+                <div class="activity-location">No.19-8 Nanguo Lijing, 46 Cangbai Rd, Yuzhong</div>
+                <div class="activity-notes">Secret Garden Bathtub River View 4-bed suite · AUD $1,104.04 · ¥500 deposit by WeChat/Alipay required</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">17:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Hongyadong</div>
+                <div class="activity-location">洪崖洞, Jialing River waterfront, Yuzhong</div>
+                <div class="activity-notes">CQ's iconic stilt house complex lit up at night — best after dark · 11 storeys built into the cliff · the "Spirited Away" scene that went viral</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-night">Evening</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=700&q=70&auto=format" alt="Hongyadong Chongqing at night" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">20:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Motorcycling night ride? 🏍️</div>
+                <div class="activity-location">Chongqing city</div>
+                <div class="activity-notes">CQ is famous for its chaotic hillside roads and motorcycle culture · optional group activity</div>
+                <div class="activity-tags"><span class="activity-tag tag-night">Evening</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Fandiao Homestay · 46 Cangbai Rd, Yuzhong</div>
+          </div>
+        </div>
+
+        <!-- Day 8 — Wulong -->
+        <div class="day-card" data-city="chongqing" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Thu</div><div class="date">22</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Wulong Karst day trip</div>
+              <div class="subtitle">Natural bridge · canyon · caves · hot pot night</div>
+              <div class="day-preview-pills"><span class="preview-pill">Early 7:17am</span><span class="preview-pill">Wulong Karst</span><span class="preview-pill">Hot pot</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">07:17</div>
+              <div class="activity-content">
+                <div class="activity-name">Train — CQ East → Wulong South</div>
+                <div class="activity-location">Chongqing East Station (重庆东)</div>
+                <div class="activity-notes">~45 min · Nikki booked · return train 6:33pm · AUD ~$33pp return</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">08:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Wulong Karst — Three Natural Bridges</div>
+                <div class="activity-location">武隆喀斯特, Wulong District</div>
+                <div class="activity-notes">UNESCO World Heritage site · three massive natural limestone arches · shuttle bus required between sites · ~AUD $74pp multi-attraction pass (Hellen booking)</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=700&q=70&auto=format" alt="Wulong karst natural bridge" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">11:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Longshui Gorge Drifting + Furong Cave</div>
+                <div class="activity-location">芙蓉洞, Wulong</div>
+                <div class="activity-notes">Furong Cave — spectacular stalactites and stalagmites · Longshuixia canyon gorge walk also available</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">18:33</div>
+              <div class="activity-content">
+                <div class="activity-name">Return train to Chongqing</div>
+                <div class="activity-location">Wulong South Station</div>
+                <div class="activity-notes">Arrives CQ East 7:18pm</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">20:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Chongqing hot pot dinner</div>
+                <div class="activity-location">Chongqing city</div>
+                <div class="activity-notes">CQ is the home of Sichuan hot pot — spicier and more numbing than anywhere else. Must do: mala broth, tripe, duck intestine, beef slices</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=700&q=70&auto=format" alt="Chongqing hot pot" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Fandiao Homestay · 46 Cangbai Rd, Yuzhong</div>
+          </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card" data-city="chongqing" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Fri</div><div class="date">23</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Chongqing sights + clubbing</div>
+              <div class="subtitle">Guanyinqiao · old town · ESMI / Y2K Club</div>
+              <div class="day-preview-pills"><span class="preview-pill">Xiahaoli</span><span class="preview-pill">ESMI / Y2K</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Guanyinqiao</div>
+                <div class="activity-location">观音桥, Jiangbei District</div>
+                <div class="activity-notes">CQ's most commercial district · great for shopping, xiaochi snacks, people watching</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Xiahaoli Old Town + xiaochi</div>
+                <div class="activity-location">下浩老街, Nan'an District</div>
+                <div class="activity-notes">Chongqing's hidden gem — crumbling alleyways, street food, local art. Best xiaochi: spicy noodles (小面), mochi (汤圆), skewers</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?w=700&q=70&auto=format" alt="Chinese old town alley" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">21:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Clubbing — ESMI / Y2K Club</div>
+                <div class="activity-location">Chongqing nightlife district</div>
+                <div class="activity-notes">CQ nightlife is seriously underrated. ESMI and Y2K Club are the main options — dress up, arrive after 10pm when it gets going</div>
+                <div class="activity-tags"><span class="activity-tag tag-night">Nightlife</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=700&q=70&auto=format" alt="Club nightlife" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Fandiao Homestay · 46 Cangbai Rd, Yuzhong</div>
+          </div>
+        </div>
+
+        <!-- Day 10 - Chill -->
+        <div class="day-card" data-city="chongqing" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Sat</div><div class="date">24</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Chill day — some group departs</div>
+              <div class="subtitle">Nicole &amp; Samson fly home today (5pm)</div>
+              <div class="day-preview-pills"><span class="preview-pill">Farewells</span><span class="preview-pill">Rest</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">Morning</div>
+              <div class="activity-content">
+                <div class="activity-name">Rest day — recover from clubbing</div>
+                <div class="activity-location">Chongqing</div>
+                <div class="activity-notes">Lazy morning · explore locally · final CQ street food</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Leisure</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">17:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Farewells — Nicole &amp; Samson fly home</div>
+                <div class="activity-location">Chongqing Jiangbei International Airport (CKG)</div>
+                <div class="activity-notes">Nicole &amp; Samson: CX929 + CX161 depart 5:20pm · Also Hellen, Desmond &amp; Isabella departing today</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Departure</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Fandiao Homestay · 46 Cangbai Rd, Yuzhong</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CHENGDU ═══ -->
+      <section class="city-section" id="chengdu">
+        <div class="city-header-bar">
+          <span class="city-flag">🇨🇳</span>
+          <h2>Chengdu</h2>
+          <span class="city-dates-badge">Oct 25–27 · 2 nights</span>
+        </div>
+
+        <div class="day-card" data-city="chengdu" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sun</div><div class="date">25</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Chongqing → Chengdu</div>
+              <div class="subtitle">HSR 11:25am · People's Park · Kuanzhai Alley</div>
+              <div class="day-preview-pills"><span class="preview-pill">HSR 11:25am</span><span class="preview-pill">Tea &amp; yaps</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">11:25</div>
+              <div class="activity-content">
+                <div class="activity-name">HSR — Shapingba → Chengdu East</div>
+                <div class="activity-location">Shapingba Station (沙坪坝)</div>
+                <div class="activity-notes">Arrives 12:27pm · ~1h · AUD $72.06pp · Leo reserving</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Check in + lunch</div>
+                <div class="activity-location">Chengdu Central Apartment (3BR, Leo booked)</div>
+                <div class="activity-notes">~AUD $300 total · central location · 4 beds</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">14:00</div>
+              <div class="activity-content">
+                <div class="activity-name">People's Park — tea and yaps</div>
+                <div class="activity-location">人民公园, Qingyang District</div>
+                <div class="activity-notes">Chengdu's famous tea house culture in action · elderly locals playing mahjong and cards · hire a rattan chair, order jasmine tea, and do absolutely nothing productive</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-food">Tea</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=70&auto=format" alt="Chengdu teahouse park" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">17:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Kuanzhai Alley</div>
+                <div class="activity-location">宽窄巷子, Qingyang District</div>
+                <div class="activity-notes">Wide Alley + Narrow Alley — beautifully restored Qing dynasty architecture · street food, cafes, craft shops · best at golden hour</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=700&q=70&auto=format" alt="Chengdu narrow alley" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Chengdu Central Apartment (Trip.com, Leo booked)</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="chengdu" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Mon</div><div class="date">26</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Chengdu full day</div>
+              <div class="subtitle">Giant Pandas · Jinli · Wuhou Shrine</div>
+              <div class="day-preview-pills"><span class="preview-pill">Panda Base</span><span class="preview-pill">Jinli</span><span class="preview-pill">Wuhou</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">08:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Giant Panda Breeding Research Base</div>
+                <div class="activity-location">成都大熊猫繁育研究基地, Chenghua District</div>
+                <div class="activity-notes">Go early — pandas are most active in the morning (they nap all afternoon) · book tickets online · ~3–4hrs · uber/didi from centre ~30min</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=700&q=70&auto=format" alt="Giant panda eating bamboo" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">14:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Wuhou Shrine</div>
+                <div class="activity-location">武侯祠, Wuhou District</div>
+                <div class="activity-notes">Dedicated to Zhuge Liang of Three Kingdoms era · beautiful historic complex · adjacent to Jinli Ancient Street</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=700&q=70&auto=format" alt="Chinese shrine temple" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">16:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Jinli Ancient Street</div>
+                <div class="activity-location">锦里, Wuhou District</div>
+                <div class="activity-notes">Right next to Wuhou · lantern-lit at dusk · dragon beard candy, tanghulu, Sichuan snacks · one of Chengdu's most photogenic spots</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=700&q=70&auto=format" alt="Jinli ancient street lanterns" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Chengdu Central Apartment (Trip.com, Leo booked)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ XI'AN ═══ -->
+      <section class="city-section" id="xian">
+        <div class="city-header-bar">
+          <span class="city-flag">🇨🇳</span>
+          <h2>Xi'an</h2>
+          <span class="city-dates-badge">Oct 27–31 · 4 nights</span>
+        </div>
+
+        <div class="day-card" data-city="xian" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Tue</div><div class="date">27</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Chengdu → Xi'an</div>
+              <div class="subtitle">HSR 3:02pm · arrive evening</div>
+              <div class="day-preview-pills"><span class="preview-pill">HSR 3:02pm</span><span class="preview-pill">Arrives 6:16pm</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">Morning</div>
+              <div class="activity-content">
+                <div class="activity-name">Morning shopping + pack up</div>
+                <div class="activity-location">Chengdu</div>
+                <div class="activity-notes">Last chance for Chengdu snacks and shopping before heading to the station</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Leisure</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">15:02</div>
+              <div class="activity-content">
+                <div class="activity-name">HSR — Chengdu East → Xi'an North</div>
+                <div class="activity-location">Chengdudong Station (成都东)</div>
+                <div class="activity-notes">Arrives Xi'anbei 18:16 · ~3h 15m · AUD $38.32pp · Leo reserving</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">19:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Check in + Muslim Quarter dinner</div>
+                <div class="activity-location">Xi'an Hotel (Daniel booked) · Muslim Quarter (回民街) nearby</div>
+                <div class="activity-notes">Muslim Quarter is steps from the Bell Tower · roujiamo (Chinese burger), yangrou paomo, biangbiang noodles for dinner</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1526749837599-b4eba9fd855e?w=700&q=70&auto=format" alt="Xi'an Muslim street food" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Xi'an Hotel (Daniel booked) · Queen + twin + family rooms</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="xian" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Wed</div><div class="date">28</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Terracotta Warriors day</div>
+              <div class="subtitle">~4hrs at the site · 1hr each way travel</div>
+              <div class="day-preview-pills"><span class="preview-pill">Warriors</span><span class="preview-pill">Shaanxi Museum</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">08:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Terracotta Army</div>
+                <div class="activity-location">秦始皇兵马俑, Lintong District (1hr from city)</div>
+                <div class="activity-notes">One of the greatest archaeological discoveries of the 20th century · 8,000+ clay warriors · Pit 1 is the showstopper · book tickets online in advance to avoid queues · ~4hrs</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1608623285043-5b4e97bf59b3?w=700&q=70&auto=format" alt="Terracotta Warriors Xi'an" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">15:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Shaanxi History Museum</div>
+                <div class="activity-location">陕西历史博物馆, Yanta District</div>
+                <div class="activity-notes">Free entry (book online) · one of China's best museums · Tang dynasty gold and silver, terracotta artifacts · allow 2hrs</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Xi'an Hotel (Daniel booked)</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="xian" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Thu</div><div class="date">29</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">City walls + Xing He Yun Gu</div>
+              <div class="subtitle">Cycling the ancient walls · 星河云谷</div>
+              <div class="day-preview-pills"><span class="preview-pill">Wall cycling</span><span class="preview-pill">星河云谷</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">09:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Xi'an Ancient City Wall — cycling</div>
+                <div class="activity-location">西安城墙, Ming dynasty city wall loop</div>
+                <div class="activity-notes">14km complete circuit on top of the wall · hire bikes at South Gate (南门) · takes ~1.5–2hrs to cycle the full loop · great views of the city</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-nature">Activity</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=700&q=70&auto=format" alt="Xi'an ancient city wall" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">14:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Xing He Yun Gu — 星河云谷</div>
+                <div class="activity-location">星河云谷, Xi'an</div>
+                <div class="activity-notes">Xi'an's trendy cultural and creative arts district — cafes, art installations, photo spots · great for afternoon wanders</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Xi'an Hotel (Daniel booked)</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="xian" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar cn"></div>
+            <div class="day-date-col"><div class="dow">Fri</div><div class="date">30</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Individual morning + final dinner</div>
+              <div class="subtitle">Spa option · last group dinner together</div>
+              <div class="day-preview-pills"><span class="preview-pill">Free morning</span><span class="preview-pill">Final dinner</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">Morning</div>
+              <div class="activity-content">
+                <div class="activity-name">Individual free morning</div>
+                <div class="activity-location">Xi'an</div>
+                <div class="activity-notes">Last chance to explore on your own — Muslim Quarter souvenir shopping, Big Wild Goose Pagoda, 24hr spa option</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Leisure</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">19:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Final group dinner — China trip 🥂</div>
+                <div class="activity-location">Xi'an (TBC)</div>
+                <div class="activity-notes">Last meal with the full China crew before people fly home tomorrow · book a private room at a local restaurant</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span><span class="activity-tag tag-night">Evening</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Xi'an Hotel (Daniel booked)</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="xian" data-country="cn">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sat</div><div class="date">31</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Fly — Xi'an → Sydney</div>
+              <div class="subtitle">CZ325 departs afternoon (group) · Clarissa → Japan</div>
+              <div class="day-preview-pills"><span class="preview-pill">CZ325</span><span class="preview-pill">Group departs</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">Morning</div>
+              <div class="activity-content">
+                <div class="activity-name">Check out + farewells</div>
+                <div class="activity-location">Xi'an Hotel</div>
+                <div class="activity-notes">Various group members departing to SYD today — CZ325 (Nikki, Patrick, Leo, Carl), CZ3202/CZ8091 (Dlin), CX991 (Cindy)</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Departure</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Check out — China trip ends for most of the group</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ OSAKA ═══ -->
+      <section class="city-section" id="osaka">
+        <div class="city-header-bar">
+          <span class="city-flag">🇯🇵</span>
+          <h2>Osaka</h2>
+          <span class="city-dates-badge">Oct 25–27 · 2 nights</span>
+        </div>
+
+        <div class="day-card" data-city="osaka" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sat</div><div class="date">25</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Chongqing → Osaka (MU5430) + night out</div>
+              <div class="subtitle">Departs 1:15pm · arrives Osaka 9pm · Dotonbori</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">MU5430</span><span class="preview-pill jp">Dotonbori</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">13:15</div>
+              <div class="activity-content">
+                <div class="activity-name">Fly — Chongqing → Shanghai (MU5430)</div>
+                <div class="activity-location">Chongqing Jiangbei International Airport (CKG)</div>
+                <div class="activity-notes">Arrives Shanghai (SHA/PVG) 15:45 · 2h 10m layover · 7kg carry-on + 23kg checked</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Flight</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">17:55</div>
+              <div class="activity-content">
+                <div class="activity-name">Fly — Shanghai → Osaka KIX (MU5430 cont.)</div>
+                <div class="activity-location">Shanghai Hongqiao / Pudong Airport</div>
+                <div class="activity-notes">Arrives Osaka KIX 21:00 · ~2h 05m · clear customs, take train/limousine bus to Tengachaya (~1hr)</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Flight</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">22:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Check in — Home in Osaka</div>
+                <div class="activity-location">1-13-8 Tengachaya, Osaka · check-in 4pm (you arrive late)</div>
+                <div class="activity-notes">Message host to confirm late check-in · drop bags · head straight out</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">22:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Dotonbori night stroll</div>
+                <div class="activity-location">道頓堀, Namba, Osaka</div>
+                <div class="activity-notes">Dotonbori is alive at midnight — Glico running man, neon lights, canal. Great for photos. The tonkatsu restaurant may be closed by this hour — push to tomorrow lunch</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-night">Evening</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=700&q=70&auto=format" alt="Dotonbori Osaka at night" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Home in Osaka · 1-13-8 Tengachaya (check-in 4pm, arriving late)</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="osaka" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sun</div><div class="date">26</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Osaka full day</div>
+              <div class="subtitle">Osaka Castle · Aquarium · Tonkatsu · Kuromon</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">Castle</span><span class="preview-pill jp">Aquarium</span><span class="preview-pill jp">Tonkatsu</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">09:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Osaka Castle</div>
+                <div class="activity-location">大阪城, Chuo Ward</div>
+                <div class="activity-notes">Go early to beat the queues · the castle museum inside is worth it · beautiful moat and stone walls · ¥600 entry</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=700&q=70&auto=format" alt="Osaka Castle" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">11:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Oosaka Tonkatsu — lunch</div>
+                <div class="activity-location">Dotonbori area, Namba</div>
+                <div class="activity-notes">Arrive before opening or queue early — this place draws lines. Thick, crispy, deeply satisfying tonkatsu. The reason you planned this whole day</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1615361200141-f45040f367be?w=700&q=70&auto=format" alt="Tonkatsu Japanese pork cutlet" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Kuromon Ichiba Market</div>
+                <div class="activity-location">黒門市場, Namba</div>
+                <div class="activity-notes">Osaka's famous kitchen market · fresh seafood on sticks, wagyu skewers, tamagoyaki · great for grazing</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span><span class="activity-tag tag-sight">Market</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=70&auto=format" alt="Japanese food market" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">15:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Osaka Aquarium Kaiyukan</div>
+                <div class="activity-location">海遊館, Tempozan, Minato Ward</div>
+                <div class="activity-notes">One of the world's largest aquariums · the whale shark tank is unreal · book tickets online · allow 2–3hrs · Tempozan Ferris Wheel next door</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-nature">Nature</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1586081421782-b1a95dbe62e3?w=700&q=70&auto=format" alt="Aquarium whale shark" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">19:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Namba Yasaka Shrine + Shinsekai</div>
+                <div class="activity-location">難波八阪神社 + 新世界, Osaka</div>
+                <div class="activity-notes">Namba Yasaka has a giant lion head stage — very photogenic · Shinsekai is Osaka's retro old-school district · kushikatsu and tower of Tsutenkaku</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-food">Food</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Home in Osaka · 1-13-8 Tengachaya</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ TOKYO ═══ -->
+      <section class="city-section" id="tokyo">
+        <div class="city-header-bar">
+          <span class="city-flag">🇯🇵</span>
+          <h2>Tokyo</h2>
+          <span class="city-dates-badge">Oct 27–Nov 1 · 5 nights</span>
+        </div>
+
+        <div class="day-card" data-city="tokyo" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Tue</div><div class="date">27</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Osaka → Tokyo (MM315) + check in</div>
+              <div class="subtitle">Flight 8:40pm · arrives 10:05pm · Shinjuku Airbnb</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">MM315</span><span class="preview-pill jp">Peach Air</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">Daytime</div>
+              <div class="activity-content">
+                <div class="activity-name">Osaka morning — Shinsaibashi shopping</div>
+                <div class="activity-location">心斎橋, Chuo Ward, Osaka</div>
+                <div class="activity-notes">Last morning in Osaka before heading to airport · Shinsaibashi covered arcade · Amemura (American Village) for vintage finds</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Leisure</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">20:40</div>
+              <div class="activity-content">
+                <div class="activity-name">Fly — Osaka (ITM) → Tokyo (MM315)</div>
+                <div class="activity-location">Osaka Itami Airport (ITM)</div>
+                <div class="activity-notes">Peach Air MM315 · arrives Tokyo 22:05 · 8kg carry-on + 2 × 23kg checked · allow 90min to get to Shinjuku Airbnb from airport</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Flight</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">23:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Check in — Shinjuku Airbnb</div>
+                <div class="activity-location">37-22 Wakamatsucho, Shinjuku City — 夏目坂の間 ROOM 2</div>
+                <div class="activity-notes">Conf: HMYTFXJM2A · Check-in 3pm (arriving late — message host) · Check-out Sun 1 Nov 10am</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Accommodation</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Airbnb · 37-22 Wakamatsucho, Shinjuku · Conf HMYTFXJM2A</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="tokyo" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Wed</div><div class="date">28</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Shibuya + Harajuku</div>
+              <div class="subtitle">Shibuya Sky · Scramble · Harajuku street style</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">Shibuya Sky</span><span class="preview-pill jp">Harajuku</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Shibuya Sky</div>
+                <div class="activity-location">渋谷スカイ, Shibuya Scramble Square, 47F</div>
+                <div class="activity-notes">Book timed entry online in advance — sells out. Views of Fuji on clear days. Go on a sunny day for the best visibility. Rooftop outdoor deck</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&q=70&auto=format" alt="Shibuya Tokyo aerial view" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">12:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Shibuya Scramble Crossing</div>
+                <div class="activity-location">渋谷スクランブル交差点, Shibuya</div>
+                <div class="activity-notes">The world's busiest pedestrian crossing · cross with the crowds · watch from the Starbucks or Mag's Park above for the full overhead view</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Harajuku — Takeshita Street + Omotesando</div>
+                <div class="activity-location">原宿, Harajuku, Shibuya</div>
+                <div class="activity-notes">Takeshita St for wild youth fashion and crepes · Omotesando for high-end boutiques and architecture · Cat Street for vintage and streetwear</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=700&q=70&auto=format" alt="Harajuku Tokyo fashion street" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">16:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Lumine Shinjuku shopping</div>
+                <div class="activity-location">ルミネ, Shinjuku Station</div>
+                <div class="activity-notes">Right at Shinjuku station · 8 floors of Japanese fashion, beauty and food. Great for local brands not available in Australia</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Shopping</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Airbnb · Shinjuku, Wakamatsucho</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="tokyo" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Thu</div><div class="date">29</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Asakusa + Ueno</div>
+              <div class="subtitle">Senso-ji · kimono rental · Kappabashi · Ueno</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">Senso-ji</span><span class="preview-pill jp">Kimono</span><span class="preview-pill jp">Ueno</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">08:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Senso-ji Temple — early morning</div>
+                <div class="activity-location">浅草寺, Asakusa, Taito</div>
+                <div class="activity-notes">Go early (before 9am) to avoid crowds · Tokyo's oldest temple · Nakamise Shopping Street leading up to it · the Kaminarimon gate is iconic</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1583400174253-64e706a8b15b?w=700&q=70&auto=format" alt="Senso-ji temple Asakusa Tokyo" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Kimono rental — Asakusa</div>
+                <div class="activity-location">Asakusa, near Senso-ji</div>
+                <div class="activity-notes">Multiple rental shops on Nakamise-dori · ~¥3,000–5,000 for the day including dressing · stroll around Senso-ji in kimono for photos</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Activity</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">12:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Kappabashi Kitchen Street</div>
+                <div class="activity-location">合羽橋道具街, Taito</div>
+                <div class="activity-notes">Japan's wholesale kitchenware district · iconic fake food samples (plastic food replicas) · Japanese knives, ceramics, bento boxes · great for souvenirs</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Shopping</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">14:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Ueno Park + Tokyo National Museum</div>
+                <div class="activity-location">上野公園, Taito</div>
+                <div class="activity-notes">Ueno Park is lovely in late October · Tokyo National Museum has the world's largest collection of Japanese art · zoo also in the park</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-nature">Park</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1578469550946-fc8dca7b3e59?w=700&q=70&auto=format" alt="Ueno Park Tokyo" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Airbnb · Shinjuku, Wakamatsucho</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="tokyo" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Fri</div><div class="date">30</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Kamakura day trip</div>
+              <div class="subtitle">Great Buddha · beach · Chureito Pagoda</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">Great Buddha</span><span class="preview-pill jp">Mt Fuji views</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">05:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Early train to Kamakura</div>
+                <div class="activity-location">JR Shonan-Shinjuku Line from Shinjuku</div>
+                <div class="activity-notes">~1hr direct · leave early to get golden morning light at the Buddha and beat tour groups · last train back to Tokyo ~11pm</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Train</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">07:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Kotoku-in — Great Buddha (Kamakura Daibutsu)</div>
+                <div class="activity-location">高徳院, Kamakura</div>
+                <div class="activity-notes">13.35m tall outdoor bronze Buddha · go inside for ¥20 extra · serene morning vibes before tour buses arrive</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=700&q=70&auto=format" alt="Kamakura Great Buddha Japan" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Yuigahama Beach</div>
+                <div class="activity-location">由比ヶ浜海水浴場, Kamakura</div>
+                <div class="activity-notes">Late October beach walk with Enoshima views · usually quiet at this time of year · great brunch spots nearby</div>
+                <div class="activity-tags"><span class="activity-tag tag-nature">Nature</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1564351908-ebd2c0b7b97e?w=700&q=70&auto=format" alt="Japanese beach coastline" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Chureito Pagoda + Mt Fuji views</div>
+                <div class="activity-location">忠霊塔, Fujiyoshida (en route back to Tokyo)</div>
+                <div class="activity-notes">The iconic 5-storey pagoda with Fuji behind it · 398 steps up · late October has good visibility for Fuji · takes ~2hrs detour from Kamakura</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Sightseeing</span><span class="activity-tag tag-nature">Nature</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=700&q=70&auto=format" alt="Chureito pagoda Mt Fuji Japan" loading="lazy">
+              </div>
+            </div>
+            <div class="accom-strip">Airbnb · Shinjuku, Wakamatsucho</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="tokyo" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sat</div><div class="date">31</div><div class="month">Oct</div></div>
+            <div class="day-summary">
+              <div class="title">Shinjuku + Ginza — final Tokyo day</div>
+              <div class="subtitle">Golden Gai · Isetan · Ginza · farewell dinner</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">Golden Gai</span><span class="preview-pill jp">Ginza</span><span class="preview-pill jp">Final dinner</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Isetan Shinjuku</div>
+                <div class="activity-location">伊勢丹新宿店, Shinjuku</div>
+                <div class="activity-notes">Japan's most prestigious department store · basement food hall is iconic · Japanese beauty brands, local designers, perfect for last-minute gifts</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Shopping</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">13:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Ginza</div>
+                <div class="activity-location">銀座, Chuo Ward</div>
+                <div class="activity-notes">Tokyo's most upscale shopping district · Uniqlo flagship, Itoya stationery, luxury boutiques · Ginza Six is worth a wander · Kabuki-za Theatre nearby</div>
+                <div class="activity-tags"><span class="activity-tag tag-sight">Shopping</span><span class="activity-tag tag-sight">Sightseeing</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=700&q=70&auto=format" alt="Ginza Tokyo at night" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">17:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Shinjuku Golden Gai</div>
+                <div class="activity-location">新宿ゴールデン街, Shinjuku</div>
+                <div class="activity-notes">200+ tiny atmospheric bars crammed into a few narrow alleys · each fits 6–10 people · explore a few, pick one you love, stay all night. Tokyo's most unique drinking experience</div>
+                <div class="activity-tags"><span class="activity-tag tag-night">Nightlife</span><span class="activity-tag tag-food">Drinks</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=700&q=70&auto=format" alt="Shinjuku golden gai alley bars" loading="lazy">
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">19:30</div>
+              <div class="activity-content">
+                <div class="activity-name">Final dinner in Tokyo 🍣</div>
+                <div class="activity-location">Tokyo (TBC — book in advance)</div>
+                <div class="activity-notes">Omakase sushi or wagyu — treat yourself. Ichiran ramen is also a classic solo option post-Ginza. Reserve the night before</div>
+                <div class="activity-tags"><span class="activity-tag tag-food">Food</span><span class="activity-tag tag-night">Evening</span></div>
+              </div>
+            </div>
+            <div class="accom-strip">Airbnb · Shinjuku, Wakamatsucho (last night)</div>
+          </div>
+        </div>
+
+        <div class="day-card" data-city="tokyo" data-country="jp">
+          <div class="day-card-header" onclick="toggleDay(this.parentElement)">
+            <div class="day-accent-bar transit"></div>
+            <div class="day-date-col"><div class="dow">Sun</div><div class="date">1</div><div class="month">Nov</div></div>
+            <div class="day-summary">
+              <div class="title">Fly home — Tokyo → Guangzhou → Sydney</div>
+              <div class="subtitle">CZ325 · check out 10am · see you on the other side ✈</div>
+              <div class="day-preview-pills"><span class="preview-pill jp">CZ325</span><span class="preview-pill jp">Home</span></div>
+            </div>
+            <span class="day-chevron">▾</span>
+          </div>
+          <div class="day-body">
+            <div class="activity">
+              <div class="activity-time">10:00</div>
+              <div class="activity-content">
+                <div class="activity-name">Check out — Shinjuku Airbnb</div>
+                <div class="activity-location">37-22 Wakamatsucho, Shinjuku City</div>
+                <div class="activity-notes">Check out strictly by 10am · store bags at the station if flight is later</div>
+                <div class="activity-tags"><span class="activity-tag tag-accom">Check out</span></div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-time">TBC</div>
+              <div class="activity-content">
+                <div class="activity-name">Fly — Tokyo → Guangzhou → Sydney (CZ325)</div>
+                <div class="activity-location">Tokyo Narita / Haneda Airport</div>
+                <div class="activity-notes">CZ325 routes through Guangzhou · Warren also on this flight · 7kg carry-on + 23kg checked · farewell Japan! 🇯🇵</div>
+                <div class="activity-tags"><span class="activity-tag tag-transport">Flight home</span></div>
+                <img class="activity-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=70&auto=format" alt="Airport departure homeward" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="itin-no-results" class="no-results" style="display:none;">
+        No activities match your search. Try a different keyword or clear the filter.
+      </div>
+
+    </div><!-- /days-view -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== FLIGHTS ======== -->
+  
+  <div id="flights" class="tab-section">
+
+    <div class="section-label">Your confirmed flights</div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">SYD</span>
+        <div class="flight-line"></div>
+        <span class="iata">GZO</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>CZ302 — direct</strong>Route</div>
+        <div class="flight-item"><strong>15 Oct, 10:10pm</strong>Departs Sydney</div>
+        <div class="flight-item"><strong>16 Oct, 5:35am</strong>Arrives Guangzhou</div>
+        <div class="flight-item"><strong>~9h 25m</strong>Duration</div>
+        <div class="flight-item"><strong>7kg carry-on + 23kg checked</strong>Baggage</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="section-label">Chongqing → Osaka (with layover)</div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">CKG</span>
+        <div class="flight-line"></div>
+        <span class="iata">SHA</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>MU5430</strong>Flight</div>
+        <div class="flight-item"><strong>25 Oct, 1:15pm</strong>Departs Chongqing</div>
+        <div class="flight-item"><strong>25 Oct, 3:45pm</strong>Arrives Shanghai</div>
+        <div class="flight-item"><strong>~2h 30m</strong>Duration</div>
+        <div class="flight-item"><strong>7kg carry-on + 23kg checked</strong>Baggage</div>
+      </div>
+      <div class="layover-note">✦ Layover Shanghai (SHA) — 2h 10m · same flight number continues</div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">SHA</span>
+        <div class="flight-line"></div>
+        <span class="iata">KIX</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>MU5430 (cont.)</strong>Flight</div>
+        <div class="flight-item"><strong>25 Oct, 5:55pm</strong>Departs Shanghai</div>
+        <div class="flight-item"><strong>25 Oct, 9:00pm</strong>Arrives Osaka (KIX)</div>
+        <div class="flight-item"><strong>~2h 05m</strong>Duration</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="section-label">Osaka → Tokyo</div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">OSA</span>
+        <div class="flight-line"></div>
+        <span class="iata">TYO</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>MM315</strong>Flight (Peach Air)</div>
+        <div class="flight-item"><strong>27 Oct, 8:40pm</strong>Departs Osaka</div>
+        <div class="flight-item"><strong>27 Oct, 10:05pm</strong>Arrives Tokyo</div>
+        <div class="flight-item"><strong>~1h 25m</strong>Duration</div>
+        <div class="flight-item"><strong>8kg carry-on + 2 × 23kg checked</strong>Baggage</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">TYO</span>
+        <div class="flight-line"></div>
+        <span class="iata">CAN</span>
+        <div class="flight-line"></div>
+        <span class="iata">SYD</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>CZ325</strong>Flight</div>
+        <div class="flight-item"><strong>1 Nov</strong>Date</div>
+        <div class="flight-item"><strong>Tokyo → Guangzhou → Sydney</strong>Route</div>
+        <div class="flight-item"><strong>Warren too</strong>Also on this</div>
+        <div class="flight-item"><strong>7kg carry-on + 23kg checked</strong>Baggage</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="section-label">Nicole &amp; Samson — depart 25 Oct</div>
+    <div class="flight-card" style="background:var(--rose-pale); border-color:var(--rose-mid);">
+      <div class="flight-route">
+        <span class="iata" style="color:#8B3050;">CKG</span>
+        <div class="flight-line" style="background:var(--rose-mid);"></div>
+        <span class="iata" style="color:#8B3050;">HKG</span>
+        <div class="flight-line" style="background:var(--rose-mid);"></div>
+        <span class="iata" style="color:#8B3050;">SYD</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>CX929 + CX161</strong>Flights</div>
+        <div class="flight-item"><strong>25 Oct, 5:20pm</strong>Departs CQ</div>
+        <div class="flight-item"><strong>1h 35m HK layover</strong>Via Hong Kong</div>
+        <div class="flight-item"><strong>Nicole &amp; Samson</strong>Passengers</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ TRANSPORT ══════════ -->
+  <div id="transport" class="tab-section">
+
+    <div class="section-label">China trains</div>
+
+    <div class="train-card">
+      <div class="train-route">Guangzhou South <span class="train-route-arrow">→</span> Yangshuo</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Sun 18 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>8:46am → 11:28am</strong>Times</div>
+        <div class="train-meta-item"><strong>~2h</strong>Duration</div>
+        <div class="train-meta-item"><strong>$483.90 group</strong>Cost (~$32pp)</div>
+        <div class="train-meta-item"><strong>Leo reserving</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-route">Guilin West <span class="train-route-arrow">→</span> Chongqing West</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Wed 21 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>9:42am → 1:44pm</strong>Times</div>
+        <div class="train-meta-item"><strong>~4h</strong>Duration</div>
+        <div class="train-meta-item"><strong>$1,127.55 group</strong>Cost (~$75pp)</div>
+        <div class="train-meta-item"><strong>Leo reserving</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-route">CQ East <span class="train-route-arrow">→</span> Wulong South <span style="font-size:12px;color:var(--text-soft);font-weight:400;">(day trip, return same day)</span></div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Thu 22 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>7:17am → 8:02am</strong>Out</div>
+        <div class="train-meta-item"><strong>6:33pm → 7:18pm</strong>Return</div>
+        <div class="train-meta-item"><strong>~$33pp r/t</strong>Cost</div>
+        <div class="train-meta-item"><strong>Nikki booked</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-route">Shapingba (CQ) <span class="train-route-arrow">→</span> Chengdu East</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Sun 25 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>11:25am → 12:27pm</strong>Times</div>
+        <div class="train-meta-item"><strong>~1h</strong>Duration</div>
+        <div class="train-meta-item"><strong>$72.06pp</strong>Cost</div>
+        <div class="train-meta-item"><strong>Leo reserving</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-route">Chengdu East <span class="train-route-arrow">→</span> Xi'an North</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Tue 27 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>3:02pm → 6:16pm</strong>Times</div>
+        <div class="train-meta-item"><strong>~3h 15m</strong>Duration</div>
+        <div class="train-meta-item"><strong>$38.32pp</strong>Cost</div>
+        <div class="train-meta-item"><strong>Leo reserving</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="section-label">Japan transport</div>
+
+    <div class="train-card" style="background:var(--lav-pale); border-color:var(--lavender);">
+      <div class="train-route">Osaka <span class="train-route-arrow" style="color:var(--plum);">→</span> Tokyo <span class="pill pill-flight">MM315 — flight</span></div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Tue 27 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>8:40pm → 10:05pm</strong>Times</div>
+        <div class="train-meta-item"><strong>~1h 25m</strong>Duration</div>
+        <div class="train-meta-item"><strong>Peach Air</strong>Carrier</div>
+      </div>
+    </div>
+
+    <div class="train-card" style="background:#EFF7F1; border-color:var(--sage-mid);">
+      <div class="train-route">Osaka <span class="train-route-arrow" style="color:var(--sage);">→</span> Kyoto (day trip)</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>26 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>~15 min</strong>Duration</div>
+        <div class="train-meta-item"><strong>~¥580pp</strong>Cost</div>
+        <div class="train-meta-item"><strong>Jay &amp; Joanna</strong>Booking</div>
+      </div>
+    </div>
+
+    <div class="train-card" style="background:#EFF7F1; border-color:var(--sage-mid);">
+      <div class="train-route">Tokyo <span class="train-route-arrow" style="color:var(--sage);">→</span> Kamakura (day trip)</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Fri 30 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>~1h</strong>Duration</div>
+        <div class="train-meta-item"><strong>~¥1,000pp</strong>Cost</div>
+        <div class="train-meta-item"><strong>JR Shonan-Shinjuku</strong>Line</div>
+      </div>
+    </div>
+
+    <div class="section-label">Other</div>
+    <div class="train-card">
+      <div class="train-route">Yangshuo private driver / bus</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Oct 18–21</strong>Dates</div>
+        <div class="train-meta-item"><strong>$4,178.29 group</strong>Cost (~$278pp)</div>
+        <div class="train-meta-item"><strong>Nikki</strong>Booked via WeChat</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ STAYS ══════════ -->
+  <div id="stays" class="tab-section">
+
+    <div class="section-label">China</div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Guangzhou</div>
+        <div class="accom-name">Louidon Mega Duplex Apartment — Beijing Rd</div>
+        <div class="accom-meta">1F Hengrun Plaza, No.238 Beijing Rd, Yuexiu</div>
+        <div class="accom-dates">Check-in Thu 16 Oct 2pm · Check-out Sat 18 Oct 12pm · Samson booked · AUD $722.83 group</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Yangshuo</div>
+        <div class="accom-name">THAT MAY HOTEL</div>
+        <div class="accom-meta">No.2, Building 46, Mushan Village, Yangshuo, Guangxi · Villa (whole building — 8 rooms)</div>
+        <div class="accom-dates">Check-in Sun 18 Oct (24hr) · Check-out Wed 21 Oct 12pm · Leo booked · AUD $1,213.72</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Chongqing</div>
+        <div class="accom-name">Fandiao Homestay Chongqing</div>
+        <div class="accom-meta">No.19-8 Nanguo Lijing, 46 Cangbai Rd, Yuzhong · Secret Garden Bathtub River View 4-bed suite</div>
+        <div class="accom-dates">Check-in Wed 21 Oct · Check-out Sun 25 Oct · Samson booked · AUD $1,104.04 · Note: ¥500 deposit via WeChat/Alipay required</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Chengdu</div>
+        <div class="accom-name">Chengdu Apt (Trip.com)</div>
+        <div class="accom-meta">Central location · 3 bedrooms, 4 beds · ~AUD $300</div>
+        <div class="accom-dates">Check-in Sun 25 Oct · Check-out Tue 27 Oct · Leo booked</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Xi'an</div>
+        <div class="accom-name">Xi'an Hotel (booked by Daniel)</div>
+        <div class="accom-meta">Queen room (Pat + Nikki, 4 nights) $252.73 · Twin rooms 27–28 Oct $126.26 · Family room 28–31 Oct $240.13</div>
+        <div class="accom-dates">Check-in Tue 27 Oct · Check-out Sat 31 Oct</div>
+      </div>
+    </div>
+
+    <div class="section-label">Japan</div>
+
+    <div class="accom-card">
+      <div class="accom-dot japan"></div>
+      <div>
+        <div class="accom-city">Osaka</div>
+        <div class="accom-name">Home in Osaka</div>
+        <div class="accom-meta">1-chome-13-8, Tengachaya, Osaka</div>
+        <div class="accom-dates">Check-in Sat 25 Oct 4pm · Check-out Tue 27 Oct 10am · 2 nights</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot japan"></div>
+      <div>
+        <div class="accom-city">Tokyo</div>
+        <div class="accom-name">Airbnb — Shinjuku (夏目坂の間 ROOM 2)</div>
+        <div class="accom-meta">37-22 Wakamatsucho, Shinjuku City, Tokyo · Confirmation: HMYTFXJM2A</div>
+        <div class="accom-dates">Check-in Tue 27 Oct 3pm · Check-out Sun 1 Nov 10am · 5 nights</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ TO-DO ══════════ -->
+  <div id="todo" class="tab-section">
+
+    <div class="alert">
+      <span class="alert-icon">✦</span>
+      <span>HSR tickets needed booking 15 days before travel — confirm with Leo &amp; Warren these are locked in. Ghibli Museum tickets release on the 10th each month — book immediately if not done.</span>
+    </div>
+
+    <!-- PERSONAL: CLARISSA -->
+    <div class="section-label">Personal — Clarissa</div>
+
+    <div class="todo-group">
+      <div class="todo-group-header">Before you leave SYD</div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          China visa
+          <div class="todo-sub">Confirm valid for entry — check expiry and number of entries</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          Japan visa / eTA
+          <div class="todo-sub">Australian passport holders may need to check current entry requirements</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          Travel insurance
+          <div class="todo-sub">Cover both China (15 Oct – 25 Oct) and Japan (25 Oct – 1 Nov)</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          China SIM card + VPN
+          <div class="todo-sub">Essential — WeChat, Maps, Alipay all blocked without VPN. Get SIM before departure or at GZ airport</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Japan SIM card
+          <div class="todo-sub">Can buy on arrival at KIX or pre-order online (IIJmio, Mobal etc.)</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Wise card (or similar multi-currency card)
+          <div class="todo-sub">Load CNY for China and JPY for Japan — avoid ATM fees</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          WeChat Pay / Alipay setup
+          <div class="todo-sub">Link foreign card — required for almost all payments in China</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Suica / Pasmo IC card — Japan transit card
+          <div class="todo-sub">Tap-on tap-off for all Tokyo trains + convenience stores · get at airport or Shinjuku station</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Alipay / WeChat Pay foreign card link
+          <div class="todo-sub">Required for almost all payments in China — cash is rarely accepted · link before departure, test it works</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Notify bank of overseas travel
+          <div class="todo-sub">China + Japan 15 Oct – 1 Nov · avoid card being blocked abroad</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Download offline maps
+          <div class="todo-sub">Google Maps offline for Japan · Baidu Maps or Amap (高德) for China (Google Maps unreliable there)</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Packing + shopping list
+          <div class="todo-sub">Layers for Guilin/Xi'an (cooler in late Oct), comfy walking shoes, China plug adapter (Type A/I), portable charger</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Currency exchange — CNY and JPY cash
+          <div class="todo-sub">Keep some cash for smaller vendors / rural areas · exchange before leaving or at airport</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Photoshoot research
+          <div class="todo-sub">Find photographers in Yangshuo, Chongqing, or Japan — book in advance</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+    </div>
+
+    <div class="todo-group">
+      <div class="todo-group-header">Japan — Clarissa's bookings</div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          Ghibli Museum tickets
+          <div class="todo-sub">Releases 10th of each month for following month — check availability now for late Oct/Nov dates. Sells out instantly</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Add Japan place names to Wanderlog
+          <div class="todo-sub">Properly fill in all spots for Osaka + Tokyo days</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Tonkatsu restaurant (Dotonburi) — check opening hours
+          <div class="todo-sub">Arriving Osaka ~10:30pm on 25 Oct — confirm they're open late or push to 26 Oct</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Shibuya Sky — book in advance
+          <div class="todo-sub">Timed entry tickets, popular slot — book online before departure</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Submit passport details to Tokyo Airbnb
+          <div class="todo-sub">Conf: HMYTFXJM2A — check if host requires ID submission</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Kamakura day — book early train
+          <div class="todo-sub">Fri 30 Oct · JR Shonan-Shinjuku Line · aim to leave ~5:30am for sunrise views</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Create China &amp; Japan masterbook
+          <div class="todo-sub">Consolidate both spreadsheets into one reference doc</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+    </div>
+
+    <!-- GROUP TODOS -->
+    <div class="section-label">Group — China</div>
+
+    <div class="todo-group">
+      <div class="todo-group-header">Urgent</div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          GZ → Yangshuo HSR tickets
+          <div class="todo-sub">14 adults · book 15 days prior = 3 Oct · site was down 29 Sep — confirm status</div>
+        </div>
+        <span class="todo-who">Leo, Warren</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          Yangshuo → Chongqing HSR tickets
+          <div class="todo-sub">15 adults · book 15 days prior = 6 Oct · confirm site back online</div>
+        </div>
+        <span class="todo-who">Leo, Warren</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check urgent">!</span>
+        <div class="todo-text">
+          Rebook extra room at GZ hotel for the 25th
+          <div class="todo-sub">‼️ Flagged as in-progress — Samson &amp; Nicole to confirm</div>
+        </div>
+        <span class="todo-who">Samson, Nicole</span>
+        <span class="urgency-badge urg-urgent">Urgent</span>
+      </div>
+    </div>
+
+    <div class="todo-group">
+      <div class="todo-group-header">Still to do</div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Wulong Karst entry tickets
+          <div class="todo-sub">~AUD $74pp · multi-attraction + shuttle bus · book via Trip.com</div>
+        </div>
+        <span class="todo-who">Hellen</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Guangzhou itinerary planning
+        </div>
+        <span class="todo-who">Warren</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Chongqing itinerary planning
+        </div>
+        <span class="todo-who">Hellen, Cindy</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Xi'an itinerary — Terracotta Warriors booking
+          <div class="todo-sub">Timed entry — book online in advance to avoid queue</div>
+        </div>
+        <span class="todo-who">Nikki, Dlin</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Powerbank — pre-buy via Taobao to arrive at GZ hotel
+          <div class="todo-sub">Part of Taobao haul</div>
+        </div>
+        <span class="todo-who">Yashi</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Food research — each city
+          <div class="todo-sub">Guangzhou · Yangshuo · Chongqing · Chengdu · Xi'an</div>
+        </div>
+        <span class="todo-who">Group</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+    </div>
+
+    <div class="section-label">Group — Japan</div>
+
+    <div class="todo-group">
+      <div class="todo-group-header">Still to do</div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Book Osaka → Kyoto train
+          <div class="todo-sub">~15 min JR line · ~¥580pp · for 26 Oct Kyoto day trip</div>
+        </div>
+        <span class="todo-who">Jay, Joanna</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          International driving licence
+          <div class="todo-sub">Required for Jeju car hire</div>
+        </div>
+        <span class="todo-who">Jay</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Book rental car — Jeju
+        </div>
+        <span class="todo-who">Jay, Joanna</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Set up new Japan Wanderlog
+        </div>
+        <span class="todo-who">Joanna</span>
+        <span class="urgency-badge urg-high">High</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check open">○</span>
+        <div class="todo-text">
+          Sim card research (China + Japan)
+          <div class="todo-sub">China: VPN essential · Japan: IC card (Suica/Pasmo) also recommended for transit</div>
+        </div>
+        <span class="todo-who">Clarissa</span>
+        <span class="urgency-badge" style="background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);">Medium</span>
+      </div>
+    </div>
+
+    <!-- DONE -->
+    <div class="section-label">Done and dusted</div>
+
+    <div class="todo-group">
+      <div class="todo-group-header">Completed</div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">SYD → Guangzhou flights (CZ302, 15 Oct 10:10pm)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Chongqing → Osaka flights (MU5430, 25 Oct)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Osaka → Tokyo flight (MM315, 27 Oct 8:40pm, Peach Air)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Tokyo → Guangzhou → Sydney (CZ325, 1 Nov — Clarissa &amp; Warren)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Nicole &amp; Samson return flights (CX929 + CX161, 25 Oct 5:20pm CQ → HKG → SYD)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Guangzhou accommodation — Louidon Mega Duplex Apt (Samson)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Yangshuo accommodation — THAT MAY HOTEL (Leo)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Chongqing accommodation — Fandiao Homestay (Samson)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Chengdu apartment (Leo, Trip.com — $300, central, 3BR)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Xi'an hotel rooms (Daniel — queen + twin + family room)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Osaka accommodation — Home in Osaka, Tengachaya</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Tokyo Airbnb — Shinjuku, Wakamatsucho (conf: HMYTFXJM2A)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">HSR GZ Wulong day trip trains (Nikki)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">HSR Chongqing → Chengdu (Nikki)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">HSR Chengdu → Xi'an (Nikki)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Yangshuo private driver/bus — Nikki (WeChat, $4,178 group)</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Yangshuo itinerary — Nikki</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+      <div class="todo-row">
+        <span class="todo-check done">✓</span>
+        <div class="todo-text done">Chengdu itinerary — Carl, Jeff</div>
+        <span class="urgency-badge urg-done">Done</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+/* ── MAP DATA ── */
+const locations = [
+  { name:"Sydney Airport", lat:33.9399, lng:151.1753, day:"15 Oct", country:"cn", label:"Depart SYD" },
+  { name:"Guangzhou", lat:23.1291, lng:113.2644, day:"16–18 Oct", country:"cn", label:"Guangzhou" },
+  { name:"Yangshuo", lat:24.7776, lng:110.4892, day:"18–21 Oct", country:"cn", label:"Yangshuo / Guilin" },
+  { name:"Xianggong Mountain", lat:24.8781, lng:110.5012, day:"19 Oct", country:"cn", label:"Xianggong Sunrise" },
+  { name:"Wulong Karst", lat:29.2377, lng:107.7664, day:"22 Oct", country:"cn", label:"Wulong Karst" },
+  { name:"Chongqing", lat:29.5630, lng:106.5516, day:"21–25 Oct", country:"cn", label:"Chongqing" },
+  { name:"Chengdu", lat:30.5728, lng:104.0668, day:"25–27 Oct", country:"cn", label:"Chengdu" },
+  { name:"Chengdu Panda Base", lat:30.7380, lng:104.1502, day:"26 Oct", country:"cn", label:"Giant Panda Base" },
+  { name:"Xi'an", lat:34.3416, lng:108.9398, day:"27–31 Oct", country:"cn", label:"Xi'an" },
+  { name:"Terracotta Warriors", lat:34.3842, lng:109.2784, day:"28 Oct", country:"cn", label:"Terracotta Warriors" },
+  { name:"Osaka", lat:34.6937, lng:135.5023, day:"25–27 Oct", country:"jp", label:"Osaka" },
+  { name:"Osaka Castle", lat:34.6873, lng:135.5262, day:"26 Oct", country:"jp", label:"Osaka Castle" },
+  { name:"Osaka Aquarium", lat:34.6551, lng:135.4289, day:"26 Oct", country:"jp", label:"Kaiyukan Aquarium" },
+  { name:"Dotonbori", lat:34.6687, lng:135.5010, day:"25 Oct night", country:"jp", label:"Dotonbori" },
+  { name:"Tokyo", lat:35.6762, lng:139.6503, day:"27 Oct–1 Nov", country:"jp", label:"Tokyo / Shinjuku" },
+  { name:"Shibuya Sky", lat:35.6580, lng:139.7016, day:"28 Oct", country:"jp", label:"Shibuya Sky" },
+  { name:"Harajuku", lat:35.6702, lng:139.7026, day:"28 Oct", country:"jp", label:"Harajuku" },
+  { name:"Senso-ji", lat:35.7148, lng:139.7967, day:"29 Oct", country:"jp", label:"Senso-ji Temple" },
+  { name:"Ueno Park", lat:35.7141, lng:139.7741, day:"29 Oct", country:"jp", label:"Ueno Park" },
+  { name:"Kamakura Buddha", lat:35.3167, lng:139.5500, day:"30 Oct", country:"jp", label:"Kamakura Buddha" },
+  { name:"Chureito Pagoda", lat:35.4938, lng:138.7759, day:"30 Oct", country:"jp", label:"Chureito Pagoda" },
+  { name:"Ginza", lat:35.6717, lng:139.7650, day:"31 Oct", country:"jp", label:"Ginza" },
+];
+
+/* ── GOOGLE MAPS INIT ── */
+let itinMap, itinMapInitialised = false;
+function itinInitMap() {
+  if (itinMapInitialised) return;
+  itinMapInitialised = true;
+
+  const mapEl = document.getElementById('itin-map');
+  if (!mapEl) return;
+
+  itinMap = new google.maps.Map(mapEl, {
+    center: { lat: 32, lng: 118 },
+    zoom: 4,
+    mapTypeId: 'roadmap',
+    styles: [
+      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#D4C5E8' }] },
+      { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#FBF7F2' }] },
+      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#FFFCF8' }] },
+      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#EAD8EC' }] },
+      { featureType: 'poi', elementType: 'geometry', stylers: [{ color: '#EFF7F1' }] },
+      { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#E8D5EA' }] },
+      { elementType: 'labels.text.stroke', stylers: [{ color: '#FFFCF8' }] },
+      { elementType: 'labels.text.fill', stylers: [{ color: '#6B4F6B' }] },
+      { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#C4A0C0' }] },
+      { featureType: 'administrative.land_parcel', elementType: 'labels.text.fill', stylers: [{ color: '#9B7A9B' }] },
+      { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#D0E8D4' }] },
+      { featureType: 'poi.park', elementType: 'labels.text.fill', stylers: [{ color: '#2D6040' }] },
+      { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#FDF0F3' }] },
+      { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#F5D5DC' }] },
+      { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#E8B4C0' }] },
+    ],
+    disableDefaultUI: false,
+    zoomControl: true,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: true,
+  });
+
+  const infoWindow = new google.maps.InfoWindow();
+  const bounds = new google.maps.LatLngBounds();
+
+  locations.forEach(loc => {
+    const isCN = loc.country === 'cn';
+    const pinColor = isCN ? '#C4A0C0' : '#B8D4C0';
+    const pinBorder = isCN ? '#8B5F8B' : '#2D5C3A';
+
+    const marker = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map: itinMap,
+      title: loc.label,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: pinColor,
+        fillOpacity: 1,
+        strokeColor: pinBorder,
+        strokeWeight: 2,
+        scale: 8,
+      }
+    });
+
+    marker.addListener('click', () => {
+      infoWindow.setContent(
+        '<div style="font-family:DM Sans,sans-serif;padding:4px 2px;">' +
+        '<div style="font-size:10px;color:#9B7A9B;margin-bottom:3px;">' + loc.day + '</div>' +
+        '<div style="font-size:14px;font-weight:500;color:#5C3D5C;">' + loc.label + '</div>' +
+        '<div style="font-size:12px;color:#6B4F6B;margin-top:2px;">' + loc.name + '</div>' +
+        '</div>'
+      );
+      infoWindow.open(itinMap, marker);
+    });
+
+    bounds.extend({ lat: loc.lat, lng: loc.lng });
+  });
+
+  itinMap.fitBounds(bounds);
+}
+
+/* ── VIEW SWITCH ── */
+function itinSwitchView(view) {
+  document.getElementById('itin-days-view').classList.toggle('hidden', view !== 'days');
+  const mapEl = document.getElementById('itin-map-view');
+  mapEl.classList.toggle('active', view === 'map');
+  document.getElementById('itin-btn-days').classList.toggle('active', view === 'days');
+  document.getElementById('itin-btn-map').classList.toggle('active', view === 'map');
+  if (view === 'map') { setTimeout(initMap, 50); }
+}
+
+/* ── TOGGLE DAY CARD ── */
+function toggleDay(card) {
+  card.classList.toggle('open');
+}
+
+/* ── SIDEBAR SCROLL + ACTIVE ── */
+function itinScrollToCity(id) {
+  document.querySelectorAll('.itin-sidebar .city-link').forEach(l => l.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+// Highlight sidebar on scroll
+const itinSections = document.querySelectorAll('#itin-days-view .city-section');
+const itinLinks = document.querySelectorAll('.itin-sidebar .city-link');
+const itinObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      itinLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.3 });
+itinSections.forEach(s => itinObserver.observe(s));
+
+/* ── SEARCH ── */
+let activeTag = 'all';
+
+function itinHandleSearch(query) {
+  const q = query.toLowerCase().trim();
+  itinApplyFilters(q, activeTag);
+}
+
+function itinFilterByTag(tag, btn) {
+  activeTag = tag;
+  document.querySelectorAll('.itin-sidebar .filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  itinApplyFilters(document.getElementById('itinSearch').value.toLowerCase().trim(), tag);
+}
+
+function itinApplyFilters(query, tag) {
+  const cards = document.querySelectorAll('#itin-days-view .day-card');
+  let anyVisible = false;
+
+  cards.forEach(card => {
+    const activities = card.querySelectorAll('.activity');
+    let cardMatches = false;
+
+    activities.forEach(act => {
+      const text = act.textContent.toLowerCase();
+      const tags = Array.from(act.querySelectorAll('.activity-tag')).map(t => t.className);
+      const tagMatch = tag === 'all' || tags.some(t => t.includes('tag-' + tag));
+      const textMatch = !query || text.includes(query);
+      const match = tagMatch && textMatch;
+      act.style.display = match ? '' : 'none';
+      if (match) cardMatches = true;
+    });
+
+    card.style.display = cardMatches ? '' : 'none';
+    if (cardMatches) {
+      anyVisible = true;
+      if (query || tag !== 'all') card.classList.add('open');
+    }
+  });
+
+  // Show/hide city sections
+  document.querySelectorAll('#itin-days-view .city-section').forEach(sec => {
+    const visible = Array.from(sec.querySelectorAll('.day-card')).some(c => c.style.display !== 'none');
+    sec.style.display = visible ? '' : 'none';
+  });
+
+  document.getElementById('itin-no-results').style.display = anyVisible ? 'none' : 'block';
+
+  // Reset when empty
+  if (!query && tag === 'all') {
+    cards.forEach(c => { c.style.display = ''; c.classList.remove('open'); });
+    document.querySelectorAll('#itin-days-view .activity').forEach(a => a.style.display = '');
+    document.querySelectorAll('#itin-days-view .city-section').forEach(s => s.style.display = '');
+    document.getElementById('itin-no-results').style.display = 'none';
+  }
+}
+
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
