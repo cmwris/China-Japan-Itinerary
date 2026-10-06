@@ -3,693 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>China & Japan 2026 ✿ Clarissa</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<!-- Replace YOUR_GOOGLE_MAPS_API_KEY with your Maps JavaScript API key -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=itinInitMap" async defer></script>
-
+<title>Clarissa's Trip &#127801; China &amp; Japan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places" defer></script>
 <style>
-/* ── reset ── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
-img{display:block;max-width:100%;}
-button{font:inherit;cursor:pointer;border:none;background:none;}
-
-/* ── tokens ── */
 :root{
-  /* PINK — primary accent (Japan + UI) */
-  --pk:#F0A3DB;   --pk-deep:#D060B0; --pk-dark:#8B1870;
-  --pk-pale:#FEF0FA; --pk-mid:#F8CCED; --pk-faint:#FFF5FD;
-  /* PURPLE — China accent */
-  --pu:#E08CED; --pu-deep:#B050C8; --pu-dark:#6A1880;
-  --pu-pale:#F8EFFE; --pu-mid:#EDD0F5; --pu-faint:#FCF5FF;
-  /* GREEN — Japan accent */
-  --sage:#A9F0A3; --sage-pale:#EEFDED; --sage-mid:#C8F5C4; --sage-deep:#1E6030;
-  /* ROSE — warm fills */
-  --rose:#F0A3DB; --rose-pale:#FEF0FA; --rose-mid:#F8CCED; --rose-deep:#8B1870;
-  /* ALIASES */
-  --plum:var(--pu); --plum-deep:var(--pu-deep); --plum-dark:var(--pu-dark);
-  --plum-pale:var(--pu-pale); --plum-mid:var(--pu-mid); --plum-faint:var(--pu-faint);
-  --purple:var(--pu); --purple-deep:var(--pu-deep); --purple-dark:var(--pu-dark);
-  --purple-pale:var(--pu-pale); --purple-mid:var(--pu-mid); --purple-faint:var(--pu-faint);
-  --pink:var(--pk); --pink-deep:var(--pk-deep); --pink-dark:var(--pk-dark);
-  --pink-pale:var(--pk-pale); --pink-mid:var(--pk-mid); --pink-faint:var(--pk-faint);
-  --lavender:#E0C8F0; --lav-pale:#F5EEFE;
-  --cream:#FFF5FC; --warm:#FFFCFE;
-  --text:#2A1040; --text-mid:#6A3080; --text-soft:#B080C0; --text-faint:#DCC0E8;
-  --border:#F0D8F0; --border-strong:#E0A8E0;
-  --r:14px; --r-sm:8px; --r-pill:999px;
+  --pk:#F0A3DB;--pk-deep:#D060B0;--pk-dark:#8B1870;
+  --pk-pale:#FEF0FA;--pk-mid:#F8CCED;--pk-faint:#FFF5FD;
+  --pu:#E08CED;--pu-deep:#B050C8;--pu-dark:#6A1880;
+  --pu-pale:#F8EFFE;--pu-mid:#EDD0F5;--pu-faint:#FCF5FF;
+  --sage:#A9F0A3;--sage-pale:#EEFDED;--sage-mid:#C8F5C4;--sage-deep:#1E6030;
+  --rose:#F0A3DB;--rose-pale:#FEF0FA;--rose-mid:#F8CCED;--rose-deep:#8B1870;
+  --lavender:#E0C8F0;--lav-pale:#F5EEFE;
+  --cream:#FFF5FC;--warm:#FFFCFE;
+  --text:#2A1040;--text-mid:#6A3080;--text-soft:#B080C0;--text-faint:#DCC0E8;
+  --border:#F0D8F0;--border-strong:#E0A8E0;
+  --r:14px;--r-sm:8px;--r-pill:999px;
   --shadow-sm:0 1px 4px rgba(160,40,180,.07);
   --shadow-md:0 4px 16px rgba(160,40,180,.11);
   --shadow-lg:0 8px 32px rgba(160,40,180,.16);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+body{font-family:'DM Sans',system-ui,'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.6;}
+button{font-family:inherit;cursor:pointer;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
 
-/* ── typography ── */
-body{font-family:'DM Sans',system-ui,'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;background:#FFF4F7;color:var(--text);font-size:15px;line-height:1.6;}
-h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
-
-/* ═══════════════════════════════════════════════
-   TOP NAV
-═══════════════════════════════════════════════ */
-.topnav{
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;gap:12px;
-  padding:0 1.5rem;height:56px;
-  background:rgba(254,248,254,.97);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
-.nav-brand{
-  font-family:'Playfair Display',serif;
-  font-size:15px;font-weight:500;color:var(--plum-dark);
-  white-space:nowrap;flex-shrink:0;
-  display:flex;align-items:center;gap:8px;
-}
-.nav-brand-bow{color:var(--plum);font-size:13px;}
-.nav-tabs{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;}
+/* NAV */
+.topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:12px;padding:0 1.5rem;height:56px;background:rgba(254,248,254,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:var(--pk-dark);flex-shrink:0;white-space:nowrap;}
+.nav-tabs{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;padding:8px 0;}
 .nav-tabs::-webkit-scrollbar{display:none;}
-.nav-tab{
-  flex-shrink:0;padding:6px 14px;border-radius:var(--r-pill);
-  font-size:13px;font-weight:500;color:var(--text-soft);
-  transition:all .15s;white-space:nowrap;
-}
-.nav-tab:hover{color:var(--plum-deep);background:var(--plum-pale);}
-.nav-tab.active{color:var(--pk-dark);background:var(--pk-mid);}
+.nav-tab{font-size:13px;font-weight:500;padding:6px 14px;border-radius:var(--r-pill);border:none;background:none;color:var(--text-mid);white-space:nowrap;transition:all .15s;}
+.nav-tab:hover{background:var(--pk-pale);color:var(--pk-dark);}
+.nav-tab.active{color:var(--pk-dark);background:var(--pk-mid);font-weight:600;}
 
-/* ═══════════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════════ */
-.hero{
-  padding:2.5rem 1.5rem 2rem;text-align:center;
-  background:linear-gradient(150deg,#FEF0FA 0%,#F8DAFE 40%,#F0EEFF 100%);
-  border-bottom:1px solid var(--border);
-}
-.hero-eyebrow{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--text-soft);margin-bottom:.75rem;
-}
-.hero-title{
-  font-size:clamp(24px,5vw,38px);font-weight:500;
-  color:var(--pk-dark);line-height:1.15;margin-bottom:.5rem;
-}
-.hero-title em{font-style:italic;color:var(--plum-deep);}
-.hero-sub{font-size:14px;color:var(--text-mid);margin-bottom:1.25rem;}
-.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
-.hero-chip{
-  padding:5px 14px;border-radius:var(--r-pill);
-  background:rgba(255,255,255,.7);border:1px solid var(--border);
-  font-size:12px;color:var(--text-mid);
-}
+/* TAB PANELS */
+.tab-panel{display:none;}.tab-panel.active{display:block;}
 
-/* ═══════════════════════════════════════════════
-   TAB PANELS
-═══════════════════════════════════════════════ */
-.tab-panel{display:none;}
-.tab-panel.active{display:block;}
+/* HERO */
+.hero{padding:2.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(150deg,#FEF0FA 0%,#F8DAFE 40%,#F0EEFF 100%);border-bottom:1px solid var(--border);}
+.hero-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin-bottom:.5rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:500;color:var(--pk-dark);line-height:1.15;margin-bottom:.5rem;}
+.hero-title em{color:var(--pu-dark);font-style:italic;}
+.hero-sub{font-size:13.5px;color:var(--text-soft);margin-bottom:1.25rem;}
+.hero-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hero-chip{font-size:12px;padding:5px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.7);border:1px solid var(--border);color:var(--text-mid);display:flex;align-items:center;gap:6px;}
 
-/* ═══════════════════════════════════════════════
-   ITINERARY LAYOUT
-═══════════════════════════════════════════════ */
-.itin-shell{display:flex;min-height:calc(100vh - 56px);align-items:flex-start;}
+/* MINI HERO */
+.mini-hero{padding:2rem 1.5rem 1.75rem;text-align:center;background:linear-gradient(150deg,#FEF0FA 0%,#F8DAFE 40%,#F0EEFF 100%);border-bottom:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:6px;}
+.mini-hero-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);display:flex;align-items:center;justify-content:center;gap:6px;}
+.mini-hero-title{font-family:'Playfair Display',serif;font-size:38px;font-weight:500;color:var(--pk-dark);line-height:1.1;display:flex;align-items:center;gap:12px;}
+.mini-hero-title em{color:var(--pk-dark);font-style:normal;}
+.mini-hero-emoji{font-size:26px;font-style:normal;}
 
-/* Sidebar */
-.itin-side{
-  width:200px;flex-shrink:0;
-  position:sticky;top:56px;height:calc(100vh - 56px);
-  overflow-y:auto;scrollbar-width:none;
-  padding:1.25rem 0;
-  border-right:1px solid var(--border);
-  background:var(--warm);
-}
-.itin-side::-webkit-scrollbar{display:none;}
-.side-section{
-  font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text-faint);padding:.75rem 1rem .3rem;
-}
-.side-link{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 1rem;font-size:13px;color:var(--text-mid);
-  border-left:3px solid transparent;transition:all .12s;
-  text-decoration:none;cursor:pointer;
-}
-.side-link:hover{background:var(--plum-pale);color:var(--plum-dark);}
-.side-link.active{border-left-color:var(--pk);color:var(--pk-dark);background:var(--pk-faint);font-weight:500;}
-.side-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.side-dot.cn{background:var(--rose);}
-.side-dot.jp{background:var(--sage);}
-.side-divider{height:1px;background:var(--border);margin:.75rem 1rem;}
-.side-filter-label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);padding:.75rem 1rem .3rem;}
-.side-chips{display:flex;flex-direction:column;gap:4px;padding:0 .75rem;}
-.side-chip{
-  font-size:12px;padding:5px 12px;border-radius:var(--r-pill);
-  border:1px solid var(--border);color:var(--text-mid);
-  text-align:left;transition:all .12s;
-}
-.side-chip:hover{background:var(--plum-pale);border-color:var(--plum);color:var(--plum-dark);}
+/* TAB INNER */
+.tab-inner{padding:1.5rem 2rem;max-width:960px;margin:0 auto;width:100%;}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin:1.25rem 0 .4rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);}
+
+/* ITINERARY */
+.itin-shell{display:flex;align-items:flex-start;}
+.itin-side{width:220px;flex-shrink:0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:1.25rem 1rem;border-right:1px solid var(--border);background:var(--warm);}
+.side-section{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--text-soft);padding:.5rem .5rem .25rem;margin-top:.25rem;}
+.side-link{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:var(--r-sm);font-size:13px;color:var(--text-mid);transition:all .15s;cursor:pointer;border:none;background:none;width:100%;text-align:left;}
+.side-link:hover{background:var(--pk-pale);color:var(--pk-dark);}
+.side-link.active{background:var(--pk-pale);color:var(--pk-dark);font-weight:600;border-left:2px solid var(--pk);}
+.side-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.side-dot.cn{background:var(--pu);}
+.side-dot.jp{background:var(--sage-deep);}
+.side-divider{height:1px;background:var(--border);margin:.5rem .5rem;}
+.side-filter-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--text-soft);padding:.5rem .5rem .25rem;}
+.side-chips{display:flex;flex-direction:column;gap:3px;}
+.side-chip{font-size:11.5px;padding:5px 10px;border-radius:var(--r-pill);border:1px solid var(--border);background:none;color:var(--text-mid);text-align:left;transition:all .15s;}
+.side-chip:hover{background:var(--pk-pale);border-color:var(--pk-mid);}
 .side-chip.active{background:var(--pk-mid);border-color:var(--pk-deep);color:var(--pk-dark);font-weight:500;}
-
-/* Main area */
-.itin-main{flex:1;min-width:0;padding:1.5rem 1.5rem 4rem;}
-
-/* Search + map toggle bar */
-.itin-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap;}
-.search-box{
-  flex:1;min-width:180px;position:relative;
-}
-.search-box input{
-  width:100%;padding:9px 14px 9px 38px;
-  border:1px solid var(--border);border-radius:var(--r-pill);
-  background:var(--warm);font-family:inherit;font-size:13px;color:var(--text);
-  transition:border .15s,box-shadow .15s;outline:none;
-}
-.search-box input:focus{border-color:var(--plum);box-shadow:0 0 0 3px rgba(196,160,192,.18);}
-.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-soft);font-size:16px;pointer-events:none;}
-.view-toggle{display:flex;gap:4px;flex-shrink:0;}
-.view-btn{
-  padding:7px 16px;border-radius:var(--r-pill);
-  border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--text-mid);
-  transition:all .15s;
-}
-.view-btn.active,.view-btn:hover{background:var(--pk-dark);border-color:var(--pk-dark);color:#fff;}
-
-/* Map view */
+.itin-main{flex:1;min-width:0;padding:1.25rem 1.5rem 3rem;}
+.itin-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem;}
+.search-box{flex:1;display:flex;align-items:center;gap:8px;background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:0 14px;box-shadow:var(--shadow-sm);}
+.search-box:focus-within{border-color:var(--pk);}
+.search-icon{font-size:14px;color:var(--text-soft);}
+.search-box input{flex:1;border:none;outline:none;font-size:13px;color:var(--text);background:none;padding:9px 0;font-family:inherit;}
+.view-toggle{display:flex;background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:3px;box-shadow:var(--shadow-sm);}
+.view-btn{font-size:12px;font-weight:500;padding:5px 14px;border:none;border-radius:var(--r-pill);background:none;color:var(--text-mid);transition:all .15s;}
+.view-btn.active{background:var(--pk-dark);border-color:var(--pk-dark);color:#fff;}
 #itin-map-view{display:none;}
-#itin-map-view.active{display:block;}
-#itin-map{height:calc(100vh - 160px);border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
+#itin-map{width:100%;height:420px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
 
-/* ═══════════════════════════════════════════════
-   CITY SECTIONS
-═══════════════════════════════════════════════ */
-.city-sec{margin-bottom:2.5rem;}
-.city-hdr{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:1rem;
-  padding-bottom:.75rem;
-  border-bottom:1.5px solid var(--border);
-}
-.city-flag{
-  font-size:10px;font-weight:600;letter-spacing:.06em;
-  padding:3px 8px;border-radius:4px;
-  display:inline-flex;align-items:center;
-}
+/* CITY HEADERS */
+.city-sec{margin-bottom:2rem;}
+.city-hdr{display:flex;align-items:center;gap:10px;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1.5px solid var(--border);}
+.city-flag{font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;display:inline-flex;align-items:center;}
 .city-flag.cn-flag{background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);}
-.city-flag.jp-flag{background:#EEFDED;color:#1E6030;border:1px solid #C8F5C4;}
-.city-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;color:var(--pk-dark);}
-.city-flag.cn-flag ~ .city-name{color:var(--pu-dark);}
-.city-dates{
-  margin-left:auto;font-size:11px;color:var(--text-soft);
-  background:var(--plum-pale);border:1px solid var(--plum-mid);
-  border-radius:var(--r-pill);padding:3px 12px;
-}
+.city-flag.jp-flag{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
+.city-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:500;color:var(--pk-dark);flex:1;}
+.city-flag.cn-flag~.city-name{color:var(--pu-dark);}
+.city-dates{font-size:11px;padding:3px 10px;border-radius:var(--r-pill);background:var(--pk-pale);border:1px solid var(--border);color:var(--text-soft);}
 
-/* ═══════════════════════════════════════════════
-   DAY CARDS
-═══════════════════════════════════════════════ */
-.day-card{
-  background:var(--warm);border:1px solid var(--border);
-  border-radius:var(--r);margin-bottom:.75rem;overflow:hidden;
-  box-shadow:var(--shadow-sm);transition:box-shadow .2s;
-}
+/* DAY CARDS */
+.day-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--r);margin-bottom:.6rem;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .15s;}
 .day-card:hover{box-shadow:var(--shadow-md);}
-.day-card.open{box-shadow:var(--shadow-md);}
-
-.day-header{
-  display:flex;align-items:center;gap:12px;
-  width:100%;padding:14px 16px;text-align:left;
-  transition:background .12s;min-height:44px;
-}
-.day-header:hover{background:var(--plum-faint);}
-.day-card.open .day-header{background:var(--plum-faint);}
-
-.day-accent{width:4px;height:44px;border-radius:4px;flex-shrink:0;}
-.accent-cn{background:linear-gradient(to bottom,var(--pink),var(--pink-deep));}
-.accent-jp{background:linear-gradient(to bottom,var(--sage),#3D8C60);}
+.day-header{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px 14px 0;text-align:left;border:none;background:none;transition:background .12s;min-height:44px;cursor:pointer;}
+.day-header:hover{background:var(--pk-faint);}
+.day-card.open .day-header{background:var(--pk-faint);}
+.day-accent{width:4px;height:40px;border-radius:0 3px 3px 0;flex-shrink:0;}
+.accent-cn{background:linear-gradient(to bottom,var(--pu),var(--pu-deep));}
+.accent-jp{background:linear-gradient(to bottom,var(--sage),var(--sage-deep));}
 .accent-transit{background:linear-gradient(to bottom,var(--pk),var(--pk-deep));}
-
-.day-date{min-width:52px;text-align:center;}
-.day-dow{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);}
-.day-num{font-family:'Playfair Display',serif;font-size:26px;line-height:1;color:var(--plum-dark);}
-.day-mon{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);}
-
+.day-date{display:flex;flex-direction:column;align-items:center;min-width:44px;text-align:center;flex-shrink:0;}
+.day-dow{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);font-weight:600;}
+.day-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--pk-dark);line-height:1;}
+.day-mon{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);font-weight:600;}
 .day-meta{flex:1;min-width:0;}
-.day-title{font-size:14px;font-weight:500;color:var(--text);}
-.day-sub{font-size:12px;color:var(--text-soft);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.day-previews{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
-.prev-chip{
-  font-size:10px;padding:2px 9px;border-radius:var(--r-pill);
-  background:var(--plum-pale);color:var(--plum-deep);border:1px solid var(--plum-mid);
-}
-
-.day-chevron{color:var(--text-soft);transition:transform .22s;flex-shrink:0;}
+.day-title{font-size:13.5px;font-weight:600;color:var(--text);}
+.day-sub{font-size:11.5px;color:var(--text-soft);margin-top:1px;}
+.day-previews{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
+.prev-chip{font-size:10px;padding:2px 8px;border-radius:var(--r-pill);font-weight:500;background:var(--pu-pale);color:var(--pu-deep);border:1px solid var(--pu-mid);}
+[data-country="jp"] .prev-chip{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
+.day-chevron{flex-shrink:0;color:var(--text-soft);padding-right:12px;transition:transform .2s;}
 .day-card.open .day-chevron{transform:rotate(180deg);}
-
 .day-body{display:none;border-top:1px solid var(--border);}
 .day-card.open .day-body{display:block;}
+.day-accom{font-size:11.5px;color:var(--text-soft);background:var(--pk-faint);padding:7px 16px;border-top:1px solid var(--border);}
 
-/* ═══════════════════════════════════════════════
-   ACTIVITIES
-═══════════════════════════════════════════════ */
-.act{
-  display:grid;
-  grid-template-columns:72px 1fr;
-  border-bottom:1px solid var(--border);
-  min-width:0;
-}
+/* ACTIVITIES */
+.act{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--border);min-width:0;}
 .act:last-of-type{border-bottom:none;}
+.act-time{padding:14px 8px 14px 16px;display:flex;flex-direction:column;align-items:flex-end;padding-top:16px;}
+.time-pill{font-size:10.5px;font-weight:600;color:var(--pk-dark);background:var(--pk-pale);border:1px solid var(--pk-mid);padding:2px 8px;border-radius:var(--r-pill);white-space:nowrap;}
+.act-body{padding:12px 14px;display:flex;gap:10px;min-width:0;}
+.act-body-text{flex:1;min-width:0;}
+.act-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.act-loc{font-size:11.5px;color:var(--pk-deep);margin-bottom:3px;}
+.act-notes{font-size:12.5px;color:var(--text-mid);line-height:1.55;margin-bottom:5px;}
+.act-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;}
+.tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:var(--r-pill);border:1px solid;}
+.tag-food{background:var(--pk-pale);color:var(--pk-dark);border-color:var(--pk-mid);}
+.tag-sight{background:var(--pu-pale);color:var(--pu-dark);border-color:var(--pu-mid);}
+.tag-nature{background:var(--sage-pale);color:var(--sage-deep);border-color:var(--sage-mid);}
+.tag-transport,.tag-transit{background:var(--lav-pale);color:#5040A0;border-color:var(--lavender);}
+.tag-night{background:var(--pu-faint);color:var(--pu-dark);border-color:var(--pu-mid);}
+.tag-accom{background:var(--pk-pale);color:var(--pk-dark);border-color:var(--pk-mid);}
+.tag-leisure{background:var(--lav-pale);color:#5040A0;border-color:var(--lavender);}
+.tag-activity{background:var(--sage-pale);color:var(--sage-deep);border-color:var(--sage-mid);}
+.tag-shop,.tag-shopping{background:var(--pk-pale);color:var(--pk-dark);border-color:var(--pk-mid);}
+.tag-market{background:var(--pk-pale);color:var(--pk-dark);border-color:var(--pk-mid);}
+.act-info{margin-top:5px;display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.act-info-item{font-size:11px;}
+.info-label{color:var(--text-soft);font-size:10px;text-transform:uppercase;letter-spacing:.06em;}
+.info-val{color:var(--text-mid);}
+.act-tip{margin-top:5px;font-size:11.5px;color:var(--text-mid);background:var(--pk-faint);border-left:3px solid var(--pk-mid);padding:5px 9px;border-radius:var(--r-sm);}
+.price-aud{display:inline-block;font-size:11px;font-weight:500;background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);border-radius:var(--r-pill);padding:1px 7px;margin-left:5px;}
+.act-photo{width:110px;height:82px;object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;background:var(--pk-pale);order:2;}
+.places-photo{background:linear-gradient(90deg,var(--pk-pale) 25%,var(--pk-mid) 50%,var(--pk-pale) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-.act-time{
-  padding:18px 12px;
-  background:var(--plum-faint);
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:flex-start;padding-top:20px;
-}
-.time-pill{
-  font-size:11px;font-weight:500;color:var(--plum-deep);
-  background:var(--warm);border:1px solid var(--plum-mid);
-  border-radius:var(--r-pill);padding:3px 8px;text-align:center;
-  white-space:nowrap;line-height:1.3;
-}
+/* SUGGESTIONS */
+.suggestions-panel{margin-top:1.5rem;background:var(--warm);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);}
+.suggestions-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--pk-faint);border-bottom:1px solid var(--border);}
+.suggestions-header h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:500;color:var(--pk-dark);}
+.suggestions-city-select{font-size:12px;border:1px solid var(--border);border-radius:var(--r-pill);padding:3px 8px;background:var(--warm);color:var(--text);font-family:inherit;outline:none;}
+.suggestions-type-row{display:flex;gap:5px;padding:8px 12px;flex-wrap:wrap;border-bottom:1px solid var(--border);}
+.sug-type-btn{font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--r-pill);border:1px solid var(--border);background:none;color:var(--text-mid);transition:all .15s;}
+.sug-type-btn:hover{background:var(--pk-pale);}
+.sug-type-btn.active{background:var(--pk-dark);color:#fff;border-color:var(--pk-dark);}
+.suggestions-list{padding:6px 4px;max-height:280px;overflow-y:auto;}
+.sug-loading{padding:16px;text-align:center;font-size:13px;color:var(--text-soft);}
+.sug-item{padding:8px 10px;border-radius:var(--r-sm);transition:background .12s;}
+.sug-item:hover{background:var(--pk-faint);}
+.sug-name{font-size:13px;font-weight:600;color:var(--text);}
+.sug-meta{font-size:11px;color:var(--text-soft);margin-top:1px;}
+.no-results{text-align:center;padding:2rem;font-size:13px;color:var(--text-soft);font-style:italic;}
 
-.act-body{
-  padding:14px 16px;
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-}
-.act-body-text{flex:1;min-width:0;overflow:hidden;}
-.act-body-text{min-width:0;}
-.act-photo{
-  width:110px;height:82px;object-fit:cover;
-  border-radius:var(--r-sm);flex-shrink:0;
-  background:var(--pk-pale);order:2;
-}
-
-.act-name{
-  font-family:'Playfair Display',serif;
-  font-size:15px;font-weight:500;color:var(--text);
-  margin-bottom:3px;
-}
-.act-loc{
-  font-size:12px;color:var(--text-soft);margin-bottom:8px;
-  display:flex;align-items:center;gap:4px;
-}
-.act-loc::before{content:"⌖";color:var(--plum);}
-.act-notes{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:10px;}
-.act-tags{display:flex;flex-wrap:wrap;gap:5px;}
-.tag{font-size:11px;padding:3px 10px;border-radius:var(--r-pill);font-weight:500;}
-.tag-food{background:#FEF3E2;color:#A0520A;border:1px solid #F5D7A0;}
-.tag-sight{background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);}
-.tag-transport{background:var(--rose-pale);color:var(--rose-deep);border:1px solid var(--rose-mid);}
-.tag-nature{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
-.tag-night{background:#1A0E2A;color:#D4C5E8;border:1px solid #3D2860;}
-.tag-accom{background:var(--plum-pale);color:var(--plum-dark);border:1px solid var(--plum-mid);}
-
-.day-accom{
-  background:var(--plum-faint);border-top:1px solid var(--plum-mid);
-  padding:10px 18px;font-size:12px;color:var(--plum-dark);
-  display:flex;align-items:center;gap:6px;
-}
-
-.no-results{text-align:center;padding:3rem 1rem;color:var(--text-soft);}
-
-/* ═══════════════════════════════════════════════
-   FLIGHTS + TRANSPORT + STAYS (existing tabs)
-═══════════════════════════════════════════════ */
-
-
-.tab-heading-wrap{
-  padding:1.75rem 1.5rem .25rem;
-  border-bottom:1px solid var(--border);
-  margin-bottom:.25rem;
-}
-.tab-heading-eyebrow{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text-soft);margin-bottom:.3rem;display:flex;align-items:center;gap:6px;
-}
-.tab-heading-eyebrow svg{flex-shrink:0;}
-.tab-heading-main{
-  font-family:'Playfair Display',serif;
-  font-size:30px;font-weight:500;color:var(--pk-dark);
-  line-height:1.1;
-}
-
-.tab-heading-OLD{
-  display:flex;align-items:center;gap:10px;
-  padding:2rem 1.5rem 0;
-  font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:500;color:var(--pk-dark);
-  margin-bottom:-.25rem;
-}
-.tab-heading-emoji{font-size:24px;}
-.tab-inner{padding:1.5rem 2rem;max-width:960px;margin:0 auto;width:100%;}
-
-.section-label{
-  font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text-soft);margin:1.5rem 0 .6rem;
-  display:flex;align-items:center;gap:10px;
-}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-.flight-card,.train-card,.accom-card,.todo-group{
-  background:var(--warm);border:1px solid var(--border);
-  border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:.75rem;
-  box-shadow:var(--shadow-sm);overflow:hidden;word-break:break-word;
-}
-.flight-route{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-.iata{font-family:'Playfair Display',serif;font-size:24px;color:var(--plum-dark);}
-.flight-line{flex:1;height:1px;background:var(--border-strong);position:relative;}
-.flight-line::after{content:"✈";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--plum);}
+/* FLIGHT/TRAIN/ACCOM CARDS */
+.flight-card,.train-card,.accom-card,.todo-group{background:var(--warm);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:.75rem;box-shadow:var(--shadow-sm);overflow:hidden;word-break:break-word;transition:box-shadow .15s;}
+.flight-card:hover,.train-card:hover,.accom-card:hover{box-shadow:var(--shadow-md);}
+.flight-route{display:flex;align-items:center;margin-bottom:1rem;}
+.iata{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--pk-dark);}
+.flight-line{flex:1;display:flex;align-items:center;padding:0 10px;}
+.flight-line-bar{flex:1;height:1px;background:var(--pk-mid);}
+.flight-plane{font-size:14px;color:var(--pk);margin:0 4px;}
 .flight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:8px;overflow:hidden;}
-.flight-item{font-size:12px;color:var(--text-soft);}
-.flight-item strong{display:block;font-size:13px;color:var(--text);font-weight:500;}
-.layover-note{background:var(--lav-pale);border:1px solid var(--lavender);border-radius:var(--r-sm);padding:7px 12px;font-size:12px;color:#5040A0;margin-top:8px;}
-.pill-done{font-size:11px;padding:3px 12px;border-radius:var(--r-pill);background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);font-weight:500;}
-.train-route{font-size:14px;font-weight:500;color:var(--text);margin-bottom:8px;}
-.train-route-arrow{color:var(--rose);margin:0 4px;}
-.train-meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px;}
-.train-meta-item{font-size:12px;color:var(--text-soft);}
-.train-meta-item strong{display:block;font-size:12px;color:var(--text);}
-.accom-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px;}
-.accom-dot.china{background:var(--rose);}
-.accom-dot.japan{background:var(--sage);}
-.accom-city{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-soft);}
-.accom-name{font-size:14px;font-weight:500;color:var(--text);margin:2px 0;}
-.accom-meta,.accom-dates{font-size:12px;color:var(--text-mid);}
-.accom-dates{color:var(--text-soft);margin-top:4px;}
-.todo-group-header{background:var(--plum-pale);padding:7px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--plum-dark);border-bottom:1px solid var(--border);}
-.todo-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;}
-.todo-row:last-child{border-bottom:none;}
-.todo-check{font-size:14px;flex-shrink:0;margin-top:1px;}
-.todo-check.done{color:var(--sage-deep);}
-.todo-check.open{color:var(--plum);}
-.todo-check.urgent{color:#C0392B;}
-.todo-text{flex:1;color:var(--text);}
-.todo-text.done{color:var(--text-soft);text-decoration:line-through;}
-.todo-sub{font-size:11px;color:var(--text-soft);margin-top:2px;}
-.todo-who{font-size:11px;color:var(--text-soft);white-space:nowrap;}
-.urgency-badge{font-size:10px;font-weight:500;padding:2px 9px;border-radius:var(--r-pill);}
-.urg-urgent{background:#FDECEA;color:#C0392B;border:1px solid #F5B7B1;}
-.urg-high{background:var(--rose-pale);color:var(--rose-deep);border:1px solid var(--rose-mid);}
-.urg-done{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
-.alert{background:#FEF9EC;border:1px solid #F0D890;border-radius:var(--r-sm);padding:12px 16px;font-size:13px;color:#6B500A;margin-bottom:1rem;display:flex;gap:10px;}
+.flight-item strong{display:block;font-size:13px;font-weight:600;color:var(--text);}
+.flight-item span{font-size:11px;color:var(--pk);}
+.flight-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--r-pill);margin-top:4px;}
+.badge-confirmed{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
+.badge-transit{background:var(--lav-pale);color:#5040A0;border:1px solid var(--lavender);}
+.layover-note{font-size:12px;color:var(--text-mid);background:var(--pk-faint);border-radius:var(--r-sm);padding:6px 10px;margin-top:6px;}
+.train-route{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.75rem;display:flex;align-items:center;gap:8px;}
+.train-meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;}
+.train-meta-item strong{display:block;font-size:13px;font-weight:600;color:var(--text);}
+.train-meta-item span{font-size:11px;color:var(--pk);}
+.accom-card{display:flex;gap:10px;flex-wrap:wrap;}
+.accom-icon{font-size:1.5rem;flex-shrink:0;}
+.accom-body{flex:1;min-width:0;}
+.accom-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.accom-addr{font-size:12px;color:var(--text-soft);margin-bottom:4px;}
+.accom-meta{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--text-mid);}
+.accom-dates{font-size:11px;font-weight:600;padding:2px 9px;border-radius:var(--r-pill);background:var(--pk-pale);color:var(--pk-dark);border:1px solid var(--pk-mid);}
+.stays-map-wrap{width:100%;height:300px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);margin-bottom:1.25rem;}
 
-/* responsive */
-@media(max-width:680px){
-  .itin-side{display:none;}
-  .act{grid-template-columns:70px 1fr;}
-  .topnav{padding:0 1rem;}
-  .itin-main,.tab-inner{padding:1rem;}
-}
-
-/* ── WEATHER ── */
-.weather-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
-.wx-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;box-shadow:var(--shadow-sm);}
-.wx-city{font-family:'Playfair Display',serif;font-size:16px;font-weight:500;color:var(--purple-dark);margin-bottom:2px;}
-.wx-dates{font-size:11px;color:var(--text-soft);margin-bottom:.75rem;}
-.wx-temps{display:flex;align-items:baseline;gap:6px;margin-bottom:.5rem;}
-.wx-hi{font-size:28px;font-weight:500;color:var(--pink-dark);}
-.wx-lo{font-size:18px;color:var(--text-soft);}
-.wx-desc{font-size:13px;color:var(--text-mid);margin-bottom:.75rem;}
-.wx-tips{font-size:12px;color:var(--text-soft);line-height:1.5;}
-.wx-icon{font-size:32px;margin-bottom:.5rem;}
-.wx-what-to-wear{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-mid);}
-.wx-what-to-wear strong{color:var(--purple-dark);display:block;margin-bottom:2px;}
-
-/* ── AUD CONVERTER FLOATING ── */
-.aud-fab{
-  position:fixed;bottom:24px;right:24px;z-index:500;
-  background:var(--pk-dark);color:#fff;
-  border-radius:var(--r-pill);padding:10px 18px;
-  font-size:13px;font-weight:500;
-  box-shadow:var(--shadow-lg);cursor:pointer;
-  display:flex;align-items:center;gap:8px;
-  border:none;font-family:inherit;
-  transition:background .15s,transform .15s;
-}
-.aud-fab:hover{background:var(--pk-deep);transform:translateY(-2px);}
-.aud-panel{
-  position:fixed;bottom:72px;right:24px;z-index:500;
-  background:var(--warm);border:1px solid var(--border);
-  border-radius:var(--r);padding:1.25rem;width:280px;
-  box-shadow:var(--shadow-lg);display:none;
-}
-.aud-panel.open{display:block;}
-.aud-panel h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--pk-dark);margin-bottom:1rem;}
-.aud-row{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;}
-.aud-row label{font-size:12px;color:var(--text-soft);min-width:36px;}
-.aud-row input,.aud-row select{
-  flex:1;padding:6px 10px;border:1px solid var(--border);border-radius:var(--r-sm);
-  font-family:inherit;font-size:13px;color:var(--text);background:var(--cream);outline:none;
-}
-.aud-row input:focus,.aud-row select:focus{border-color:var(--purple);}
-.aud-result{background:var(--pk-pale);border-radius:var(--r-sm);padding:10px 12px;text-align:center;}
-.aud-result .aud-num{font-family:'Playfair Display',serif;font-size:22px;color:var(--purple-dark);}
-.aud-result .aud-rate{font-size:11px;color:var(--text-soft);margin-top:2px;}
-.aud-close{position:absolute;top:10px;right:12px;font-size:18px;color:var(--text-soft);cursor:pointer;background:none;border:none;}
-
-/* ── ACTIVITY INFO PANELS ── */
-.act-info{
-  margin-top:10px;border-top:1px solid var(--border);padding-top:10px;
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-}
-.act-info-item{font-size:12px;}
-.act-info-item .info-label{color:var(--text-soft);font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;}
-.act-info-item .info-val{color:var(--text-mid);}
-.act-info-item .info-val a{color:var(--purple-deep);text-decoration:none;}
-.act-info-item .info-val a:hover{text-decoration:underline;}
-.act-tip{margin-top:8px;grid-column:1/-1;background:var(--pink-pale);border-left:3px solid var(--pk);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:6px 10px;font-size:12px;color:var(--pk-dark);}
-.act-tip::before{content:'✦ ';font-size:10px;}
-.price-aud{display:inline-block;font-size:11px;font-weight:500;background:var(--pk-pale);color:var(--purple-dark);border:1px solid var(--purple-mid);border-radius:var(--r-pill);padding:2px 8px;margin-left:6px;}
-
-
-/* ── TICKABLE TODOS ── */
+/* TODO */
+.todo-group{padding:0;}
+.todo-group-header{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;background:var(--pk-faint);color:var(--text-soft);border-bottom:1px solid var(--border);}
 .todo-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;min-height:44px;-webkit-tap-highlight-color:transparent;}
 .todo-item:last-child{border-bottom:none;}
 .todo-item:hover{background:var(--pk-faint);}
-.todo-item.done-tick .todo-label{text-decoration:line-through;color:var(--text-soft);}
-.todo-item.done-tick .tick-box{background:var(--sage);border-color:var(--sage-deep);}
-.todo-item.done-tick .tick-box::after{content:"✓";color:#fff;font-size:10px;font-weight:bold;}
-.tick-box{
-  width:18px;height:18px;border-radius:4px;
-  border:2px solid var(--border-strong);flex-shrink:0;
-  margin-top:1px;display:flex;align-items:center;justify-content:center;
-  transition:all .15s;
-}
-.todo-label{flex:1;font-size:13px;color:var(--text);}
-.todo-label .todo-sub{font-size:11px;color:var(--text-soft);margin-top:2px;}
-.todo-badge{font-size:10px;font-weight:500;padding:2px 9px;border-radius:var(--r-pill);flex-shrink:0;}
-.badge-urgent{background:#FDECEA;color:#C0392B;border:1px solid #F5B7B1;}
-.badge-high{background:var(--pk-pale);color:var(--pk-dark);border:1px solid var(--pk-mid);}
-.badge-med{background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);}
-.badge-done{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-mid);}
+.tick-box{width:18px;height:18px;border-radius:4px;flex-shrink:0;border:2px solid var(--border-strong);margin-top:1px;transition:all .15s;display:flex;align-items:center;justify-content:center;}
+.todo-item.done .tick-box,.todo-item.done-tick .tick-box{background:var(--sage);border-color:var(--sage-deep);}
+.todo-item.done .tick-box::after,.todo-item.done-tick .tick-box::after{content:"✓";color:#fff;font-size:10px;font-weight:bold;}
+.todo-label{flex:1;font-size:13px;color:var(--text);line-height:1.5;}
+.todo-sub{font-size:11px;color:var(--text-soft);margin-top:2px;font-weight:400;}
+.todo-item.done .todo-label,.todo-item.done-tick .todo-label{text-decoration:line-through;color:var(--text-soft);}
+.todo-badge,.urgency-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:var(--r-pill);flex-shrink:0;margin-top:1px;text-transform:uppercase;letter-spacing:.03em;}
+.todo-who{font-size:10px;font-weight:600;color:var(--text-soft);background:var(--pk-pale);border:1px solid var(--border);border-radius:var(--r-pill);padding:2px 8px;flex-shrink:0;}
+.urg-urgent{background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);}
+.urg-high{background:var(--pk-pale);color:var(--pk-dark);border:1px solid var(--pk-mid);}
+.todo-check{font-size:11px;font-weight:700;width:18px;height:18px;border-radius:4px;border:2px solid var(--border-strong);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text-soft);background:var(--warm);}
+.todo-check.urgent{border-color:var(--pu);color:var(--pu-dark);background:var(--pu-faint);}
+.todo-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);min-height:44px;}
+.todo-row:last-child{border-bottom:none;}
+.todo-text{flex:1;font-size:13px;color:var(--text);line-height:1.5;}
+.todo-text .todo-sub{font-size:11px;color:var(--text-soft);margin-top:2px;}
 
+/* WEATHER */
+.weather-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;}
+.wx-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem;box-shadow:var(--shadow-sm);transition:box-shadow .15s;}
+.wx-card:hover{box-shadow:var(--shadow-md);}
+.wx-icon{font-size:1.75rem;margin-bottom:.4rem;}
+.wx-city{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--pk-dark);margin-bottom:2px;}
+.wx-dates{font-size:11px;color:var(--text-soft);margin-bottom:.5rem;}
+.wx-temps{display:flex;align-items:baseline;gap:4px;margin-bottom:.4rem;}
+.wx-hi{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:600;color:var(--pu-dark);}
+.wx-lo{font-size:14px;color:var(--text-soft);}
+.wx-desc{font-size:12.5px;color:var(--text-mid);margin-bottom:.4rem;line-height:1.5;}
+.wx-what-to-wear{font-size:11.5px;color:var(--text-mid);background:var(--pk-faint);border-radius:var(--r-sm);padding:7px 9px;}
+.wx-what-to-wear strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-soft);margin-bottom:2px;}
 
-.stays-map-wrap{height:320px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);margin-bottom:1.5rem;box-shadow:var(--shadow-sm);}
-#stays-map{width:100%;height:100%;}
-.suggestions-panel{background:var(--warm);border:1px solid var(--border);border-radius:var(--r);margin-top:1.5rem;overflow:hidden;box-shadow:var(--shadow-sm);}
-.suggestions-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--pk-pale);}
-.suggestions-header h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--pk-dark);}
-.suggestions-city-select{font-size:12px;padding:5px 10px;border:1px solid var(--border);border-radius:var(--r-pill);font-family:inherit;color:var(--text);background:var(--warm);outline:none;cursor:pointer;}
-.suggestions-type-row{display:flex;gap:6px;padding:10px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.sug-type-btn{font-size:12px;padding:4px 12px;border-radius:var(--r-pill);border:1px solid var(--border);background:var(--warm);color:var(--text-mid);cursor:pointer;transition:all .12s;font-family:inherit;}
-.sug-type-btn.active,.sug-type-btn:hover{background:var(--pk-mid);border-color:var(--pk-deep);color:var(--pk-dark);}
-.suggestions-list{padding:12px 16px;min-height:120px;}
-.sug-loading{color:var(--text-soft);font-size:13px;padding:1rem 0;text-align:center;}
-.sug-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
-.sug-item:last-child{border-bottom:none;}
-.sug-rank{width:24px;height:24px;border-radius:50%;background:var(--pk-pale);color:var(--pk-dark);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.sug-info{flex:1;}
-.sug-name{font-size:14px;font-weight:500;color:var(--text);}
-.sug-meta{font-size:12px;color:var(--text-soft);margin-top:2px;}
-.sug-rating{font-size:12px;color:#E0A020;margin-top:2px;}
-.sug-open{font-size:11px;margin-top:2px;}
-.sug-open.open{color:var(--sage-deep);}
-.sug-open.closed{color:var(--pk-deep);}
+/* AUD */
+.aud-fab{position:fixed;bottom:20px;right:20px;z-index:200;background:var(--pk-dark);color:#fff;font-size:12.5px;font-weight:600;padding:9px 18px;border-radius:var(--r-pill);cursor:pointer;box-shadow:var(--shadow-md);border:none;display:flex;align-items:center;gap:6px;transition:background .15s;}
+.aud-fab:hover{background:var(--pu-dark);}
+.aud-panel{position:fixed;bottom:66px;right:20px;z-index:200;background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r);padding:1.25rem;width:240px;box-shadow:var(--shadow-lg);display:none;}
+.aud-close{float:right;background:none;border:none;font-size:18px;color:var(--text-soft);cursor:pointer;line-height:1;}
+.aud-panel h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;color:var(--pk-dark);margin-bottom:.75rem;}
+.aud-row{display:flex;align-items:center;gap:8px;margin-bottom:.5rem;}
+.aud-row label{font-size:12px;color:var(--text-soft);min-width:28px;font-weight:600;}
+.aud-row input,.aud-row select{flex:1;padding:6px 10px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;font-family:inherit;outline:none;transition:border-color .15s;}
+.aud-row input:focus,.aud-row select:focus{border-color:var(--pk);}
+.aud-result{margin-top:.75rem;padding:.75rem;background:var(--pk-faint);border-radius:var(--r-sm);text-align:center;}
+.aud-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:var(--pk-dark);}
+.aud-rate{font-size:10.5px;color:var(--text-soft);margin-top:2px;}
 
+/* ALERT */
+.alert{background:var(--pk-faint);border:1px solid var(--pk-mid);border-left:3px solid var(--pk);border-radius:var(--r-sm);padding:10px 14px;font-size:12.5px;color:var(--pk-dark);}
 
+/* SYNC */
+.sync-indicator{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:7px 16px;border-radius:var(--r-pill);font-size:12px;font-weight:600;box-shadow:var(--shadow-md);opacity:0;transition:opacity .3s;pointer-events:none;z-index:400;white-space:nowrap;}
+.sync-indicator.saving{background:var(--warm);border:1.5px solid var(--pk-mid);color:var(--pk-dark);opacity:1;}
+.sync-indicator.saved{background:var(--sage-pale);border:1.5px solid var(--sage-mid);color:var(--sage-deep);opacity:1;}
+.sync-indicator.error{background:#fff0f0;border:1.5px solid #f5c6cb;color:#c0392b;opacity:1;}
+.sync-indicator.hiding{opacity:0;}
+.sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.sync-indicator.saving .sync-dot{background:var(--pk);animation:sync-pulse 1s infinite;}
+.sync-indicator.saved .sync-dot{background:var(--sage-deep);}
+.sync-indicator.error .sync-dot{background:#c0392b;}
+@keyframes sync-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
 
-.mini-hero{
-  padding:2rem 1.5rem 1.75rem;
-  text-align:center;
-  background:linear-gradient(150deg,#FEF0FA 0%,#F8DAFE 40%,#F0EEFF 100%);
-  border-bottom:1px solid var(--border);
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-}
-.mini-hero-eyebrow{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text-soft);display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.mini-hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:38px;font-weight:500;color:var(--pk-dark);
-  line-height:1.1;display:flex;align-items:center;gap:12px;
-}
-.mini-hero-emoji{font-size:26px;font-style:normal;}
+/* EDITOR */
+.edit-fab{position:fixed;bottom:64px;right:20px;z-index:200;background:var(--warm);border:1.5px solid var(--pk-mid);color:var(--pk-dark);font-size:12px;font-weight:600;padding:8px 14px;border-radius:var(--r-pill);cursor:pointer;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:6px;transition:background .15s;}
+.edit-fab:hover{background:var(--pk-pale);}
+.editor-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(80,0,80,.35);backdrop-filter:blur(3px);}
+.editor-overlay.open{display:flex;align-items:flex-start;justify-content:flex-end;}
+.editor-drawer{width:420px;max-width:100vw;height:100vh;background:var(--warm);box-shadow:-4px 0 32px rgba(120,0,120,.15);display:flex;flex-direction:column;overflow:hidden;}
+.editor-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,var(--pu-pale),var(--pk-pale));flex-shrink:0;}
+.editor-head h2{font-family:'Playfair Display',serif;font-size:18px;color:var(--pk-dark);margin:0;}
+.editor-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-mid);padding:4px;}
+.editor-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;}
+.editor-tab{flex:1;padding:10px;font-size:12px;font-weight:600;text-align:center;cursor:pointer;color:var(--text-soft);border:none;background:none;border-bottom:2px solid transparent;transition:all .15s;}
+.editor-tab.active{color:var(--pk-dark);border-bottom-color:var(--pk);}
+.editor-body{flex:1;overflow-y:auto;padding:16px 20px;}
+.ed-day{border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:8px;overflow:hidden;}
+.ed-day-head{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;background:var(--pk-faint);font-size:13px;font-weight:600;color:var(--text);border:none;width:100%;text-align:left;}
+.ed-day-head:hover{background:var(--pk-pale);}
+.ed-date{font-size:11px;background:var(--pk-mid);color:var(--pk-dark);border-radius:var(--r-pill);padding:2px 8px;flex-shrink:0;}
+.ed-acts{display:none;border-top:1px solid var(--border);}.ed-acts.open{display:block;}
+.ed-act-row{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border);font-size:12px;}
+.ed-act-row:last-child{border-bottom:none;}
+.ed-act-time{color:var(--text-soft);flex-shrink:0;width:52px;font-size:11px;padding-top:2px;}
+.ed-act-name{flex:1;color:var(--text);}
+.ed-act-btns{display:flex;gap:4px;flex-shrink:0;}
+.ed-btn{font-size:10px;padding:3px 8px;border-radius:var(--r-pill);cursor:pointer;border:1px solid;font-weight:500;}
+.ed-btn-edit{background:var(--pu-pale);color:var(--pu-dark);border-color:var(--pu-mid);}
+.ed-btn-del{background:#fff0f0;color:#c0392b;border-color:#f5c6cb;}
+.ed-add-btn{width:100%;padding:8px;font-size:12px;font-weight:600;background:none;border:1.5px dashed var(--pk-mid);border-radius:var(--r-sm);color:var(--pk-deep);cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.ed-add-btn:hover{background:var(--pk-faint);}
+.ed-form-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.ed-form-head button{background:none;border:none;font-size:18px;cursor:pointer;color:var(--text-soft);}
+.ed-form h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--pk-dark);margin:0;}
+.ed-field{margin-bottom:12px;}
+.ed-field label{display:block;font-size:11px;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.ed-field input,.ed-field select,.ed-field textarea{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;color:var(--text);background:var(--warm);font-family:inherit;transition:border-color .15s;box-sizing:border-box;}
+.ed-field input:focus,.ed-field select:focus,.ed-field textarea:focus{outline:none;border-color:var(--pk);}
+.ed-field textarea{min-height:70px;resize:vertical;}
+.ed-save-btn{width:100%;padding:10px;font-size:13px;font-weight:700;background:var(--pk-dark);color:#fff;border:none;border-radius:var(--r-pill);cursor:pointer;margin-top:8px;}
+.ed-save-btn:hover{background:var(--pu-dark);}
+.ed-tag-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.ed-tag-opt{font-size:11px;padding:4px 10px;border-radius:var(--r-pill);border:1.5px solid var(--border);cursor:pointer;background:var(--warm);color:var(--text-mid);transition:all .12s;}
+.ed-tag-opt.sel{background:var(--pk-mid);border-color:var(--pk);color:var(--pk-dark);font-weight:600;}
+.ed-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--pk-dark);color:#fff;padding:8px 20px;border-radius:var(--r-pill);font-size:13px;font-weight:600;opacity:0;transition:opacity .3s;z-index:500;pointer-events:none;}
+.ed-toast.show{opacity:1;}
 
-
-.places-photo {
-  background: linear-gradient(90deg, var(--pk-pale) 25%, var(--pk-mid) 50%, var(--pk-pale) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-.places-photo[src=""] { background: var(--pk-pale); }
-@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
-
-/* ═══════════════════════════════════════════════
-   MOBILE RESPONSIVE  (≤ 680px)
-═══════════════════════════════════════════════ */
+/* MOBILE */
 @media(max-width:680px){
-
-  /* ── Nav ── */
-  .topnav{
-    padding:0 .75rem;
-    height:auto;
-    flex-wrap:nowrap;
-    gap:6px;
-  }
+  .topnav{padding:0 .75rem;height:auto;flex-wrap:nowrap;gap:6px;}
   .nav-brand{font-size:13px;gap:5px;flex-shrink:0;}
-  .nav-brand svg{width:22px;height:16px;}
-  .nav-tabs{
-    gap:1px;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    padding:8px 0;
-  }
-  .nav-tab{
-    font-size:11px;
-    padding:5px 10px;
-    white-space:nowrap;
-  }
-
-  /* ── Hero ── */
+  .nav-tab{font-size:11px;padding:5px 10px;}
   .hero{padding:1.5rem 1rem 1.25rem;}
-  .hero-title{font-size:clamp(26px,8vw,36px);}
-  .hero-sub{font-size:12px;}
-  .hero-chips{gap:6px;}
-  .hero-chip{font-size:11px;padding:4px 10px;}
-
-  /* ── Mini hero ── */
+  .hero-title{font-size:clamp(1.8rem,7vw,2.4rem);}
   .mini-hero{padding:1.25rem 1rem 1rem;}
   .mini-hero-title{font-size:26px;}
-
-  /* ── Itinerary layout ── */
   .itin-shell{flex-direction:column;}
   .itin-side{display:none;}
   .itin-main{padding:.75rem .75rem 3rem;}
   .itin-toolbar{gap:6px;margin-bottom:1rem;}
-  .search-box input{font-size:13px;padding:8px 12px 8px 34px;}
-  .view-toggle{gap:3px;}
-  .view-btn{font-size:12px;padding:6px 12px;}
-
-  /* ── City headers ── */
-  .city-hdr{gap:6px;padding-bottom:.5rem;}
-  .city-name{font-size:18px;}
-  .city-dates{font-size:10px;padding:2px 8px;}
-
-  /* ── Day cards ── */
-  .day-card{border-radius:var(--r-sm);margin-bottom:.5rem;}
-  .day-header{padding:10px 12px;gap:8px;}
-  .day-accent{width:3px;height:36px;}
-  .day-date{min-width:40px;}
-  .day-num{font-size:20px;}
-  .day-title{font-size:13px;}
-  .day-sub{font-size:11px;}
-  .day-previews{gap:3px;margin-top:4px;}
-  .prev-chip{font-size:9px;padding:2px 6px;}
-  .day-chevron svg{width:13px;height:13px;}
-
-  /* ── Activities ── */
   .act{grid-template-columns:58px 1fr;}
-  .act-time{padding:12px 6px;padding-top:14px;}
-  .time-pill{font-size:10px;padding:2px 5px;}
-  .act-body{padding:10px 10px;gap:8px;}
-  .act-name{font-size:14px;}
-  .act-loc{font-size:11px;}
-  .act-notes{font-size:12px;line-height:1.55;}
   .act-photo{width:72px;height:56px;border-radius:6px;}
-  .act-info{grid-template-columns:1fr;gap:4px;}
-  .act-tip{font-size:11px;}
-  .day-accom{font-size:11px;padding:8px 10px;}
-
-  /* ── Tab inner ── */
   .tab-inner{padding:1rem .75rem;}
-
-  /* ── Flight cards ── */
-  .flight-card,.train-card,.accom-card{padding:.75rem 1rem;}
-  .iata{font-size:18px;}
-  .flight-grid{grid-template-columns:1fr 1fr;gap:6px;}
-  .flight-item{font-size:11px;}
-  .flight-item strong{font-size:12px;}
-  .layover-note{font-size:11px;padding:5px 8px;}
-
-  /* ── Train cards ── */
-  .train-route{font-size:13px;}
-  .train-meta-grid{grid-template-columns:1fr 1fr;gap:4px;}
-  .train-meta-item{font-size:11px;}
-  .train-meta-item strong{font-size:11px;}
-
-  /* ── Stays ── */
-  .stays-map-wrap{height:220px;}
-  .accom-card{gap:8px;}
-  .accom-name{font-size:13px;}
-  .accom-meta,.accom-dates{font-size:11px;}
-
-  /* ── Todo ── */
-  .todo-item{padding:8px 10px;gap:8px;}
-  .todo-label{font-size:12px;}
-  .todo-badge{font-size:9px;padding:2px 6px;}
-  .todo-group-header{font-size:10px;padding:6px 10px;}
-
-  /* ── Weather ── */
+  .flight-grid{grid-template-columns:1fr 1fr;}
   .weather-grid{grid-template-columns:1fr!important;}
-  .wx-card{padding:1rem;}
-  .wx-hi{font-size:22px;}
-  .wx-city{font-size:14px;}
-
-  /* ── Suggestions ── */
-  .suggestions-panel{margin-top:1rem;}
-  .suggestions-type-row{gap:4px;padding:8px 10px;}
-  .sug-type-btn{font-size:11px;padding:3px 8px;}
-  .suggestions-header{padding:10px 12px;}
-  .suggestions-header h3{font-size:14px;}
-  .suggestions-city-select{font-size:12px;padding:4px 8px;}
-  .sug-item{gap:8px;padding:8px 0;}
-  .sug-name{font-size:13px;}
-  .sug-meta{font-size:11px;}
-
-  /* ── AUD fab ── */
-  .aud-fab{bottom:16px;right:16px;padding:8px 14px;font-size:12px;}
-  .aud-panel{right:16px;bottom:60px;width:calc(100vw - 32px);max-width:300px;}
-
-  /* ── Section labels ── */
-  .section-label{font-size:10px;margin:1rem 0 .4rem;}
+  .editor-drawer{width:100vw;}
+  .edit-fab{bottom:68px;right:12px;}
+  .aud-fab{bottom:16px;right:16px;}
+  .aud-panel{right:16px;bottom:60px;width:calc(100vw - 32px);}
 }
-
-/* ── Very small phones (≤ 380px) ── */
 @media(max-width:380px){
   .nav-tab{font-size:10px;padding:4px 8px;}
-  .hero-title{font-size:24px;}
-  .day-num{font-size:18px;}
   .act{grid-template-columns:50px 1fr;}
   .act-photo{width:60px;height:48px;}
 }
-
 </style>
 </head>
 <body>
 
 <nav class="topnav">
-  <div class="nav-brand"><svg width="32" height="24" viewBox="0 0 48 36" fill="none" aria-hidden="true">
-      <path d="M24 18 C20 14, 8 10, 6 14 C4 18, 10 22, 24 18Z" fill="#F4779A"/>
-      <path d="M24 18 C20 22, 8 26, 6 22 C4 18, 10 14, 24 18Z" fill="#F9A8C0"/>
-      <path d="M24 18 C28 14, 40 10, 42 14 C44 18, 38 22, 24 18Z" fill="#F4779A"/>
-      <path d="M24 18 C28 22, 40 26, 42 22 C44 18, 38 14, 24 18Z" fill="#F9A8C0"/>
-      <path d="M24 18 C20 22, 14 30, 10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <path d="M24 18 C28 22, 34 30, 38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/>
-      <ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/>
-    </svg> Clarissa's Trip</div>
+  <div class="nav-brand"><svg width="26" height="20" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> Clarissa's Trip</div>
   <div class="nav-tabs">
     <button class="nav-tab active" onclick="showTab('itinerary',this)">Itinerary</button>
     <button class="nav-tab" onclick="showTab('flights',this)">Flights</button>
@@ -700,16 +359,17 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
     <button class="nav-tab" onclick="showTab('weather',this)">Weather</button>
   </div>
 </nav>
+
 <div id="itinerary" class="tab-panel active">
-<div class="hero">
-  <div class="hero-eyebrow">15 October &#8211; 2 November 2026</div>
-  <h1 class="hero-title">China &amp; <em>Japan</em></h1>
-  <div class="hero-sub">Guangzhou &middot; Yangshuo &middot; Chongqing &middot; Osaka &middot; Tokyo</div>
-  <div class="hero-chips">
-    <span class="hero-chip">17 nights</span>
-    <span class="hero-chip"><span style="font-size:10px;font-weight:600;background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);padding:2px 6px;border-radius:4px;">CN</span> China &rarr; <span style="font-size:10px;font-weight:600;background:#EEFDED;color:#1E6030;border:1px solid #C8F5C4;padding:2px 6px;border-radius:4px;">JP</span> Japan</span>
+  <div class="hero">
+    <div class="hero-eyebrow">15 October &#8211; 2 November 2026</div>
+    <h1 class="hero-title">China &amp; <em>Japan</em></h1>
+    <div class="hero-sub">Guangzhou &middot; Yangshuo &middot; Chongqing &middot; Osaka &middot; Tokyo</div>
+    <div class="hero-chips">
+      <span class="hero-chip">17 nights</span>
+      <span class="hero-chip"><span class="city-flag cn-flag">CN</span> China &rarr; <span class="city-flag jp-flag">JP</span> Japan</span>
+    </div>
   </div>
-</div>
   <div class="itin-shell">
     <aside class="itin-side">
       <div class="side-section">China</div>
@@ -744,7 +404,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
       </div>
       <div id="itin-map-view"><div id="itin-map"></div></div>
       <div id="itin-days-view">
-<section class="city-sec" id="guangzhou">
+        <section class="city-sec" id="guangzhou">
       <div class="city-hdr">
         <span class="city-flag cn-flag">CN</span>
         <h2 class="city-name">Guangzhou</h2>
@@ -2004,26 +1664,26 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 
   <div class="todo-group" style="margin-bottom:1rem;">
     <div class="todo-group-header">&#9888;&#65039; Urgent — do now</div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China visa — confirm valid for entry<div class="todo-sub">Check expiry and number of entries on your passport</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan visa / eTA — verify entry requirements<div class="todo-sub">Australian passports — check current rules before departure</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Travel insurance — both China + Japan (15 Oct – 2 Nov)<div class="todo-sub">Medical + cancellation cover</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Ghibli Museum tickets — Tokyo<div class="todo-sub">Releases 10th of each month · sells out in minutes · book via Lawson portal</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">GZ → Yangshuo + Yangshuo → Chongqing HSR<div class="todo-sub">Confirm Leo &amp; Warren have these locked in</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t0" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China visa — confirm valid for entry<div class="todo-sub">Check expiry and number of entries on your passport</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t1" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan visa / eTA — verify entry requirements<div class="todo-sub">Australian passports — check current rules before departure</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t2" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Travel insurance — both China + Japan (15 Oct – 2 Nov)<div class="todo-sub">Medical + cancellation cover</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t3" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Ghibli Museum tickets — Tokyo<div class="todo-sub">Releases 10th of each month · sells out in minutes · book via Lawson portal</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t4" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">GZ → Yangshuo + Yangshuo → Chongqing HSR<div class="todo-sub">Confirm Leo &amp; Warren have these locked in</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
   </div>
 
   <div class="todo-group" style="margin-bottom:1rem;">
     <div class="todo-group-header">&#128241; Before you fly</div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China SIM + VPN app<div class="todo-sub">Essential — WeChat, Maps, Alipay blocked without VPN</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan SIM card<div class="todo-sub">Buy at Osaka KIX airport or pre-order IIJmio / Mobal</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Wise card — load CNY + JPY<div class="todo-sub">Avoid ATM fees · set up before leaving Sydney</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">WeChat Pay / Alipay — link foreign card<div class="todo-sub">Required for almost all payments in China</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Notify bank of travel (15 Oct – 2 Nov)<div class="todo-sub">Avoid card being blocked abroad</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Offline maps — Amap (中国) + Google Maps (Japan)<div class="todo-sub">Works without data · essential in rural areas</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Suica / Pasmo IC card for Tokyo transit<div class="todo-sub">Get at KIX or Shinjuku · tap on/off all trains + convenience stores</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Submit passport to Tokyo Airbnb<div class="todo-sub">Conf HMYTFXJM2A · check if host requires ID</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Shibuya Sky — book timed entry online<div class="todo-sub">shibuyasky.jp · popular slots fill up weeks ahead</div></div><span class="todo-badge badge-high">High</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Photoshoot research<div class="todo-sub">Book photographer — Flytographer or Localgrapher in Yangshuo/Japan</div></div><span class="todo-badge badge-med">Medium</span></div>
-    <div class="todo-item" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Packing list — check Weather tab for city temps<div class="todo-sub">Layers for Japan (18°C evenings) · cotton for GZ (28°C+)</div></div><span class="todo-badge badge-med">Medium</span></div>
+    <div class="todo-item" data-tid="t5" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China SIM + VPN app<div class="todo-sub">Essential — WeChat, Maps, Alipay blocked without VPN</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t6" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan SIM card<div class="todo-sub">Buy at Osaka KIX airport or pre-order IIJmio / Mobal</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t7" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Wise card — load CNY + JPY<div class="todo-sub">Avoid ATM fees · set up before leaving Sydney</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t8" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">WeChat Pay / Alipay — link foreign card<div class="todo-sub">Required for almost all payments in China</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t9" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Notify bank of travel (15 Oct – 2 Nov)<div class="todo-sub">Avoid card being blocked abroad</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t10" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Offline maps — Amap (中国) + Google Maps (Japan)<div class="todo-sub">Works without data · essential in rural areas</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t11" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Suica / Pasmo IC card for Tokyo transit<div class="todo-sub">Get at KIX or Shinjuku · tap on/off all trains + convenience stores</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t12" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Submit passport to Tokyo Airbnb<div class="todo-sub">Conf HMYTFXJM2A · check if host requires ID</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t13" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Shibuya Sky — book timed entry online<div class="todo-sub">shibuyasky.jp · popular slots fill up weeks ahead</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t14" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Photoshoot research<div class="todo-sub">Book photographer — Flytographer or Localgrapher in Yangshuo/Japan</div></div><span class="todo-badge badge-med">Medium</span></div>
+    <div class="todo-item" data-tid="t15" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Packing list — check Weather tab for city temps<div class="todo-sub">Layers for Japan (18°C evenings) · cotton for GZ (28°C+)</div></div><span class="todo-badge badge-med">Medium</span></div>
   </div>
 
   <div class="todo-group" style="margin-bottom:1rem;">
@@ -2035,6 +1695,18 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
     <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">All accommodation — GZ, Yangshuo, Chongqing, Osaka, Tokyo</div><span class="todo-badge badge-done">Done</span></div>
     <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Yangshuo private driver + trains (Wulong day trip)</div><span class="todo-badge badge-done">Done</span></div>
   </div>
+
+  <div class="section-label" style="margin-top:1.5rem;">Add your own</div>
+  <div style="display:flex;gap:8px;margin-bottom:.5rem;">
+    <input type="text" id="todo-new-input" placeholder="e.g. Buy travel insurance"
+      style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:13px;font-family:inherit;"
+      onkeydown="if(event.key==='Enter')addTodoItem()">
+    <button onclick="addTodoItem()"
+      style="padding:8px 16px;background:var(--pk-dark);color:#fff;border:none;border-radius:var(--r-pill);font-size:13px;font-weight:600;cursor:pointer;">
+      Add
+    </button>
+  </div>
+  <div id="todo-custom-list"></div>
 
 </div>
 </div>
@@ -2329,10 +2001,34 @@ function showTab(id, btn) {
 }
 
 /* ── TODO ── */
-function tickTodo(el) {
-  const row = el.closest('.todo-row');
-  row.classList.toggle('done');
-  el.textContent = row.classList.contains('done') ? '✓' : (el.dataset.orig || '○');
+async function tickTodo(el) {
+  const item = el.closest ? el.closest('.todo-item') : el;
+  if (!item) return;
+  item.classList.toggle('done');
+  const tid = item.getAttribute('data-tid');
+  if (!tid) return;
+  // Save to shared store
+  const data = await edLoad();
+  if (!data.todo) data.todo = {};
+  if (item.classList.contains('done')) {
+    data.todo[tid] = true;
+  } else {
+    delete data.todo[tid];
+  }
+  await edSave(data);
+}
+
+async function todoLoadStates() {
+  const data = await edLoad();
+  const checked = data.todo || {};
+  document.querySelectorAll('.todo-item[data-tid]').forEach(item => {
+    const tid = item.getAttribute('data-tid');
+    if (checked[tid]) {
+      item.classList.add('done');
+    } else {
+      item.classList.remove('done');
+    }
+  });
 }
 
 /* ── AUD CONVERTER ── */
@@ -2447,9 +2143,1775 @@ window.addEventListener('scroll', () => {
     l.classList.toggle('active', l.getAttribute('href') === '#' + current));
 }, { passive: true });
 
+
+
+/* ── SYNC INDICATOR ── */
+let _syncTimer = null;
+function syncShow(state, msg) {
+  const el = document.getElementById('syncIndicator');
+  const msgEl = document.getElementById('syncMsg');
+  if (!el) return;
+  clearTimeout(_syncTimer);
+  el.className = 'sync-indicator ' + state;
+  msgEl.textContent = msg;
+  if (state === 'saved' || state === 'error') {
+    _syncTimer = setTimeout(() => {
+      el.classList.add('hiding');
+      setTimeout(() => el.className = 'sync-indicator', 400);
+    }, 2000);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   EDITOR LOGIC
+═══════════════════════════════════════════ */
+
+/* ── SHARED DATA STORE (JSONBin.io) ── */
+// HOW TO SET UP (one time, takes 2 minutes):
+// 1. Go to https://jsonbin.io and sign up free
+// 2. Create a new bin with content: {}
+// 3. Copy the Bin ID (looks like 64abc123...) → paste as JSONBIN_ID below
+// 4. Go to API Keys → create a key → paste as JSONBIN_KEY below
+// 5. Share the page — everyone reads your edits in real time!
+
+const JSONBIN_ID  = '6ac48f15ac6210605a17e616';   // ← paste your bin ID
+const JSONBIN_KEY = '$2a$10$jap//Zfk3ARQspjbx2cGVe0NS2UMYs/3eXQ3dKRMV4KVCF9Tdc6Z6';  // ← paste your API key
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+
+let _edCache = null;
+let _edEditing = null;
+
+async function edLoad() {
+  if (!JSONBIN_ID || JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    // Fallback to localStorage until configured
+    try { return JSON.parse(localStorage.getItem('clarissa_trip_edits') || '{}'); }
+    catch(e) { return {}; }
+  }
+  try {
+    const r = await fetch(JSONBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_KEY }
+    });
+    const j = await r.json();
+    _edCache = j.record || {};
+    return _edCache;
+  } catch(e) {
+    console.warn('JSONBin load failed, using cache', e);
+    return _edCache || {};
+  }
+}
+
+async function edSave(data) {
+  _edCache = data;
+  if (!JSONBIN_ID || JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    localStorage.setItem('clarissa_trip_edits', JSON.stringify(data));
+    syncShow('saved', '&#10003; Saved locally');
+    return;
+  }
+  syncShow('saving', 'Saving…');
+  try {
+    const r = await fetch(JSONBIN_URL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_KEY
+      },
+      body: JSON.stringify(data)
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    syncShow('saved', '&#10003; Saved for everyone');
+  } catch(e) {
+    console.warn('JSONBin save failed', e);
+    localStorage.setItem('clarissa_trip_edits', JSON.stringify(data));
+    syncShow('error', '&#9888; Saved locally only');
+  }
+}
+
+
+/* Show setup banner if not configured */
+function edCheckSetup() {
+  if (JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    const banner = document.getElementById('ed-setup-banner');
+    if (banner) banner.style.display = 'block';
+  }
+}
+/* -- Open / close -- */
+async function openEditor() {
+  document.getElementById('editorOverlay').classList.add('open');
+  edCheckSetup();
+  await edRenderDayList();
+  edPopulateDaySelect();
+}
+function closeEditor() {
+  document.getElementById('editorOverlay').classList.remove('open');
+}
+function closeEditorIfOverlay(e) {
+  if (e.target === document.getElementById('editorOverlay')) closeEditor();
+}
+
+/* -- Tab switching -- */
+function edSwitchTab(tab, btn) {
+  document.querySelectorAll('.editor-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('ed-browse').style.display    = tab === 'browse' ? '' : 'none';
+  document.getElementById('ed-form-panel').style.display = tab === 'browse' ? 'none' : '';
+  if (tab === 'add') {
+    _edEditing = null;
+    edResetForm();
+    document.getElementById('ed-form-title').textContent = 'Add Activity';
+    document.getElementById('ed-save-btn').textContent = 'Save Activity';
+  }
+}
+
+/* -- Day list rendering -- */
+async function edRenderDayList() {
+  const data = await edLoad();
+  const container = document.getElementById('ed-day-list');
+
+  // Get all day-cards from DOM
+  const dayCards = Array.from(document.querySelectorAll('.day-card'));
+  if (!dayCards.length) {
+    container.innerHTML = '<p style="color:var(--text-soft);font-size:13px;padding:8px 0;">No days found in itinerary.</p>';
+    return;
+  }
+
+  container.innerHTML = '';
+  dayCards.forEach((card, dayIdx) => {
+    const dayId = 'day_' + dayIdx;
+    const titleEl = card.querySelector('.day-title');
+    const dowEl   = card.querySelector('.day-dow');
+    const numEl   = card.querySelector('.day-num');
+    const monEl   = card.querySelector('.day-mon');
+    const title   = titleEl ? titleEl.textContent : 'Day ' + (dayIdx+1);
+    const dateStr = (dowEl ? dowEl.textContent+' ' : '') + (numEl ? numEl.textContent+' ' : '') + (monEl ? monEl.textContent : '');
+
+    const acts = Array.from(card.querySelectorAll('.act'));
+    const stored = data[dayId] || [];
+
+    const dayEl = document.createElement('div');
+    dayEl.className = 'ed-day';
+    dayEl.innerHTML = `
+      <button class="ed-day-head" onclick="edToggleDayActs(this)">
+        <span class="ed-date">${dateStr.trim()}</span>
+        <span style="flex:1;text-align:left;">${title}</span>
+        <span style="font-size:10px;color:var(--text-soft)">${acts.length + stored.length} acts ▾</span>
+      </button>
+      <div class="ed-acts" id="edacts-${dayIdx}">
+        ${acts.map((a, i) => {
+          const name = a.querySelector('.act-name') ? a.querySelector('.act-name').textContent : '(activity)';
+          const time = a.querySelector('.time-pill') ? a.querySelector('.time-pill').textContent : '';
+          return `<div class="ed-act-row">
+            <span class="ed-act-time">${time}</span>
+            <span class="ed-act-name">${name}</span>
+            <div class="ed-act-btns">
+              <button class="ed-btn ed-btn-edit" onclick="edEditBuiltIn(${dayIdx},${i})">Edit</button>
+            </div>
+          </div>`;
+        }).join('')}
+        ${stored.map((a, i) => `
+          <div class="ed-act-row" style="background:var(--pk-faint);" id="edstored-${dayIdx}-${i}">
+            <span class="ed-act-time">${a.time || ''}</span>
+            <span class="ed-act-name">&#10022; ${a.name}</span>
+            <div class="ed-act-btns">
+              <button class="ed-btn ed-btn-edit" onclick="edEditStored(${dayIdx},${i})">Edit</button>
+              <button class="ed-btn ed-btn-del" onclick="edDeleteStored(${dayIdx},${i})">Del</button>
+            </div>
+          </div>`).join('')}
+        <button class="ed-add-btn" onclick="edQuickAdd(${dayIdx})">+ Add activity to this day</button>
+      </div>`;
+    container.appendChild(dayEl);
+  });
+}
+
+function edToggleDayActs(btn) {
+  const acts = btn.nextElementSibling;
+  acts.classList.toggle('open');
+}
+
+/* -- Day select -- */
+function edPopulateDaySelect() {
+  const sel = document.getElementById('ed-day-select');
+  sel.innerHTML = '';
+  document.querySelectorAll('.day-card').forEach((card, i) => {
+    const dow = card.querySelector('.day-dow') ? card.querySelector('.day-dow').textContent : '';
+    const num = card.querySelector('.day-num') ? card.querySelector('.day-num').textContent : '';
+    const mon = card.querySelector('.day-mon') ? card.querySelector('.day-mon').textContent : '';
+    const title = card.querySelector('.day-title') ? card.querySelector('.day-title').textContent : 'Day '+(i+1);
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${dow} ${num} ${mon} — ${title}`;
+    sel.appendChild(opt);
+  });
+}
+
+/* -- Quick add to specific day -- */
+function edQuickAdd(dayIdx) {
+  edSwitchTab('add', document.querySelectorAll('.editor-tab')[1]);
+  document.getElementById('ed-day-select').value = dayIdx;
+  _edEditing = null;
+}
+
+/* -- Edit built-in activity (prefill form) -- */
+function edEditBuiltIn(dayIdx, actIdx) {
+  const card = document.querySelectorAll('.day-card')[dayIdx];
+  const act  = card.querySelectorAll('.act')[actIdx];
+  const name  = act.querySelector('.act-name') ? act.querySelector('.act-name').textContent : '';
+  const loc   = act.querySelector('.act-loc')  ? act.querySelector('.act-loc').textContent  : '';
+  const notes = act.querySelector('.act-notes')? act.querySelector('.act-notes').textContent: '';
+  const time  = act.querySelector('.time-pill')? act.querySelector('.time-pill').textContent: '';
+
+  edSwitchTab('add', document.querySelectorAll('.editor-tab')[1]);
+  document.getElementById('ed-day-select').value = dayIdx;
+  document.getElementById('ed-time').value  = time;
+  document.getElementById('ed-name').value  = name;
+  document.getElementById('ed-loc').value   = loc;
+  document.getElementById('ed-notes').value = notes;
+  document.getElementById('ed-form-title').textContent = 'Edit Activity';
+  document.getElementById('ed-save-btn').textContent = 'Update Activity';
+  _edEditing = { dayIdx, actIdx, builtIn: true };
+}
+
+/* -- Edit stored activity -- */
+async function edEditStored(dayIdx, storedIdx) {
+  const data = await edLoad();
+  const a = (data['day_'+dayIdx] || [])[storedIdx];
+  if (!a) return;
+
+  edSwitchTab('add', document.querySelectorAll('.editor-tab')[1]);
+  document.getElementById('ed-day-select').value = dayIdx;
+  document.getElementById('ed-time').value  = a.time  || '';
+  document.getElementById('ed-name').value  = a.name  || '';
+  document.getElementById('ed-loc').value   = a.loc   || '';
+  document.getElementById('ed-notes').value = a.notes || '';
+  document.getElementById('ed-photo').value = a.photo || '';
+  document.querySelectorAll('.ed-tag-opt').forEach(el => {
+    el.classList.toggle('sel', (a.tags||[]).includes(el.dataset.tag));
+  });
+  document.getElementById('ed-form-title').textContent = 'Edit Activity';
+  document.getElementById('ed-save-btn').textContent = 'Update Activity';
+  _edEditing = { dayIdx, storedIdx, builtIn: false };
+}
+
+/* -- Delete stored activity -- */
+async function edDeleteStored(dayIdx, storedIdx) {
+  if (!confirm('Delete this activity?')) return;
+  const data = await edLoad();
+  const key  = 'day_' + dayIdx;
+  if (data[key]) {
+    data[key].splice(storedIdx, 1);
+    edSave(data);
+    edRenderDayList();
+    edRenderStoredActivities();
+    edToast('Activity deleted');
+  }
+}
+
+/* -- Save / update activity -- */
+async function edSaveActivity() {
+  const name  = document.getElementById('ed-name').value.trim();
+  const time  = document.getElementById('ed-time').value.trim();
+  const loc   = document.getElementById('ed-loc').value.trim();
+  const notes = document.getElementById('ed-notes').value.trim();
+  const photo = document.getElementById('ed-photo').value.trim();
+  const tags  = Array.from(document.querySelectorAll('.ed-tag-opt.sel')).map(el => el.dataset.tag);
+  const dayIdx = parseInt(document.getElementById('ed-day-select').value);
+
+  if (!name) { alert('Please enter an activity name.'); return; }
+
+  const entry = { time, name, loc, notes, tags, photo, added: Date.now() };
+  const data  = edLoad();
+  const key   = 'day_' + dayIdx;
+
+  if (_edEditing && !_edEditing.builtIn) {
+    // Update stored activity
+    if (!data[key]) data[key] = [];
+    data[key][_edEditing.storedIdx] = entry;
+  } else {
+    // Add new
+    if (!data[key]) data[key] = [];
+    data[key].push(entry);
+  }
+
+  edSave(data);
+  edRenderStoredActivities();
+  edResetForm();
+  edRenderDayList();
+  edSwitchTab('browse', document.querySelector('.editor-tab'));
+  edToast(_edEditing && !_edEditing.builtIn ? 'Activity updated!' : 'Activity added!');
+  _edEditing = null;
+}
+
+/* -- Render stored activities into the DOM -- */
+async function edRenderStoredActivities() {
+  const data = await edLoad();
+  document.querySelectorAll('.day-card').forEach((card, dayIdx) => {
+    const key = 'day_' + dayIdx;
+    const stored = data[key] || [];
+    // Remove previously injected stored acts
+    card.querySelectorAll('.ed-stored-act').forEach(el => el.remove());
+
+    const dayBody = card.querySelector('.day-body');
+    if (!dayBody) return;
+    const accom = dayBody.querySelector('.day-accom');
+
+    stored.forEach(a => {
+      const tagHtml = (a.tags||[]).map(t => `<span class="tag tag-${t}">${t}</span>`).join('');
+      const photo = a.photo
+        ? `<img class="act-photo places-photo" data-wiki="${a.photo}" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&auto=format&fit=crop" alt="${a.name}" loading="lazy">`
+        : '';
+      const el = document.createElement('div');
+      el.className = 'act ed-stored-act';
+      el.style.borderLeft = '3px solid var(--pk)';
+      el.innerHTML = `
+        <div class="act-time"><span class="time-pill">${a.time||'—'}</span></div>
+        <div class="act-body"><div class="act-body-text">
+          <div class="act-name">${a.name}</div>
+          ${a.loc   ? `<div class="act-loc">${a.loc}</div>`   : ''}
+          ${a.notes ? `<div class="act-notes">${a.notes}</div>` : ''}
+          <div class="act-tags">${tagHtml}</div>
+        </div>${photo}</div>`;
+      if (accom) dayBody.insertBefore(el, accom);
+      else dayBody.appendChild(el);
+    });
+  });
+}
+
+/* -- Toggle tag -- */
+function edToggleTag(el) { el.classList.toggle('sel'); }
+
+/* -- Reset form -- */
+function edResetForm() {
+  ['ed-time','ed-name','ed-loc','ed-notes','ed-photo'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.querySelectorAll('.ed-tag-opt').forEach(el => el.classList.remove('sel'));
+}
+
+/* -- Toast -- */
+function edToast(msg) {
+  const t = document.getElementById('edToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* -- Init: render saved activities on page load -- */
+document.addEventListener('DOMContentLoaded', async () => {
+  await edRenderStoredActivities();
+  await todoLoadStates();
+  const _d = await edLoad(); renderCustomTodos(_d.customTodos || []);
+});
+
+
+async function addTodoItem() {
+  const input = document.getElementById('todo-new-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  const data = await edLoad();
+  if (!data.customTodos) data.customTodos = [];
+  const tid = 'custom_' + Date.now();
+  data.customTodos.push({ tid, text, done: false });
+  await edSave(data);
+  renderCustomTodos(data.customTodos);
+  edToast('To-do added!');
+}
+
+async function toggleCustomTodo(tid) {
+  const data = await edLoad();
+  if (!data.customTodos) return;
+  const item = data.customTodos.find(t => t.tid === tid);
+  if (item) item.done = !item.done;
+  await edSave(data);
+  renderCustomTodos(data.customTodos);
+}
+
+async function deleteCustomTodo(tid) {
+  const data = await edLoad();
+  if (!data.customTodos) return;
+  data.customTodos = data.customTodos.filter(t => t.tid !== tid);
+  await edSave(data);
+  renderCustomTodos(data.customTodos);
+  edToast('Item removed');
+}
+
+function renderCustomTodos(todos) {
+  const list = document.getElementById('todo-custom-list');
+  if (!list) return;
+  if (!todos || !todos.length) { list.innerHTML = ''; return; }
+  list.innerHTML = todos.map(t => `
+    <div class="todo-item${t.done ? ' done' : ''}" style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;"
+         onclick="toggleCustomTodo('${t.tid}')">
+      <div class="tick-box"></div>
+      <div class="todo-label" style="flex:1;">${t.text}</div>
+      <button onclick="event.stopPropagation();deleteCustomTodo('${t.tid}')"
+        style="background:none;border:none;color:var(--text-soft);font-size:16px;cursor:pointer;padding:0 4px;flex-shrink:0;">&#215;</button>
+    </div>`).join('');
+}
+
 </script>
+
+<!-- ═══ EDIT FAB ═══ -->
+<button class="edit-fab" onclick="openEditor()">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.5 2.5a1.414 1.414 0 012 2L5 13H3v-2L11.5 2.5z"/>
+  </svg>
+  Edit Trip
+</button>
+<div class="ed-toast" id="edToast"></div>
+
+<!-- ═══ EDITOR OVERLAY ═══ -->
+<div class="editor-overlay" id="editorOverlay" onclick="closeEditorIfOverlay(event)">
+  <div class="editor-drawer">
+    <div class="editor-head">
+      <h2>&#9998; Edit Itinerary</h2>
+      <button class="editor-close" onclick="closeEditor()">&#215;</button>
+    </div>
+    <div class="editor-tabs">
+      <button class="editor-tab active" onclick="edSwitchTab('browse',this)">Browse Days</button>
+      <button class="editor-tab" onclick="edSwitchTab('add',this)">+ Add Activity</button>
+    </div>
+    <div class="editor-body">
+
+      <!-- Setup banner -->
+      <div id="ed-setup-banner" style="display:none;background:var(--pu-pale);border:1.5px solid var(--pu-mid);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--pu-dark);line-height:1.7;">
+        <strong>&#9881; One-time setup needed to share edits with everyone:</strong><br>
+        1. Go to <a href="https://jsonbin.io" target="_blank" style="color:var(--pu-dark);">jsonbin.io</a> → sign up free<br>
+        2. Create a new Bin with content <code style="background:var(--pu-faint);padding:1px 4px;border-radius:3px;">{}</code><br>
+        3. Copy the <strong>Bin ID</strong> and an <strong>API Key</strong><br>
+        4. Open this HTML file in a text editor → find <code style="background:var(--pu-faint);padding:1px 4px;border-radius:3px;">YOUR_BIN_ID_HERE</code> and replace both placeholders<br>
+        Until then, edits save locally on this device only.
+      </div>
+      <!-- Browse tab -->
+      <div id="ed-browse">
+        <div id="ed-day-list"></div>
+      </div>
+
+      <!-- Add/Edit form tab -->
+      <div id="ed-form-panel" style="display:none;">
+        <div class="ed-form-head">
+          <button onclick="edSwitchTab('browse', document.querySelector('.editor-tab'))">&#8592;</button>
+          <h3 id="ed-form-title">Add Activity</h3>
+        </div>
+
+        <div class="ed-field">
+          <label>Day</label>
+          <select id="ed-day-select" onchange="edUpdateDayMeta()"></select>
+        </div>
+        <div class="ed-field">
+          <label>Time</label>
+          <input type="text" id="ed-time" placeholder="e.g. 10:00 or Morning">
+        </div>
+        <div class="ed-field">
+          <label>Activity name</label>
+          <input type="text" id="ed-name" placeholder="e.g. Fushimi Inari Shrine">
+        </div>
+        <div class="ed-field">
+          <label>Location / address</label>
+          <input type="text" id="ed-loc" placeholder="e.g. Fushimi, Kyoto, Japan">
+        </div>
+        <div class="ed-field">
+          <label>Notes</label>
+          <textarea id="ed-notes" placeholder="Tips, prices, what to expect…"></textarea>
+        </div>
+        <div class="ed-field">
+          <label>Tags (pick any)</label>
+          <div class="ed-tag-grid" id="ed-tags">
+            <span class="ed-tag-opt" data-tag="food" onclick="edToggleTag(this)">Food</span>
+            <span class="ed-tag-opt" data-tag="sight" onclick="edToggleTag(this)">Sightseeing</span>
+            <span class="ed-tag-opt" data-tag="nature" onclick="edToggleTag(this)">Nature</span>
+            <span class="ed-tag-opt" data-tag="transport" onclick="edToggleTag(this)">Transport</span>
+            <span class="ed-tag-opt" data-tag="night" onclick="edToggleTag(this)">Nightlife</span>
+            <span class="ed-tag-opt" data-tag="accom" onclick="edToggleTag(this)">Accommodation</span>
+            <span class="ed-tag-opt" data-tag="shop" onclick="edToggleTag(this)">Shopping</span>
+            <span class="ed-tag-opt" data-tag="activity" onclick="edToggleTag(this)">Activity</span>
+          </div>
+        </div>
+        <div class="ed-field">
+          <label>Photo search (optional)</label>
+          <input type="text" id="ed-photo" placeholder="e.g. Fushimi Inari torii gates">
+        </div>
+        <button class="ed-save-btn" onclick="edSaveActivity()" id="ed-save-btn">Save Activity</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="sync-indicator" id="syncIndicator"><div class="sync-dot"></div><span id="syncMsg">Saving…</span></div>
 </body>
 </html>
 
+</body>
+</html
+        <div id="itin-no-results" class="no-results" style="display:none;">No activities match &#8212; try a different keyword or clear the filter.</div>
+      </div>
+      <div class="suggestions-panel" id="sugPanel">
+        <div class="suggestions-header">
+          <h3>Discover nearby</h3>
+          <select class="suggestions-city-select" id="sugCity" onchange="loadSuggestions()">
+            <option value="23.1291,113.2644">&#128205; Guangzhou</option>
+            <option value="24.7776,110.4892">&#128205; Yangshuo</option>
+            <option value="29.5630,106.5516">&#128205; Chongqing</option>
+            <option value="34.6937,135.5023">&#128205; Osaka</option>
+            <option value="35.6762,139.6503">&#128205; Tokyo</option>
+          </select>
+        </div>
+        <div class="suggestions-type-row">
+          <button class="sug-type-btn active" onclick="setSugType('restaurant',this)">Food</button>
+          <button class="sug-type-btn" onclick="setSugType('cafe',this)">Cafe</button>
+          <button class="sug-type-btn" onclick="setSugType('tourist_attraction',this)">Sights</button>
+          <button class="sug-type-btn" onclick="setSugType('night_club',this)">Nightlife</button>
+          <button class="sug-type-btn" onclick="setSugType('spa',this)">Spa</button>
+          <button class="sug-type-btn" onclick="setSugType('shopping_mall',this)">Shopping</button>
+        </div>
+        <div class="suggestions-list" id="sugList">
+          <div class="sug-loading">Select a city and type above to discover top spots &#10022;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="flights" class="tab-panel">
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#9992;&#65039;</span><em>Flights</em></div>
+</div>
+  <div class="tab-inner"><div class="section-label">Flight 1 — SYD to Guangzhou</div>
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">SYD</span>
+        <div class="flight-line"></div>
+        <span class="iata">CAN</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>CZ302 — direct</strong>Flight</div>
+        <div class="flight-item"><strong>15 Oct, 10:10pm</strong>Departs Sydney</div>
+        <div class="flight-item"><strong>16 Oct, 5:35am</strong>Arrives Guangzhou</div>
+        <div class="flight-item"><strong>~9h 25m</strong>Duration</div>
+        <div class="flight-item"><strong>7kg carry-on + 23kg checked</strong>Baggage</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="section-label">Flight 2 — Chongqing to Osaka via Shanghai</div>
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">CKG</span>
+        <div class="flight-line"></div>
+        <span class="iata">SHA</span>
+        <div class="flight-line"></div>
+        <span class="iata">KIX</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>MU5430</strong>Flight</div>
+        <div class="flight-item"><strong>25 Oct, 1:15pm</strong>Departs Chongqing</div>
+        <div class="flight-item"><strong>25 Oct, 3:45pm</strong>Arrives Shanghai</div>
+        <div class="flight-item"><strong>25 Oct, 5:55pm</strong>Departs Shanghai</div>
+        <div class="flight-item"><strong>25 Oct, 9:00pm</strong>Arrives Osaka (KIX)</div>
+        <div class="flight-item"><strong>7kg carry-on + 23kg checked</strong>Baggage</div>
+      </div>
+      <div class="layover-note">✦ Layover Shanghai (SHA) — 2h 10m · same flight number continues to Osaka</div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="section-label">Flight 3 — Osaka to Tokyo</div>
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">ITM</span>
+        <div class="flight-line"></div>
+        <span class="iata">HND</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>MM315 — Peach Air</strong>Flight</div>
+        <div class="flight-item"><strong>27 Oct, 8:40pm</strong>Departs Osaka (ITM)</div>
+        <div class="flight-item"><strong>27 Oct, 10:05pm</strong>Arrives Tokyo</div>
+        <div class="flight-item"><strong>~1h 25m</strong>Duration</div>
+        <div class="flight-item"><strong>8kg carry-on + 2 × 23kg checked</strong>Baggage</div>
+      </div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+    <div class="section-label">Flight 4 — Tokyo to Sydney via Guangzhou</div>
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="iata">HND</span>
+        <div class="flight-line"></div>
+        <span class="iata">CAN</span>
+        <div class="flight-line"></div>
+        <span class="iata">SYD</span>
+      </div>
+      <div class="flight-grid">
+        <div class="flight-item"><strong>CZ286 + CZ325</strong>Flights</div>
+        <div class="flight-item"><strong>1 Nov, 3:05pm</strong>Departs HND</div>
+        <div class="flight-item"><strong>Tokyo → Guangzhou → Sydney</strong>Route</div>
+        <div class="flight-item"><strong>Clarissa + Warren</strong>Passengers</div>
+        <div class="flight-item"><strong>7kg carry-on + 23kg checked</strong>Baggage</div>
+      </div>
+      <div class="layover-note">✦ Layover Guangzhou (CAN) en route to Sydney</div>
+      <div style="margin-top:8px;"><span class="pill pill-done">Confirmed</span></div>
+    </div>
+
+  </div>
+
+  </div></div>
+</div>
+
+<div id="transport" class="tab-panel">
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#128644;</span><em>Transport</em></div>
+</div>
+  <div class="tab-inner"><div class="section-label">China trains</div>
+
+    <div class="train-card">
+      <div class="train-route">Guangzhou South <span class="train-route-arrow">→</span> Yangshuo</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Sun 18 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>8:46am → 11:28am</strong>Times</div>
+        <div class="train-meta-item"><strong>~2h</strong>Duration</div>
+        <div class="train-meta-item"><strong>$483.90 group (~$32pp)</strong>Cost</div>
+        <div class="train-meta-item"><strong>Leo reserving</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-route">Guilin West <span class="train-route-arrow">→</span> Chongqing West</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Wed 21 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>9:42am → 1:44pm</strong>Times</div>
+        <div class="train-meta-item"><strong>~4h</strong>Duration</div>
+        <div class="train-meta-item"><strong>$1,127.55 group (~$75pp)</strong>Cost</div>
+        <div class="train-meta-item"><strong>Leo reserving</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-route">CQ East <span class="train-route-arrow">→</span> Wulong South <span style="font-size:12px;color:var(--text-soft);font-weight:400;">(day trip, return same day)</span></div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Thu 22 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>7:17am out · 6:33pm return</strong>Times</div>
+        <div class="train-meta-item"><strong>~45 min each way</strong>Duration</div>
+        <div class="train-meta-item"><strong>~$33pp return</strong>Cost</div>
+        <div class="train-meta-item"><strong>Nikki booked</strong>Who</div>
+      </div>
+    </div>
+
+    <div class="section-label">Japan transport</div>
+
+    <div class="train-card" style="background:var(--sage-pale); border-color:var(--sage-mid);">
+      <div class="train-route">Osaka <span class="train-route-arrow" style="color:var(--sage-deep);">→</span> Tokyo <span class="pill pill-flight" style="background:var(--pk-pale);color:var(--pk-dark);border:1px solid var(--pk-mid);font-size:10px;padding:2px 8px;border-radius:99px;">MM315 — fly</span></div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Tue 27 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>8:40pm → 10:05pm</strong>Times</div>
+        <div class="train-meta-item"><strong>~1h 25m</strong>Duration</div>
+        <div class="train-meta-item"><strong>Peach Air (ITM)</strong>Carrier</div>
+      </div>
+    </div>
+
+    <div class="train-card" style="background:var(--sage-pale); border-color:var(--sage-mid);">
+      <div class="train-route">Tokyo <span class="train-route-arrow" style="color:var(--sage-deep);">→</span> Kamakura (day trip)</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Fri 30 Oct</strong>Date</div>
+        <div class="train-meta-item"><strong>~5:30am depart</strong>Time</div>
+        <div class="train-meta-item"><strong>~1h</strong>Duration</div>
+        <div class="train-meta-item"><strong>~¥1,000pp</strong>Cost</div>
+        <div class="train-meta-item"><strong>JR Shonan-Shinjuku</strong>Line</div>
+      </div>
+    </div>
+
+    <div class="section-label">Yangshuo</div>
+    <div class="train-card">
+      <div class="train-route">Private driver / bus — Yangshuo area</div>
+      <div class="train-meta-grid">
+        <div class="train-meta-item"><strong>Oct 18–21</strong>Dates</div>
+        <div class="train-meta-item"><strong>$4,178.29 group (~$278pp)</strong>Cost</div>
+        <div class="train-meta-item"><strong>Nikki</strong>Booked via WeChat</div>
+      </div>
+    </div>
+
+</div></div>
+</div>
+
+<div id="stays" class="tab-panel">
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#127968;</span><em>Stays</em></div>
+</div>
+  <div class="tab-inner">
+    <div class="stays-map-wrap"><div id="stays-map" style="width:100%;height:100%;"></div></div>
+    <div class="section-label">Your accommodations on the map</div>
+    <div class="stays-map-wrap"><div id="stays-map"></div></div>
+
+    <div class="section-label">China</div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Guangzhou · 16–18 Oct</div>
+        <div class="accom-name">Louidon Mega Duplex Apartment — Beijing Rd</div>
+        <div class="accom-meta">1F Hengrun Plaza, No.238 Beijing Rd, Yuexiu</div>
+        <div class="accom-dates">Check-in Thu 16 Oct 2pm · Check-out Sat 18 Oct 12pm · Samson booked · AUD $722.83 group</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Yangshuo · 18–21 Oct</div>
+        <div class="accom-name">THAT MAY HOTEL</div>
+        <div class="accom-meta">No.2, Bldg 46, Mushan Village, Yangshuo Town, Guangxi · Villa (whole building — 8 rooms)</div>
+        <div class="accom-dates">Check-in Sun 18 Oct (24hr) · Check-out Wed 21 Oct 12pm · Leo booked · AUD $1,213.72</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot china"></div>
+      <div>
+        <div class="accom-city">Chongqing · 21–25 Oct</div>
+        <div class="accom-name">Fandiao Homestay Chongqing</div>
+        <div class="accom-meta">No.19-8 Nanguo Lijing, 46 Cangbai Rd, Yuzhong · Secret Garden Bathtub River View 4-bed suite</div>
+        <div class="accom-dates">Check-in Wed 21 Oct · Check-out Sun 25 Oct · Samson booked · AUD $1,104.04 · ¥500 deposit WeChat/Alipay</div>
+      </div>
+    </div>
+
+    <div class="section-label">Japan</div>
+
+    <div class="accom-card">
+      <div class="accom-dot japan"></div>
+      <div>
+        <div class="accom-city">Osaka · 25–27 Oct</div>
+        <div class="accom-name">Home in Osaka</div>
+        <div class="accom-meta">1-chōme-13-8, Tengachaya, Osaka</div>
+        <div class="accom-dates">Check-in Sat 25 Oct 4pm (arriving late ~10pm — message host) · Check-out Tue 27 Oct 10am · 2 nights</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <div class="accom-dot japan"></div>
+      <div>
+        <div class="accom-city">Tokyo · 27 Oct – 1 Nov</div>
+        <div class="accom-name">Airbnb — Shinjuku (夏目坂の間 ROOM 2)</div>
+        <div class="accom-meta">37-22 Wakamatsucho, Shinjuku City, Tokyo · 東京都新宿区若松町37番22号</div>
+        <div class="accom-dates">Check-in Tue 27 Oct 3pm (arriving late ~11:30pm) · Check-out Sun 1 Nov 10am · Conf: HMYTFXJM2A</div>
+      </div>
+    </div>
+
+</div>
+  </div>
+</div>
+
+<div id="book" class="tab-panel">
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#128203;</span><em>Book</em></div>
+</div>
+  <div class="tab-inner"><div class="alert" style="margin-bottom:1rem;">
+      <span>&#9888;&#65039; These require advance booking — many sell out weeks ahead. Get these done before you fly!</span>
+    </div>
+
+    <div class="section-label">Urgent — book immediately</div>
+    <div class="todo-group">
+      <div class="todo-group-header">Japan — sells out fast</div>
+      <div class="todo-row"><span class="todo-check urgent">!</span><div class="todo-text">Ghibli Museum — Tokyo<div class="todo-sub">Tickets release 10th of each month · sells out in minutes · book via Lawson ticket portal · 28 Oct visit</div></div><span class="urgency-badge urg-urgent">Urgent</span></div>
+      <div class="todo-row"><span class="todo-check urgent">!</span><div class="todo-text">Shibuya Sky observation deck — Tokyo<div class="todo-sub">Timed entry · popular slots fill fast · book at shibuyasky.jp · 28 Oct visit</div></div><span class="urgency-badge urg-urgent">Urgent</span></div>
+      <div class="todo-row"><span class="todo-check urgent">!</span><div class="todo-text">teamLab Borderless — Tokyo<div class="todo-sub">Book in advance at teamlab.art · popular digital art museum · 30 Oct visit · Azabudai Hills</div></div><span class="urgency-badge urg-urgent">Urgent</span></div>
+      <div class="todo-row"><span class="todo-check urgent">!</span><div class="todo-text">mipig cafe Harajuku — Tokyo<div class="todo-sub">Mini pig cafe · book in advance · limited time slots · 28 Oct visit</div></div><span class="urgency-badge urg-urgent">Urgent</span></div>
+    </div>
+
+    <div class="section-label">China — book before or on arrival</div>
+    <div class="todo-group">
+      <div class="todo-group-header">China pre-bookings</div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Impression Sanjie Liu Show — Yangshuo<div class="todo-sub">Zhang Yimou's Li River light show · limited seats · book via Trip.com · 18 Oct</div></div><span class="urgency-badge urg-high">High</span></div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Wulong Karst entry tickets — Chongqing<div class="todo-sub">~AUD $74pp · multi-attraction pass · Hellen booking · 22 Oct</div></div><span class="todo-who">Hellen</span><span class="urgency-badge urg-high">High</span></div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Sunset BBQ — huang yuming, Yangshuo<div class="todo-sub">Reserve for 4pm · must book ahead · whole group dinner · 20 Oct</div></div><span class="urgency-badge urg-high">High</span></div>
+    </div>
+
+    <div class="section-label">Japan — book before you go</div>
+    <div class="todo-group">
+      <div class="todo-group-header">Japan bookings</div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Osaka Aquarium Kaiyukan — Osaka<div class="todo-sub">Book online at kaiyukan.com to skip queues · 27 Oct · allow 2–3hrs</div></div><span class="urgency-badge urg-high">High</span></div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Kimono Experience — Osaka, Namba area<div class="todo-sub">Book a slot in advance · 26 Oct · multiple shops in Namba · ~¥3,000–5,000</div></div><span class="urgency-badge urg-high">High</span></div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Yoridokoro cafe — Kamakura<div class="todo-sub">Book in advance · train-spotting cafe near beach · 29 Oct</div></div><span class="urgency-badge urg-high">High</span></div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Final dinner — Ginza, Tokyo<div class="todo-sub">31 Oct · omakase sushi or wagyu · book at least 1 week ahead · Tableall or Omakase app</div></div><span class="urgency-badge urg-high">High</span></div>
+      <div class="todo-row"><span class="todo-check open">○</span><div class="todo-text">Photoshoot — Yangshuo or Japan<div class="todo-sub">Book photographer in advance · Flytographer or Localgrapher</div></div><span class="urgency-badge" style="background:var(--pu-pale);color:var(--pu-dark);border:1px solid var(--pu-mid);">Medium</span></div>
+    </div>
+
+  </div></div>
+</div>
+
+<div id="todo" class="tab-panel">
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#10003;</span><em>To-do</em></div>
+</div>
+  <div class="tab-inner">
+    <div class="alert" style="margin-bottom:1rem;">Tap any item to tick it off &#10022; Progress saves for everyone.</div>
+    <div class="alert" style="margin-bottom:1rem;"><span>Tap any item to mark it done ✓  Progress saves while the page is open.</span></div>
+
+  <div class="todo-group" style="margin-bottom:1rem;">
+    <div class="todo-group-header">&#9888;&#65039; Urgent — do now</div>
+    <div class="todo-item" data-tid="t0" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China visa — confirm valid for entry<div class="todo-sub">Check expiry and number of entries on your passport</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t1" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan visa / eTA — verify entry requirements<div class="todo-sub">Australian passports — check current rules before departure</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t2" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Travel insurance — both China + Japan (15 Oct – 2 Nov)<div class="todo-sub">Medical + cancellation cover</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t3" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Ghibli Museum tickets — Tokyo<div class="todo-sub">Releases 10th of each month · sells out in minutes · book via Lawson portal</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+    <div class="todo-item" data-tid="t4" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">GZ → Yangshuo + Yangshuo → Chongqing HSR<div class="todo-sub">Confirm Leo &amp; Warren have these locked in</div></div><span class="todo-badge badge-urgent">Urgent</span></div>
+  </div>
+
+  <div class="todo-group" style="margin-bottom:1rem;">
+    <div class="todo-group-header">&#128241; Before you fly</div>
+    <div class="todo-item" data-tid="t5" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">China SIM + VPN app<div class="todo-sub">Essential — WeChat, Maps, Alipay blocked without VPN</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t6" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Japan SIM card<div class="todo-sub">Buy at Osaka KIX airport or pre-order IIJmio / Mobal</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t7" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Wise card — load CNY + JPY<div class="todo-sub">Avoid ATM fees · set up before leaving Sydney</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t8" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">WeChat Pay / Alipay — link foreign card<div class="todo-sub">Required for almost all payments in China</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t9" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Notify bank of travel (15 Oct – 2 Nov)<div class="todo-sub">Avoid card being blocked abroad</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t10" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Offline maps — Amap (中国) + Google Maps (Japan)<div class="todo-sub">Works without data · essential in rural areas</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t11" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Suica / Pasmo IC card for Tokyo transit<div class="todo-sub">Get at KIX or Shinjuku · tap on/off all trains + convenience stores</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t12" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Submit passport to Tokyo Airbnb<div class="todo-sub">Conf HMYTFXJM2A · check if host requires ID</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t13" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Shibuya Sky — book timed entry online<div class="todo-sub">shibuyasky.jp · popular slots fill up weeks ahead</div></div><span class="todo-badge badge-high">High</span></div>
+    <div class="todo-item" data-tid="t14" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Photoshoot research<div class="todo-sub">Book photographer — Flytographer or Localgrapher in Yangshuo/Japan</div></div><span class="todo-badge badge-med">Medium</span></div>
+    <div class="todo-item" data-tid="t15" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Packing list — check Weather tab for city temps<div class="todo-sub">Layers for Japan (18°C evenings) · cotton for GZ (28°C+)</div></div><span class="todo-badge badge-med">Medium</span></div>
+  </div>
+
+  <div class="todo-group" style="margin-bottom:1rem;">
+    <div class="todo-group-header">&#10003; Already done</div>
+    <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">SYD → Guangzhou · CZ302 (15 Oct 10:10pm)</div><span class="todo-badge badge-done">Done</span></div>
+    <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Chongqing → Osaka · MU5430 (25 Oct)</div><span class="todo-badge badge-done">Done</span></div>
+    <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Osaka → Tokyo · MM315 Peach Air (27 Oct 8:40pm)</div><span class="todo-badge badge-done">Done</span></div>
+    <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Tokyo → Sydney · CZ286 + CZ325 (1 Nov 3:05pm HND)</div><span class="todo-badge badge-done">Done</span></div>
+    <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">All accommodation — GZ, Yangshuo, Chongqing, Osaka, Tokyo</div><span class="todo-badge badge-done">Done</span></div>
+    <div class="todo-item done-tick" onclick="tickTodo(this)"><div class="tick-box"></div><div class="todo-label">Yangshuo private driver + trains (Wulong day trip)</div><span class="todo-badge badge-done">Done</span></div>
+  </div>
+
+  <div class="section-label" style="margin-top:1.5rem;">Add your own</div>
+  <div style="display:flex;gap:8px;margin-bottom:.5rem;">
+    <input type="text" id="todo-new-input" placeholder="e.g. Buy travel insurance"
+      style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:13px;font-family:inherit;"
+      onkeydown="if(event.key==='Enter')addTodoItem()">
+    <button onclick="addTodoItem()"
+      style="padding:8px 16px;background:var(--pk-dark);color:#fff;border:none;border-radius:var(--r-pill);font-size:13px;font-weight:600;cursor:pointer;">
+      Add
+    </button>
+  </div>
+  <div id="todo-custom-list"></div>
+
+</div>
+    <div class="section-label" style="margin-top:1.5rem;">Add your own</div>
+    <div style="display:flex;gap:8px;margin-bottom:.5rem;">
+      <input type="text" id="todo-new-input" placeholder="e.g. Buy travel insurance"
+        style="flex:1;padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:13px;font-family:inherit;outline:none;"
+        onkeydown="if(event.key==='Enter')addTodoItem()">
+      <button onclick="addTodoItem()"
+        style="padding:8px 18px;background:var(--pk-dark);color:#fff;border:none;border-radius:var(--r-pill);font-size:13px;font-weight:600;cursor:pointer;">Add</button>
+    </div>
+    <div id="todo-custom-list"></div>
+  </div>
+</div>
+
+<div id="weather" class="tab-panel">
+  <div class="mini-hero">
+  <div class="mini-hero-eyebrow"><svg width="18" height="14" viewBox="0 0 48 36" fill="none"><path d="M24 18 C20 14,8 10,6 14 C4 18,10 22,24 18Z" fill="#F4779A"/><path d="M24 18 C20 22,8 26,6 22 C4 18,10 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C28 14,40 10,42 14 C44 18,38 22,24 18Z" fill="#F4779A"/><path d="M24 18 C28 22,40 26,42 22 C44 18,38 14,24 18Z" fill="#F9A8C0"/><path d="M24 18 C20 22,14 30,10 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M24 18 C28 22,34 30,38 36" stroke="#F4779A" stroke-width="2.5" stroke-linecap="round" fill="none"/><ellipse cx="24" cy="18" rx="4" ry="3.5" fill="#C0385A"/><ellipse cx="24" cy="18" rx="2" ry="1.5" fill="#E8607A"/></svg> China &amp; Japan</div>
+  <div class="mini-hero-title"><span class="mini-hero-emoji" style="font-family:'Segoe UI Emoji',Apple Color Emoji,sans-serif;">&#127780;</span><em>Weather</em></div>
+</div>
+  <div class="tab-inner"><p style="font-size:13px;color:var(--text-soft);margin-bottom:1.5rem;">Late October averages for each city — pack accordingly!</p>
+    <div class="weather-grid">
+      <div class="wx-card"><div class="wx-icon">&#9728;</div><div class="wx-city">Guangzhou</div><div class="wx-dates">15&#8211;18 Oct</div><div class="wx-temps"><span class="wx-hi">28&#176;</span><span class="wx-lo">/ 22&#176;C</span></div><div class="wx-desc">Warm and humid · mostly sunny · occasional light rain</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light cotton, breathable fabrics. A layer for AC. Umbrella handy.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#9925;</div><div class="wx-city">Yangshuo / Guilin</div><div class="wx-dates">18&#8211;21 Oct</div><div class="wx-temps"><span class="wx-hi">24&#176;</span><span class="wx-lo">/ 16&#176;C</span></div><div class="wx-desc">Mild and pleasant · morning mist over karst peaks · ideal sightseeing weather</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light layers. Trainers for cycling and hiking. Rain jacket for the Li River cruise.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#127787;</div><div class="wx-city">Chongqing</div><div class="wx-dates">21&#8211;25 Oct</div><div class="wx-temps"><span class="wx-hi">21&#176;</span><span class="wx-lo">/ 14&#176;C</span></div><div class="wx-desc">Overcast and misty · Chongqing is "Fog City" · mild · rarely sunny</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light jacket, long sleeves for evenings. CQ is very hilly — avoid heels.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#127800;</div><div class="wx-city">Osaka</div><div class="wx-dates">25&#8211;27 Oct</div><div class="wx-temps"><span class="wx-hi">20&#176;</span><span class="wx-lo">/ 13&#176;C</span></div><div class="wx-desc">Crisp autumn air · blue skies · some early foliage · perfect weather</div><div class="wx-what-to-wear"><strong>What to wear</strong>Light jacket and layers. Comfortable shoes — 20,000+ steps a day.</div></div>
+      <div class="wx-card"><div class="wx-icon">&#127810;</div><div class="wx-city">Tokyo</div><div class="wx-dates">27 Oct&#8211;1 Nov</div><div class="wx-temps"><span class="wx-hi">18&#176;</span><span class="wx-lo">/ 11&#176;C</span></div><div class="wx-desc">Beautiful autumn · clear skies · breezy · koyo (autumn leaves) starting</div><div class="wx-what-to-wear"><strong>What to wear</strong>Mid-weight jacket, scarf, layers. Evenings get cool (~11°C). Ueno Park and Kamakura will be stunning.</div></div>
+    </div>
+    <div class="section-label">Packing essentials</div>
+    <div style="background:var(--warm);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:13px;">
+        <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--pk-dark);margin-bottom:.5rem;">China</div><ul style="list-style:none;color:var(--text-mid);line-height:2.2;"><li>Light cotton tops (GZ is hot)</li><li>Light jacket (CQ evenings)</li><li>Comfortable walking shoes</li><li>Foldable umbrella</li><li>Type A plug adapter</li><li>Travel sickness meds (CQ roads!)</li></ul></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--pk-dark);margin-bottom:.5rem;">Japan</div><ul style="list-style:none;color:var(--text-mid);line-height:2.2;"><li>Mid-weight jacket (Tokyo cool)</li><li>Scarf for evenings</li><li>Slip-on shoes (temples!)</li><li>Outfit for kimono rental day</li><li>Suica/Pasmo IC card</li><li>Some JPY cash (small vendors)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="aud-fab" onclick="toggleAud()">&#128178; Convert</button>
+<div class="aud-panel" id="audPanel">
+  <button class="aud-close" onclick="toggleAud()">&#215;</button>
+  <h3>Currency</h3>
+  <div class="aud-row"><label>AUD</label><input type="number" id="audInput" value="100" oninput="convertAud()"></div>
+  <div class="aud-row"><label>To</label>
+    <select id="audCurrency" onchange="convertAud()">
+      <option value="CNY">CNY &#8212; Chinese Yuan</option>
+      <option value="JPY">JPY &#8212; Japanese Yen</option>
+      <option value="HKD">HKD &#8212; Hong Kong Dollar</option>
+    </select>
+  </div>
+  <div class="aud-result">
+    <div class="aud-num" id="audResult">&#165; 469</div>
+    <div class="aud-rate" id="audRate">1 AUD &#8776; 4.69 CNY &#183; indicative only</div>
+  </div></div>
+</div>
+
+<button class="aud-fab" onclick="toggleAud()">&#128178; Convert</button>
+<div class="aud-panel" id="audPanel">
+  <button class="aud-close" onclick="toggleAud()">&#215;</button>
+  <h3>Currency</h3>
+  <div class="aud-row"><label>AUD</label><input type="number" id="audInput" value="100" oninput="convertAud()"></div>
+  <div class="aud-row"><label>To</label>
+    <select id="audCurrency" onchange="convertAud()">
+      <option value="CNY">CNY &mdash; Chinese Yuan</option>
+      <option value="JPY">JPY &mdash; Japanese Yen</option>
+      <option value="HKD">HKD &mdash; Hong Kong Dollar</option>
+    </select>
+  </div>
+  <div class="aud-result">
+    <div class="aud-num" id="audResult">&#165;469</div>
+    <div class="aud-rate" id="audRate">1 AUD &asymp; 4.69 CNY &middot; indicative only</div>
+  </div>
+</div>
+
+<!-- ═══ EDIT FAB ═══ -->
+<button class="edit-fab" onclick="openEditor()">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.5 2.5a1.414 1.414 0 012 2L5 13H3v-2L11.5 2.5z"/>
+  </svg>
+  Edit Trip
+</button>
+<div class="ed-toast" id="edToast"></div>
+
+<!-- ═══ EDITOR OVERLAY ═══ -->
+<div class="editor-overlay" id="editorOverlay" onclick="closeEditorIfOverlay(event)">
+  <div class="editor-drawer">
+    <div class="editor-head">
+      <h2>&#9998; Edit Itinerary</h2>
+      <button class="editor-close" onclick="closeEditor()">&#215;</button>
+    </div>
+    <div class="editor-tabs">
+      <button class="editor-tab active" onclick="edSwitchTab('browse',this)">Browse Days</button>
+      <button class="editor-tab" onclick="edSwitchTab('add',this)">+ Add Activity</button>
+    </div>
+    <div class="editor-body">
+
+      <!-- Setup banner -->
+      <div id="ed-setup-banner" style="display:none;background:var(--pu-pale);border:1.5px solid var(--pu-mid);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--pu-dark);line-height:1.7;">
+        <strong>&#9881; One-time setup needed to share edits with everyone:</strong><br>
+        1. Go to <a href="https://jsonbin.io" target="_blank" style="color:var(--pu-dark);">jsonbin.io</a> → sign up free<br>
+        2. Create a new Bin with content <code style="background:var(--pu-faint);padding:1px 4px;border-radius:3px;">{}</code><br>
+        3. Copy the <strong>Bin ID</strong> and an <strong>API Key</strong><br>
+        4. Open this HTML file in a text editor → find <code style="background:var(--pu-faint);padding:1px 4px;border-radius:3px;">YOUR_BIN_ID_HERE</code> and replace both placeholders<br>
+        Until then, edits save locally on this device only.
+      </div>
+      <!-- Browse tab -->
+      <div id="ed-browse">
+        <div id="ed-day-list"></div>
+      </div>
+
+      <!-- Add/Edit form tab -->
+      <div id="ed-form-panel" style="display:none;">
+        <div class="ed-form-head">
+          <button onclick="edSwitchTab('browse', document.querySelector('.editor-tab'))">&#8592;</button>
+          <h3 id="ed-form-title">Add Activity</h3>
+        </div>
+
+        <div class="ed-field">
+          <label>Day</label>
+          <select id="ed-day-select" onchange="edUpdateDayMeta()"></select>
+        </div>
+        <div class="ed-field">
+          <label>Time</label>
+          <input type="text" id="ed-time" placeholder="e.g. 10:00 or Morning">
+        </div>
+        <div class="ed-field">
+          <label>Activity name</label>
+          <input type="text" id="ed-name" placeholder="e.g. Fushimi Inari Shrine">
+        </div>
+        <div class="ed-field">
+          <label>Location / address</label>
+          <input type="text" id="ed-loc" placeholder="e.g. Fushimi, Kyoto, Japan">
+        </div>
+        <div class="ed-field">
+          <label>Notes</label>
+          <textarea id="ed-notes" placeholder="Tips, prices, what to expect…"></textarea>
+        </div>
+        <div class="ed-field">
+          <label>Tags (pick any)</label>
+          <div class="ed-tag-grid" id="ed-tags">
+            <span class="ed-tag-opt" data-tag="food" onclick="edToggleTag(this)">Food</span>
+            <span class="ed-tag-opt" data-tag="sight" onclick="edToggleTag(this)">Sightseeing</span>
+            <span class="ed-tag-opt" data-tag="nature" onclick="edToggleTag(this)">Nature</span>
+            <span class="ed-tag-opt" data-tag="transport" onclick="edToggleTag(this)">Transport</span>
+            <span class="ed-tag-opt" data-tag="night" onclick="edToggleTag(this)">Nightlife</span>
+            <span class="ed-tag-opt" data-tag="accom" onclick="edToggleTag(this)">Accommodation</span>
+            <span class="ed-tag-opt" data-tag="shop" onclick="edToggleTag(this)">Shopping</span>
+            <span class="ed-tag-opt" data-tag="activity" onclick="edToggleTag(this)">Activity</span>
+          </div>
+        </div>
+        <div class="ed-field">
+          <label>Photo search (optional)</label>
+          <input type="text" id="ed-photo" placeholder="e.g. Fushimi Inari torii gates">
+        </div>
+        <button class="ed-save-btn" onclick="edSaveActivity()" id="ed-save-btn">Save Activity</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="ed-toast" id="edToast"></div>
+<div class="sync-indicator" id="syncIndicator"><div class="sync-dot"></div><span id="syncMsg">Saving&#8230;</span></div>
+
+<script>
+
+
+/* ── MAP DATA ── */
+const locations = [
+  { name:"Sydney Airport", lat:33.9399, lng:151.1753, day:"15 Oct", country:"cn", label:"Depart SYD" },
+  { name:"Guangzhou", lat:23.1291, lng:113.2644, day:"16–18 Oct", country:"cn", label:"Guangzhou" },
+  { name:"Yangshuo", lat:24.7776, lng:110.4892, day:"18–21 Oct", country:"cn", label:"Yangshuo / Guilin" },
+  { name:"Xianggong Mountain", lat:24.8781, lng:110.5012, day:"19 Oct", country:"cn", label:"Xianggong Sunrise" },
+  { name:"Wulong Karst", lat:29.2377, lng:107.7664, day:"22 Oct", country:"cn", label:"Wulong Karst" },
+  { name:"Chongqing", lat:29.5630, lng:106.5516, day:"21–25 Oct", country:"cn", label:"Chongqing" },
+  { name:"Chengdu", lat:30.5728, lng:104.0668, day:"25–27 Oct", country:"cn", label:"Chengdu" },
+  { name:"Chengdu Panda Base", lat:30.7380, lng:104.1502, day:"26 Oct", country:"cn", label:"Giant Panda Base" },
+  { name:"Xi'an", lat:34.3416, lng:108.9398, day:"27–31 Oct", country:"cn", label:"Xi'an" },
+  { name:"Terracotta Warriors", lat:34.3842, lng:109.2784, day:"28 Oct", country:"cn", label:"Terracotta Warriors" },
+  { name:"Osaka", lat:34.6937, lng:135.5023, day:"25–27 Oct", country:"jp", label:"Osaka" },
+  { name:"Osaka Castle", lat:34.6873, lng:135.5262, day:"26 Oct", country:"jp", label:"Osaka Castle" },
+  { name:"Osaka Aquarium", lat:34.6551, lng:135.4289, day:"26 Oct", country:"jp", label:"Kaiyukan Aquarium" },
+  { name:"Dotonbori", lat:34.6687, lng:135.5010, day:"25 Oct night", country:"jp", label:"Dotonbori" },
+  { name:"Tokyo", lat:35.6762, lng:139.6503, day:"27 Oct–1 Nov", country:"jp", label:"Tokyo / Shinjuku" },
+  { name:"Shibuya Sky", lat:35.6580, lng:139.7016, day:"28 Oct", country:"jp", label:"Shibuya Sky" },
+  { name:"Harajuku", lat:35.6702, lng:139.7026, day:"28 Oct", country:"jp", label:"Harajuku" },
+  { name:"Senso-ji", lat:35.7148, lng:139.7967, day:"29 Oct", country:"jp", label:"Senso-ji Temple" },
+  { name:"Ueno Park", lat:35.7141, lng:139.7741, day:"29 Oct", country:"jp", label:"Ueno Park" },
+  { name:"Kamakura Buddha", lat:35.3167, lng:139.5500, day:"30 Oct", country:"jp", label:"Kamakura Buddha" },
+  { name:"Chureito Pagoda", lat:35.4938, lng:138.7759, day:"30 Oct", country:"jp", label:"Chureito Pagoda" },
+  { name:"Ginza", lat:35.6717, lng:139.7650, day:"31 Oct", country:"jp", label:"Ginza" },
+];
+
+/* ── GOOGLE MAPS INIT ── */
+let itinMap, itinMapInitialised = false;
+function itinInitMap() {
+  if (itinMapInitialised) return;
+  itinMapInitialised = true;
+
+  const mapEl = document.getElementById('itin-map');
+  if (!mapEl) return;
+
+  itinMap = new google.maps.Map(mapEl, {
+    center: { lat: 32, lng: 118 },
+    zoom: 4,
+    mapTypeId: 'roadmap',
+    styles: [
+      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#D4C5E8' }] },
+      { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#FBF7F2' }] },
+      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#FFFCF8' }] },
+      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#EAD8EC' }] },
+      { featureType: 'poi', elementType: 'geometry', stylers: [{ color: '#EFF7F1' }] },
+      { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#E8D5EA' }] },
+      { elementType: 'labels.text.stroke', stylers: [{ color: '#FFFCF8' }] },
+      { elementType: 'labels.text.fill', stylers: [{ color: '#6B4F6B' }] },
+      { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#C4A0C0' }] },
+      { featureType: 'administrative.land_parcel', elementType: 'labels.text.fill', stylers: [{ color: '#9B7A9B' }] },
+      { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#D0E8D4' }] },
+      { featureType: 'poi.park', elementType: 'labels.text.fill', stylers: [{ color: '#2D6040' }] },
+      { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#FDF0F3' }] },
+      { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#F5D5DC' }] },
+      { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#E8B4C0' }] },
+    ],
+    disableDefaultUI: false,
+    zoomControl: true,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: true,
+  });
+
+  const infoWindow = new google.maps.InfoWindow();
+  const bounds = new google.maps.LatLngBounds();
+
+  locations.forEach(loc => {
+    const isCN = loc.country === 'cn';
+    const pinColor = isCN ? '#C4A0C0' : '#B8D4C0';
+    const pinBorder = isCN ? '#8B5F8B' : '#2D5C3A';
+
+    const marker = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map: itinMap,
+      title: loc.label,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: pinColor,
+        fillOpacity: 1,
+        strokeColor: pinBorder,
+        strokeWeight: 2,
+        scale: 8,
+      }
+    });
+
+    marker.addListener('click', () => {
+      infoWindow.setContent(
+        '<div style="font-family:DM Sans,sans-serif;padding:4px 2px;">' +
+        '<div style="font-size:10px;color:#9B7A9B;margin-bottom:3px;">' + loc.day + '</div>' +
+        '<div style="font-size:14px;font-weight:500;color:#5C3D5C;">' + loc.label + '</div>' +
+        '<div style="font-size:12px;color:#6B4F6B;margin-top:2px;">' + loc.name + '</div>' +
+        '</div>'
+      );
+      infoWindow.open(itinMap, marker);
+    });
+
+    bounds.extend({ lat: loc.lat, lng: loc.lng });
+  });
+
+  itinMap.fitBounds(bounds);
+}
+
+/* ── VIEW SWITCH ── */
+function itinSwitchView(view) {
+  document.getElementById('itin-days-view').classList.toggle('hidden', view !== 'days');
+  const mapEl = document.getElementById('itin-map-view');
+  mapEl.classList.toggle('active', view === 'map');
+  document.getElementById('itin-btn-days').classList.toggle('active', view === 'days');
+  document.getElementById('itin-btn-map').classList.toggle('active', view === 'map');
+  if (view === 'map') { setTimeout(initMap, 50); }
+}
+
+/* ── TOGGLE DAY CARD ── */
+function toggleDay(card) {
+  card.classList.toggle('open');
+}
+
+/* ── SIDEBAR SCROLL + ACTIVE ── */
+function itinScrollToCity(id) {
+  document.querySelectorAll('.itin-sidebar .city-link').forEach(l => l.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+// Highlight sidebar on scroll
+const itinSections = document.querySelectorAll('#itin-days-view .city-section');
+const itinLinks = document.querySelectorAll('.itin-sidebar .city-link');
+const itinObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      itinLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.3 });
+itinSections.forEach(s => itinObserver.observe(s));
+
+/* ── SEARCH ── */
+let activeTag = 'all';
+
+function itinHandleSearch(query) {
+  const q = query.toLowerCase().trim();
+  itinApplyFilters(q, activeTag);
+}
+
+function itinFilterByTag(tag, btn) {
+  activeTag = tag;
+  document.querySelectorAll('.itin-sidebar .filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  itinApplyFilters(document.getElementById('itinSearch').value.toLowerCase().trim(), tag);
+}
+
+function itinApplyFilters(query, tag) {
+  const cards = document.querySelectorAll('#itin-days-view .day-card');
+  let anyVisible = false;
+
+  cards.forEach(card => {
+    const activities = card.querySelectorAll('.activity');
+    let cardMatches = false;
+
+    activities.forEach(act => {
+      const text = act.textContent.toLowerCase();
+      const tags = Array.from(act.querySelectorAll('.activity-tag')).map(t => t.className);
+      const tagMatch = tag === 'all' || tags.some(t => t.includes('tag-' + tag));
+      const textMatch = !query || text.includes(query);
+      const match = tagMatch && textMatch;
+      act.style.display = match ? '' : 'none';
+      if (match) cardMatches = true;
+    });
+
+    card.style.display = cardMatches ? '' : 'none';
+    if (cardMatches) {
+      anyVisible = true;
+      if (query || tag !== 'all') card.classList.add('open');
+    }
+  });
+
+  // Show/hide city sections
+  document.querySelectorAll('#itin-days-view .city-section').forEach(sec => {
+    const visible = Array.from(sec.querySelectorAll('.day-card')).some(c => c.style.display !== 'none');
+    sec.style.display = visible ? '' : 'none';
+  });
+
+  document.getElementById('itin-no-results').style.display = anyVisible ? 'none' : 'block';
+
+  // Reset when empty
+  if (!query && tag === 'all') {
+    cards.forEach(c => { c.style.display = ''; c.classList.remove('open'); });
+    document.querySelectorAll('#itin-days-view .activity').forEach(a => a.style.display = '');
+    document.querySelectorAll('#itin-days-view .city-section').forEach(s => s.style.display = '');
+    document.getElementById('itin-no-results').style.display = 'none';
+  }
+}
+
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'stays') setTimeout(initStaysMap, 150);
+}
+
+/* ── TODO ── */
+async function tickTodo(el) {
+  const item = el.closest ? el.closest('.todo-item') : el;
+  if (!item) return;
+  item.classList.toggle('done');
+  const tid = item.getAttribute('data-tid');
+  if (!tid) return;
+  // Save to shared store
+  const data = await edLoad();
+  if (!data.todo) data.todo = {};
+  if (item.classList.contains('done')) {
+    data.todo[tid] = true;
+  } else {
+    delete data.todo[tid];
+  }
+  await edSave(data);
+}
+
+async function todoLoadStates() {
+  const data = await edLoad();
+  const checked = data.todo || {};
+  document.querySelectorAll('.todo-item[data-tid]').forEach(item => {
+    const tid = item.getAttribute('data-tid');
+    if (checked[tid]) {
+      item.classList.add('done');
+    } else {
+      item.classList.remove('done');
+    }
+  });
+}
+
+/* ── AUD CONVERTER ── */
+const _rates = { CNY: 4.69, JPY: 99.5, HKD: 5.82 };
+function convertAud() {
+  const amt = parseFloat(document.getElementById('audInput').value) || 0;
+  const cur = document.getElementById('audCurrency').value;
+  const rate = _rates[cur] || 1;
+  const sym = cur === 'JPY' ? '¥' : cur === 'CNY' ? '¥' : 'HK$';
+  document.getElementById('audResult').textContent = sym + ' ' + (amt * rate).toLocaleString('en-AU', {maximumFractionDigits: 0});
+  document.getElementById('audRate').textContent = '1 AUD ≈ ' + rate + ' ' + cur + ' · indicative only';
+}
+function toggleAud() {
+  const p = document.getElementById('audPanel');
+  p.style.display = p.style.display === 'block' ? 'none' : 'block';
+  if (p.style.display === 'block') convertAud();
+}
+
+/* ── STAYS MAP ── */
+let _staysMapInit = false;
+function initStaysMap() {
+  if (_staysMapInit || typeof google === 'undefined') return;
+  _staysMapInit = true;
+  const el = document.getElementById('stays-map');
+  if (!el) return;
+  const map = new google.maps.Map(el, { zoom: 5, center: {lat: 28, lng: 115}, mapTypeId: 'roadmap' });
+  const stays = [
+    { name: 'Louidon Mega Duplex Apt', lat: 23.1291, lng: 113.2644, note: 'Guangzhou · 15–18 Oct' },
+    { name: 'THAT MAY HOTEL', lat: 24.7776, lng: 110.4892, note: 'Yangshuo · 18–21 Oct' },
+    { name: 'Fandiao Homestay', lat: 29.5630, lng: 106.5516, note: 'Chongqing · 21–25 Oct' },
+    { name: 'Home in Osaka', lat: 34.6412, lng: 135.5033, note: 'Osaka · 25–27 Oct' },
+    { name: 'Wakamatsucho Airbnb', lat: 35.6938, lng: 139.7195, note: 'Shinjuku, Tokyo · 27 Oct–1 Nov' },
+  ];
+  const bounds = new google.maps.LatLngBounds();
+  stays.forEach(s => {
+    const marker = new google.maps.Marker({ position: {lat:s.lat,lng:s.lng}, map, title: s.name });
+    const iw = new google.maps.InfoWindow({ content: '<strong>' + s.name + '</strong><br>' + s.note });
+    marker.addListener('click', () => iw.open(map, marker));
+    bounds.extend({lat:s.lat,lng:s.lng});
+  });
+  map.fitBounds(bounds);
+}
+
+/* ── NEARBY SUGGESTIONS ── */
+let _sugType = 'restaurant';
+function setSugType(type, btn) {
+  _sugType = type;
+  document.querySelectorAll('.sug-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadSuggestions();
+}
+function loadSuggestions() {
+  const val = document.getElementById('sugCity') && document.getElementById('sugCity').value;
+  if (!val || typeof google === 'undefined') return;
+  const [lat, lng] = val.split(',').map(Number);
+  const list = document.getElementById('sugList');
+  list.innerHTML = '<div class="sug-loading">Searching nearby…</div>';
+  const svc = new google.maps.places.PlacesService(document.createElement('div'));
+  svc.nearbySearch({ location: {lat,lng}, radius: 1500, type: _sugType }, (results, status) => {
+    if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) {
+      list.innerHTML = '<div class="sug-loading">No results found.</div>'; return;
+    }
+    list.innerHTML = results.slice(0,8).map(p => `
+      <div class="sug-item">
+        <div class="sug-name">${p.name}</div>
+        <div class="sug-meta">${p.vicinity || ''} ${p.rating ? '· ★ ' + p.rating : ''}</div>
+      </div>`).join('');
+  });
+}
+
+/* ── WIKIMEDIA PHOTO UPGRADER ── */
+const _wikiCache = {};
+function upgradeToWikimedia(container) {
+  const imgs = container.querySelectorAll('img.places-photo[data-wiki]');
+  imgs.forEach(img => {
+    const q = img.getAttribute('data-wiki');
+    if (!q || img.dataset.upgraded) return;
+    img.dataset.upgraded = '1';
+    if (_wikiCache[q]) { img.src = _wikiCache[q]; return; }
+    fetch('https://en.wikipedia.org/w/api.php?action=query&titles=' +
+      encodeURIComponent(q) + '&prop=pageimages&format=json&pithumbsize=400&origin=*')
+      .then(r => r.json())
+      .then(data => {
+        const pages = data.query && data.query.pages;
+        if (!pages) return;
+        const page = Object.values(pages)[0];
+        if (page && page.thumbnail && page.thumbnail.source) {
+          _wikiCache[q] = page.thumbnail.source;
+          img.src = page.thumbnail.source;
+        }
+      })
+      .catch(() => {});
+  });
+}
+
+
+/* ── TOGGLE DAY + PHOTO UPGRADE ── */
+const _origToggleDay = typeof toggleDay === 'function' ? toggleDay : function(){};
+toggleDay = function(card) {
+  _origToggleDay(card);
+  if (card.classList.contains('open')) {
+    setTimeout(() => upgradeToWikimedia(card), 200);
+  }
+};
+
+/* ── SCROLL SPY ── */
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('.city-sec');
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  document.querySelectorAll('.side-link').forEach(l =>
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+}, { passive: true });
+
+
+
+/* ── SYNC INDICATOR ── */
+let _syncTimer = null;
+function syncShow(state, msg) {
+  const el = document.getElementById('syncIndicator');
+  const msgEl = document.getElementById('syncMsg');
+  if (!el) return;
+  clearTimeout(_syncTimer);
+  el.className = 'sync-indicator ' + state;
+  msgEl.textContent = msg;
+  if (state === 'saved' || state === 'error') {
+    _syncTimer = setTimeout(() => {
+      el.classList.add('hiding');
+      setTimeout(() => el.className = 'sync-indicator', 400);
+    }, 2000);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   EDITOR LOGIC
+═══════════════════════════════════════════ */
+
+/* ── SHARED DATA STORE (JSONBin.io) ── */
+// HOW TO SET UP (one time, takes 2 minutes):
+// 1. Go to https://jsonbin.io and sign up free
+// 2. Create a new bin with content: {}
+// 3. Copy the Bin ID (looks like 64abc123...) → paste as JSONBIN_ID below
+// 4. Go to API Keys → create a key → paste as JSONBIN_KEY below
+// 5. Share the page — everyone reads your edits in real time!
+
+const JSONBIN_ID  = 'YOUR_BIN_ID_HERE';   // ← paste your bin ID
+const JSONBIN_KEY = 'YOUR_API_KEY_HERE';  // ← paste your API key
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+
+let _edCache = null;
+let _edEditing = null;
+
+async function edLoad() {
+  if (!JSONBIN_ID || JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    // Fallback to localStorage until configured
+    try { return JSON.parse(localStorage.getItem('clarissa_trip_edits') || '{}'); }
+    catch(e) { return {}; }
+  }
+  try {
+    const r = await fetch(JSONBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_KEY }
+    });
+    const j = await r.json();
+    _edCache = j.record || {};
+    return _edCache;
+  } catch(e) {
+    console.warn('JSONBin load failed, using cache', e);
+    return _edCache || {};
+  }
+}
+
+async function edSave(data) {
+  _edCache = data;
+  if (!JSONBIN_ID || JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    localStorage.setItem('clarissa_trip_edits', JSON.stringify(data));
+    syncShow('saved', '&#10003; Saved locally');
+    return;
+  }
+  syncShow('saving', 'Saving…');
+  try {
+    const r = await fetch(JSONBIN_URL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_KEY
+      },
+      body: JSON.stringify(data)
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    syncShow('saved', '&#10003; Saved for everyone');
+  } catch(e) {
+    console.warn('JSONBin save failed', e);
+    localStorage.setItem('clarissa_trip_edits', JSON.stringify(data));
+    syncShow('error', '&#9888; Saved locally only');
+  }
+}
+
+
+/* Show setup banner if not configured */
+function edCheckSetup() {
+  if (JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    const banner = document.getElementById('ed-setup-banner');
+    if (banner) banner.style.display = 'block';
+  }
+}
+/* -- Open / close -- */
+async function openEditor() {
+  document.getElementById('editorOverlay').classList.add('open');
+  edCheckSetup();
+  await edRenderDayList();
+  edPopulateDaySelect();
+}
+function closeEditor() {
+  document.getElementById('editorOverlay').classList.remove('open');
+}
+function closeEditorIfOverlay(e) {
+  if (e.target === document.getElementById('editorOverlay')) closeEditor();
+}
+
+/* -- Tab switching -- */
+function edSwitchTab(tab, btn) {
+  document.querySelectorAll('.editor-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('ed-browse').style.display    = tab === 'browse' ? '' : 'none';
+  document.getElementById('ed-form-panel').style.display = tab === 'browse' ? 'none' : '';
+  if (tab === 'add') {
+    _edEditing = null;
+    edResetForm();
+    document.getElementById('ed-form-title').textContent = 'Add Activity';
+    document.getElementById('ed-save-btn').textContent = 'Save Activity';
+  }
+}
+
+/* -- Day list rendering -- */
+async function edRenderDayList() {
+  const data = await edLoad();
+  const container = document.getElementById('ed-day-list');
+
+  // Get all day-cards from DOM
+  const dayCards = Array.from(document.querySelectorAll('.day-card'));
+  if (!dayCards.length) {
+    container.innerHTML = '<p style="color:var(--text-soft);font-size:13px;padding:8px 0;">No days found in itinerary.</p>';
+    return;
+  }
+
+  container.innerHTML = '';
+  dayCards.forEach((card, dayIdx) => {
+    const dayId = 'day_' + dayIdx;
+    const titleEl = card.querySelector('.day-title');
+    const dowEl   = card.querySelector('.day-dow');
+    const numEl   = card.querySelector('.day-num');
+    const monEl   = card.querySelector('.day-mon');
+    const title   = titleEl ? titleEl.textContent : 'Day ' + (dayIdx+1);
+    const dateStr = (dowEl ? dowEl.textContent+' ' : '') + (numEl ? numEl.textContent+' ' : '') + (monEl ? monEl.textContent : '');
+
+    const acts = Array.from(card.querySelectorAll('.act'));
+    const stored = data[dayId] || [];
+
+    const dayEl = document.createElement('div');
+    dayEl.className = 'ed-day';
+    dayEl.innerHTML = `
+      <button class="ed-day-head" onclick="edToggleDayActs(this)">
+        <span class="ed-date">${dateStr.trim()}</span>
+        <span style="flex:1;text-align:left;">${title}</span>
+        <span style="font-size:10px;color:var(--text-soft)">${acts.length + stored.length} acts ▾</span>
+      </button>
+      <div class="ed-acts" id="edacts-${dayIdx}">
+        ${acts.map((a, i) => {
+          const name = a.querySelector('.act-name') ? a.querySelector('.act-name').textContent : '(activity)';
+          const time = a.querySelector('.time-pill') ? a.querySelector('.time-pill').textContent : '';
+          return `<div class="ed-act-row">
+            <span class="ed-act-time">${time}</span>
+            <span class="ed-act-name">${name}</span>
+            <div class="ed-act-btns">
+              <button class="ed-btn ed-btn-edit" onclick="edEditBuiltIn(${dayIdx},${i})">Edit</button>
+            </div>
+          </div>`;
+        }).join('')}
+        ${stored.map((a, i) => `
+          <div class="ed-act-row" style="background:var(--pk-faint);" id="edstored-${dayIdx}-${i}">
+            <span class="ed-act-time">${a.time || ''}</span>
+            <span class="ed-act-name">&#10022; ${a.name}</span>
+            <div class="ed-act-btns">
+              <button class="ed-btn ed-btn-edit" onclick="edEditStored(${dayIdx},${i})">Edit</button>
+              <button class="ed-btn ed-btn-del" onclick="edDeleteStored(${dayIdx},${i})">Del</button>
+            </div>
+          </div>`).join('')}
+        <button class="ed-add-btn" onclick="edQuickAdd(${dayIdx})">+ Add activity to this day</button>
+      </div>`;
+    container.appendChild(dayEl);
+  });
+}
+
+function edToggleDayActs(btn) {
+  const acts = btn.nextElementSibling;
+  acts.classList.toggle('open');
+}
+
+/* -- Day select -- */
+function edPopulateDaySelect() {
+  const sel = document.getElementById('ed-day-select');
+  sel.innerHTML = '';
+  document.querySelectorAll('.day-card').forEach((card, i) => {
+    const dow = card.querySelector('.day-dow') ? card.querySelector('.day-dow').textContent : '';
+    const num = card.querySelector('.day-num') ? card.querySelector('.day-num').textContent : '';
+    const mon = card.querySelector('.day-mon') ? card.querySelector('.day-mon').textContent : '';
+    const title = card.querySelector('.day-title') ? card.querySelector('.day-title').textContent : 'Day '+(i+1);
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${dow} ${num} ${mon} — ${title}`;
+    sel.appendChild(opt);
+  });
+}
+
+/* -- Quick add to specific day -- */
+function edQuickAdd(dayIdx) {
+  edSwitchTab('add', document.querySelectorAll('.editor-tab')[1]);
+  document.getElementById('ed-day-select').value = dayIdx;
+  _edEditing = null;
+}
+
+/* -- Edit built-in activity (prefill form) -- */
+function edEditBuiltIn(dayIdx, actIdx) {
+  const card = document.querySelectorAll('.day-card')[dayIdx];
+  const act  = card.querySelectorAll('.act')[actIdx];
+  const name  = act.querySelector('.act-name') ? act.querySelector('.act-name').textContent : '';
+  const loc   = act.querySelector('.act-loc')  ? act.querySelector('.act-loc').textContent  : '';
+  const notes = act.querySelector('.act-notes')? act.querySelector('.act-notes').textContent: '';
+  const time  = act.querySelector('.time-pill')? act.querySelector('.time-pill').textContent: '';
+
+  edSwitchTab('add', document.querySelectorAll('.editor-tab')[1]);
+  document.getElementById('ed-day-select').value = dayIdx;
+  document.getElementById('ed-time').value  = time;
+  document.getElementById('ed-name').value  = name;
+  document.getElementById('ed-loc').value   = loc;
+  document.getElementById('ed-notes').value = notes;
+  document.getElementById('ed-form-title').textContent = 'Edit Activity';
+  document.getElementById('ed-save-btn').textContent = 'Update Activity';
+  _edEditing = { dayIdx, actIdx, builtIn: true };
+}
+
+/* -- Edit stored activity -- */
+async function edEditStored(dayIdx, storedIdx) {
+  const data = await edLoad();
+  const a = (data['day_'+dayIdx] || [])[storedIdx];
+  if (!a) return;
+
+  edSwitchTab('add', document.querySelectorAll('.editor-tab')[1]);
+  document.getElementById('ed-day-select').value = dayIdx;
+  document.getElementById('ed-time').value  = a.time  || '';
+  document.getElementById('ed-name').value  = a.name  || '';
+  document.getElementById('ed-loc').value   = a.loc   || '';
+  document.getElementById('ed-notes').value = a.notes || '';
+  document.getElementById('ed-photo').value = a.photo || '';
+  document.querySelectorAll('.ed-tag-opt').forEach(el => {
+    el.classList.toggle('sel', (a.tags||[]).includes(el.dataset.tag));
+  });
+  document.getElementById('ed-form-title').textContent = 'Edit Activity';
+  document.getElementById('ed-save-btn').textContent = 'Update Activity';
+  _edEditing = { dayIdx, storedIdx, builtIn: false };
+}
+
+/* -- Delete stored activity -- */
+async function edDeleteStored(dayIdx, storedIdx) {
+  if (!confirm('Delete this activity?')) return;
+  const data = await edLoad();
+  const key  = 'day_' + dayIdx;
+  if (data[key]) {
+    data[key].splice(storedIdx, 1);
+    edSave(data);
+    edRenderDayList();
+    edRenderStoredActivities();
+    edToast('Activity deleted');
+  }
+}
+
+/* -- Save / update activity -- */
+async function edSaveActivity() {
+  const name  = document.getElementById('ed-name').value.trim();
+  const time  = document.getElementById('ed-time').value.trim();
+  const loc   = document.getElementById('ed-loc').value.trim();
+  const notes = document.getElementById('ed-notes').value.trim();
+  const photo = document.getElementById('ed-photo').value.trim();
+  const tags  = Array.from(document.querySelectorAll('.ed-tag-opt.sel')).map(el => el.dataset.tag);
+  const dayIdx = parseInt(document.getElementById('ed-day-select').value);
+
+  if (!name) { alert('Please enter an activity name.'); return; }
+
+  const entry = { time, name, loc, notes, tags, photo, added: Date.now() };
+  const data  = edLoad();
+  const key   = 'day_' + dayIdx;
+
+  if (_edEditing && !_edEditing.builtIn) {
+    // Update stored activity
+    if (!data[key]) data[key] = [];
+    data[key][_edEditing.storedIdx] = entry;
+  } else {
+    // Add new
+    if (!data[key]) data[key] = [];
+    data[key].push(entry);
+  }
+
+  edSave(data);
+  edRenderStoredActivities();
+  edResetForm();
+  edRenderDayList();
+  edSwitchTab('browse', document.querySelector('.editor-tab'));
+  edToast(_edEditing && !_edEditing.builtIn ? 'Activity updated!' : 'Activity added!');
+  _edEditing = null;
+}
+
+/* -- Render stored activities into the DOM -- */
+async function edRenderStoredActivities() {
+  const data = await edLoad();
+  document.querySelectorAll('.day-card').forEach((card, dayIdx) => {
+    const key = 'day_' + dayIdx;
+    const stored = data[key] || [];
+    // Remove previously injected stored acts
+    card.querySelectorAll('.ed-stored-act').forEach(el => el.remove());
+
+    const dayBody = card.querySelector('.day-body');
+    if (!dayBody) return;
+    const accom = dayBody.querySelector('.day-accom');
+
+    stored.forEach(a => {
+      const tagHtml = (a.tags||[]).map(t => `<span class="tag tag-${t}">${t}</span>`).join('');
+      const photo = a.photo
+        ? `<img class="act-photo places-photo" data-wiki="${a.photo}" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&auto=format&fit=crop" alt="${a.name}" loading="lazy">`
+        : '';
+      const el = document.createElement('div');
+      el.className = 'act ed-stored-act';
+      el.style.borderLeft = '3px solid var(--pk)';
+      el.innerHTML = `
+        <div class="act-time"><span class="time-pill">${a.time||'—'}</span></div>
+        <div class="act-body"><div class="act-body-text">
+          <div class="act-name">${a.name}</div>
+          ${a.loc   ? `<div class="act-loc">${a.loc}</div>`   : ''}
+          ${a.notes ? `<div class="act-notes">${a.notes}</div>` : ''}
+          <div class="act-tags">${tagHtml}</div>
+        </div>${photo}</div>`;
+      if (accom) dayBody.insertBefore(el, accom);
+      else dayBody.appendChild(el);
+    });
+  });
+}
+
+/* -- Toggle tag -- */
+function edToggleTag(el) { el.classList.toggle('sel'); }
+
+/* -- Reset form -- */
+function edResetForm() {
+  ['ed-time','ed-name','ed-loc','ed-notes','ed-photo'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.querySelectorAll('.ed-tag-opt').forEach(el => el.classList.remove('sel'));
+}
+
+/* -- Toast -- */
+function edToast(msg) {
+  const t = document.getElementById('edToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* -- Init: render saved activities on page load -- */
+document.addEventListener('DOMContentLoaded', async () => {
+  await edRenderStoredActivities();
+  await todoLoadStates();
+  const _d = await edLoad(); renderCustomTodos(_d.customTodos || []);
+});
+
+
+async function addTodoItem() {
+  const input = document.getElementById('todo-new-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  const data = await edLoad();
+  if (!data.customTodos) data.customTodos = [];
+  const tid = 'custom_' + Date.now();
+  data.customTodos.push({ tid, text, done: false });
+  await edSave(data);
+  renderCustomTodos(data.customTodos);
+  edToast('To-do added!');
+}
+
+async function toggleCustomTodo(tid) {
+  const data = await edLoad();
+  if (!data.customTodos) return;
+  const item = data.customTodos.find(t => t.tid === tid);
+  if (item) item.done = !item.done;
+  await edSave(data);
+  renderCustomTodos(data.customTodos);
+}
+
+async function deleteCustomTodo(tid) {
+  const data = await edLoad();
+  if (!data.customTodos) return;
+  data.customTodos = data.customTodos.filter(t => t.tid !== tid);
+  await edSave(data);
+  renderCustomTodos(data.customTodos);
+  edToast('Item removed');
+}
+
+function renderCustomTodos(todos) {
+  const list = document.getElementById('todo-custom-list');
+  if (!list) return;
+  if (!todos || !todos.length) { list.innerHTML = ''; return; }
+  list.innerHTML = todos.map(t => `
+    <div class="todo-item${t.done ? ' done' : ''}" style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;"
+         onclick="toggleCustomTodo('${t.tid}')">
+      <div class="tick-box"></div>
+      <div class="todo-label" style="flex:1;">${t.text}</div>
+      <button onclick="event.stopPropagation();deleteCustomTodo('${t.tid}')"
+        style="background:none;border:none;color:var(--text-soft);font-size:16px;cursor:pointer;padding:0 4px;flex-shrink:0;">&#215;</button>
+    </div>`).join('');
+}
+
+
+</script>
 </body>
 </html>
